@@ -8,7 +8,6 @@ import {
   QueryList,
   ViewChild,
   ViewChildren,
-  computed,
   inject,
   signal
 } from '@angular/core';
@@ -43,7 +42,6 @@ Chart.register(
   LinearScale
 );
 
-type ThemeMode = 'light' | 'dark';
 type TrendDirection = 'up' | 'down' | 'steady';
 type TimelineEventType = 'completion' | 'alert' | 'milestone' | 'meeting';
 
@@ -102,14 +100,6 @@ export class DashboardPageComponent implements AfterViewInit, OnDestroy {
   @ViewChildren('timelineItem') private timelineItemRefs?: QueryList<ElementRef<HTMLElement>>;
   @ViewChildren('kpiCard') private kpiCardRefs?: QueryList<ElementRef<HTMLElement>>;
   @ViewChildren('chartPanel') private chartPanelRefs?: QueryList<ElementRef<HTMLElement>>;
-
-  protected readonly theme = signal<ThemeMode>('light');
-  protected readonly themeLabel = computed(() =>
-    this.theme() === 'light' ? 'Switch to dark mode' : 'Switch to light mode'
-  );
-  protected readonly themeIcon = computed(() =>
-    this.theme() === 'light' ? 'dark_mode' : 'light_mode'
-  );
 
   protected readonly lastRefresh = '2 min ago';
 
@@ -236,11 +226,6 @@ export class DashboardPageComponent implements AfterViewInit, OnDestroy {
     this.taskChart?.destroy();
     this.productivityChart?.destroy();
     this.gsapContext?.revert();
-  }
-
-  protected toggleTheme(): void {
-    this.theme.update((currentMode) => (currentMode === 'light' ? 'dark' : 'light'));
-    this.applyThemeToCharts();
   }
 
   protected kpiValueLabel(metric: KpiMetric): string {
@@ -484,90 +469,7 @@ export class DashboardPageComponent implements AfterViewInit, OnDestroy {
     timelineElements.forEach((itemRef) => this.timelineObserver?.observe(itemRef.nativeElement));
   }
 
-  private applyThemeToCharts(): void {
-    const themeTokens = this.getThemeTokens();
-
-    if (this.taskChart) {
-      const taskDataset = this.taskChart.data.datasets[0];
-      taskDataset.backgroundColor = themeTokens.pieColors;
-      taskDataset.borderColor = themeTokens.cardSurface;
-
-      const legendLabels = this.taskChart.options.plugins?.legend?.labels;
-      if (legendLabels) {
-        legendLabels.color = themeTokens.textMuted;
-      }
-
-      const tooltipOptions = this.taskChart.options.plugins?.tooltip;
-      if (tooltipOptions) {
-        tooltipOptions.backgroundColor = themeTokens.tooltipBackground;
-        tooltipOptions.titleColor = themeTokens.tooltipText;
-        tooltipOptions.bodyColor = themeTokens.tooltipText;
-        tooltipOptions.borderColor = themeTokens.tooltipBorder;
-      }
-
-      this.taskChart.update();
-    }
-
-    if (this.productivityChart) {
-      const productivityDataset = this.productivityChart.data.datasets[0];
-      productivityDataset.backgroundColor = themeTokens.barColor;
-      productivityDataset.hoverBackgroundColor = themeTokens.barHoverColor;
-
-      const tooltipOptions = this.productivityChart.options.plugins?.tooltip;
-      if (tooltipOptions) {
-        tooltipOptions.backgroundColor = themeTokens.tooltipBackground;
-        tooltipOptions.titleColor = themeTokens.tooltipText;
-        tooltipOptions.bodyColor = themeTokens.tooltipText;
-        tooltipOptions.borderColor = themeTokens.tooltipBorder;
-      }
-
-      const scales = this.productivityChart.options.scales as {
-        x?: { ticks?: { color?: string }; grid?: { color?: string; display?: boolean } };
-        y?: { ticks?: { color?: string }; grid?: { color?: string } };
-      };
-
-      if (scales.x) {
-        scales.x.ticks = {
-          ...scales.x.ticks,
-          color: themeTokens.textMuted
-        };
-        scales.x.grid = {
-          ...scales.x.grid,
-          color: 'transparent',
-          display: false
-        };
-      }
-
-      if (scales.y) {
-        scales.y.ticks = {
-          ...scales.y.ticks,
-          color: themeTokens.textMuted
-        };
-        scales.y.grid = {
-          ...scales.y.grid,
-          color: themeTokens.grid
-        };
-      }
-
-      this.productivityChart.update();
-    }
-  }
-
   private getThemeTokens(): DashboardThemeTokens {
-    if (this.theme() === 'dark') {
-      return {
-        cardSurface: '#17233a',
-        textMuted: '#93a4bf',
-        grid: 'rgba(148, 163, 184, 0.2)',
-        tooltipBackground: 'rgba(15, 23, 42, 0.96)',
-        tooltipText: '#e2e8f0',
-        tooltipBorder: 'rgba(148, 163, 184, 0.35)',
-        pieColors: ['#60a5fa', '#2dd4bf', '#f59e0b', '#818cf8'],
-        barColor: 'rgba(96, 165, 250, 0.8)',
-        barHoverColor: 'rgba(129, 140, 248, 0.9)'
-      };
-    }
-
     return {
       cardSurface: '#ffffff',
       textMuted: '#475569',

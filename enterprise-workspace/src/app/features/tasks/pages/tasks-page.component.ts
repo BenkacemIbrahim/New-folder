@@ -13,7 +13,6 @@ import {
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
-import { PageHeaderComponent } from '../../../shared/components/page-header/page-header.component';
 import {
   drawerBackdropAnimation,
   drawerSlideAnimation,
@@ -29,7 +28,7 @@ import {
 @Component({
   selector: 'app-tasks-page',
   standalone: true,
-  imports: [NgFor, NgIf, NgClass, DatePipe, DragDropModule, MatIconModule, PageHeaderComponent],
+  imports: [NgFor, NgIf, NgClass, DatePipe, DragDropModule, MatIconModule],
   templateUrl: './tasks-page.component.html',
   styleUrl: './tasks-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

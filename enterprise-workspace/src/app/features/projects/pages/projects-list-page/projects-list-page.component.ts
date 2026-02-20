@@ -18,6 +18,7 @@ import {
 import { ProjectsApiService } from '../../services/projects-api.service';
 
 type StatusFilter = 'All' | ProjectStatus;
+type DateSortDirection = 'desc' | 'asc';
 
 @Component({
   selector: 'app-projects-list-page',
@@ -47,6 +48,8 @@ export class ProjectsListPageComponent {
 
   protected readonly selectedFilter = signal<StatusFilter>('All');
   protected readonly searchTerm = signal('');
+  protected readonly filterMenuOpen = signal(false);
+  protected readonly dateSortDirection = signal<DateSortDirection>('desc');
   protected readonly loading = signal(false);
   protected readonly submitting = signal(false);
   protected readonly submitted = signal(false);
@@ -66,8 +69,9 @@ export class ProjectsListPageComponent {
   protected readonly filteredProjects = computed(() => {
     const activeFilter = this.selectedFilter();
     const term = this.searchTerm().trim().toLowerCase();
+    const direction = this.dateSortDirection();
 
-    return this.projects().filter((project) => {
+    const visibleProjects = this.projects().filter((project) => {
       const matchesStatus = activeFilter === 'All' || project.status === activeFilter;
       const matchesSearch =
         !term ||
@@ -77,10 +81,17 @@ export class ProjectsListPageComponent {
 
       return matchesStatus && matchesSearch;
     });
+
+    return [...visibleProjects].sort((leftProject, rightProject) => {
+      const leftDate = new Date(leftProject.dueDate).getTime();
+      const rightDate = new Date(rightProject.dueDate).getTime();
+      return direction === 'asc' ? leftDate - rightDate : rightDate - leftDate;
+    });
   });
 
   protected readonly listAnimationState = computed(
-    () => `${this.selectedFilter()}-${this.searchTerm()}-${this.filteredProjects().length}`
+    () =>
+      `${this.selectedFilter()}-${this.searchTerm()}-${this.dateSortDirection()}-${this.filteredProjects().length}`
   );
 
   constructor() {
@@ -93,6 +104,16 @@ export class ProjectsListPageComponent {
 
   protected setSearchTerm(term: string): void {
     this.searchTerm.set(term);
+  }
+
+  protected toggleFilterMenu(): void {
+    this.filterMenuOpen.update((currentState) => !currentState);
+  }
+
+  protected toggleDateSortDirection(): void {
+    this.dateSortDirection.update((currentDirection) =>
+      currentDirection === 'desc' ? 'asc' : 'desc'
+    );
   }
 
   protected openCreateModal(): void {

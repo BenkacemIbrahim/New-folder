@@ -2,20 +2,20 @@
   display: block;
 }
 
-.kanban-header {
+.tasks-title-row {
   margin-bottom: var(--space-4);
-  padding: var(--space-4);
-  border-radius: var(--radius-xl);
-  border: 1px solid rgba(148, 163, 184, 0.26);
-  background: var(--color-surface-elevated);
-  backdrop-filter: blur(12px);
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: space-between;
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 
-.meta {
+.title-copy {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.eyebrow {
   margin: 0;
   font-size: 0.74rem;
   text-transform: uppercase;
@@ -24,17 +24,24 @@
   font-weight: 600;
 }
 
-.kanban-header h2 {
-  margin: var(--space-2) 0 0;
-  font-size: 1.4rem;
-  letter-spacing: -0.01em;
+.title-copy h1 {
+  margin: 0;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--color-text-primary);
 }
 
-.hint {
+.flow-count {
   margin: 0;
-  color: var(--color-text-secondary);
-  max-width: 40ch;
-  font-size: 0.9rem;
+  padding: 0.3rem 0.72rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border-soft);
+  background: color-mix(in srgb, var(--color-surface) 92%, var(--color-app-bg));
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  font-weight: 500;
+  white-space: nowrap;
 }
 
 .kanban-board {
@@ -412,12 +419,9 @@
 }
 
 @media (max-width: 760px) {
-  .kanban-header {
+  .tasks-title-row {
     flex-direction: column;
-  }
-
-  .hint {
-    max-width: none;
+    align-items: flex-start;
   }
 
   .detail-grid {

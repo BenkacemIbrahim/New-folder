@@ -2,13 +2,38 @@
   <app-page-header
     eyebrow="Portfolio"
     title="Projects"
-    subtitle="Jira-style portfolio board for ownership, delivery confidence, and team output."
-    actionLabel="New project"
-    actionIcon="add"
-    (action)="openCreateModal()"
+    [actionLabel]="filterMenuOpen() ? 'Close filters' : 'Filter'"
+    actionIcon="filter_list"
+    (action)="toggleFilterMenu()"
   />
 
-  <section class="toolbar-shell">
+  <section class="filter-drop" [class.open]="filterMenuOpen()" [attr.aria-hidden]="!filterMenuOpen()">
+    <div class="filter-top-row">
+      <label class="search-shell">
+        <mat-icon>search</mat-icon>
+        <input
+          type="search"
+          placeholder="Search project, owner, or key"
+          [value]="searchTerm()"
+          (input)="setSearchTerm($any($event.target).value)"
+        />
+      </label>
+
+      <button
+        type="button"
+        class="date-sort-btn"
+        [class.asc]="dateSortDirection() === 'asc'"
+        [attr.data-direction]="dateSortDirection()"
+        (click)="toggleDateSortDirection()"
+      >
+        <span>Due Date</span>
+        <span class="sort-split-icon" [attr.data-direction]="dateSortDirection()" aria-hidden="true">
+          <span class="arrow up">↑</span>
+          <span class="arrow down">↓</span>
+        </span>
+      </button>
+    </div>
+
     <div class="filter-row">
       <button
         type="button"
@@ -20,16 +45,6 @@
         {{ filter }}
       </button>
     </div>
-
-    <label class="search-shell">
-      <mat-icon>search</mat-icon>
-      <input
-        type="search"
-        placeholder="Search project, owner, or key"
-        [value]="searchTerm()"
-        (input)="setSearchTerm($any($event.target).value)"
-      />
-    </label>
   </section>
 
   <section class="projects-grid" [@listFilterAnimation]="listAnimationState()">

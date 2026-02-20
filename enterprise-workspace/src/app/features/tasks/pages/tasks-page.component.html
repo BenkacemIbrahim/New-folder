@@ -1,16 +1,10 @@
-<app-page-header
-  eyebrow="Execution"
-  title="Kanban Workspace"
-  subtitle="Premium sprint board with smooth drag-and-drop, visual priority cues, and deep task context."
-/>
-
-<section class="kanban-header">
-  <div>
-    <p class="meta">Active Sprint Board</p>
-    <h2>{{ totalTasks() }} tasks in flow</h2>
+<header class="tasks-title-row">
+  <div class="title-copy">
+    <p class="eyebrow">Execution</p>
+    <h1>Kanban</h1>
   </div>
-  <p class="hint">Drag a task between columns to update delivery status.</p>
-</section>
+  <p class="flow-count">{{ totalTasks() }} tasks in flow</p>
+</header>
 
 <section class="kanban-board" cdkDropListGroup>
   <article

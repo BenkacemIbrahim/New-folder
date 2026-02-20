@@ -1,18 +1,11 @@
-<section class="dashboard-page" [attr.data-theme]="theme()" aria-label="Enterprise dashboard">
+<section class="dashboard-page" aria-label="Enterprise dashboard">
   <header class="dashboard-hero">
     <div class="hero-copy">
-      <p class="eyebrow hero-reveal">Executive View</p>
-      <h1 class="hero-reveal">Enterprise Delivery Command Center</h1>
-      <p class="hero-support hero-reveal">
-        Monitor portfolio performance, team capacity, and execution risks from one premium dashboard.
-      </p>
+      <p class="eyebrow hero-reveal">Overview</p>
+      <h1 class="hero-reveal">Dashboard</h1>
     </div>
 
     <div class="hero-actions hero-reveal">
-      <button type="button" class="theme-toggle" (click)="toggleTheme()" [attr.aria-label]="themeLabel()">
-        <mat-icon>{{ themeIcon() }}</mat-icon>
-        <span>{{ themeLabel() }}</span>
-      </button>
       <p class="refresh-copy">Last refresh: {{ lastRefresh }}</p>
     </div>
   </header>
