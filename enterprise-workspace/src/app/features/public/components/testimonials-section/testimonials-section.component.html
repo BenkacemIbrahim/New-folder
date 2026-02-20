@@ -1,0 +1,35 @@
+<section class="testimonials" data-reveal>
+  <div class="slider-shell">
+    <div class="slider-track" [style.transform]="trackTransform()">
+      <article class="testimonial-card" *ngFor="let item of testimonials; trackBy: trackByTestimonial">
+        <p class="quote">"{{ item.quote }}"</p>
+
+        <footer>
+          <span class="avatar">{{ item.avatarSeed }}</span>
+          <div>
+            <p class="name">{{ item.name }}</p>
+            <p class="role">{{ item.role }} · {{ item.company }}</p>
+          </div>
+        </footer>
+      </article>
+    </div>
+  </div>
+
+  <div class="slider-controls">
+    <button type="button" class="control-btn" aria-label="Previous testimonial" (click)="previous()">
+      ‹
+    </button>
+    <button
+      class="dot"
+      type="button"
+      *ngFor="let item of testimonials; let idx = index"
+      [ngClass]="{ active: currentIndex() === idx }"
+      [attr.aria-label]="'Go to testimonial ' + (idx + 1)"
+      (click)="setSlide(idx)"
+    ></button>
+    <button type="button" class="control-btn" aria-label="Next testimonial" (click)="next()">
+      ›
+    </button>
+  </div>
+</section>
+

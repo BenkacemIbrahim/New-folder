@@ -1,0 +1,9 @@
+<section #statsRoot class="stats-grid" data-reveal>
+  <article class="stat-card" *ngFor="let stat of stats; trackBy: trackByStat">
+    <p class="value">
+      {{ formattedValue(stat) }}<span>{{ stat.suffix ?? '' }}</span>
+    </p>
+    <p class="label">{{ stat.label }}</p>
+  </article>
+</section>
+
