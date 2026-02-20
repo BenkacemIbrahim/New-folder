@@ -3,9 +3,9 @@
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1rem;
+  gap: var(--space-2);
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(20px);
   transition:
     opacity tokens.$marketing-slow tokens.$marketing-ease,
     transform tokens.$marketing-slow tokens.$marketing-ease;
@@ -17,31 +17,31 @@
 }
 
 .stat-card {
-  border-radius: 18px;
-  border: 1px solid rgba(148, 163, 184, 0.28);
-  background: rgba(255, 255, 255, 0.84);
-  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
-  padding: 1.15rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border-soft);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+  padding: var(--space-3);
 }
 
 .value {
   margin: 0;
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  letter-spacing: -0.03em;
-  color: #0f172a;
-  font-weight: 700;
+  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  letter-spacing: -0.02em;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
 }
 
 .value span {
   font-size: 0.5em;
-  color: #1d4ed8;
-  margin-left: 0.12em;
+  color: var(--color-accent);
+  margin-left: 0.1em;
 }
 
 .label {
-  margin: 0.35rem 0 0;
-  color: #475569;
-  font-size: 0.82rem;
+  margin: 0.4rem 0 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-caption);
 }
 
 @media (max-width: 980px) {
@@ -55,4 +55,3 @@
     grid-template-columns: 1fr;
   }
 }
-

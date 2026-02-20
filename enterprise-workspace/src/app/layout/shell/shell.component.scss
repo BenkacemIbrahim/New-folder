@@ -1,9 +1,6 @@
 .workspace-shell {
   height: 100dvh;
-  background:
-    radial-gradient(circle at 10% 20%, rgba(147, 197, 253, 0.22), transparent 34%),
-    radial-gradient(circle at 90% 10%, rgba(14, 165, 233, 0.18), transparent 26%),
-    var(--color-app-bg);
+  background: var(--color-app-bg);
 }
 
 .workspace-sidenav {

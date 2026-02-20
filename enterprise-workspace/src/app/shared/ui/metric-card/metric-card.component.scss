@@ -1,7 +1,7 @@
 .metric-card {
   padding: var(--space-5);
   border-radius: var(--radius-lg);
-  background: linear-gradient(160deg, var(--color-surface-elevated), var(--color-surface));
+  background: var(--color-surface-elevated);
   border: 1px solid var(--color-border-soft);
   box-shadow: var(--shadow-soft);
   min-height: 140px;

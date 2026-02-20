@@ -3,7 +3,7 @@
 $enterprise-theme: mat.define-theme((
   color: (
     theme-type: light,
-    primary: mat.$azure-palette,
+    primary: mat.$blue-palette,
     tertiary: mat.$blue-palette
   ),
   typography: (
@@ -23,10 +23,10 @@ $enterprise-theme: mat.define-theme((
 :root {
   @include mat.all-component-themes($enterprise-theme);
 
-  --mdc-filled-button-container-shape: 12px;
-  --mdc-outlined-button-container-shape: 12px;
-  --mdc-elevated-card-container-shape: 16px;
-  --mdc-outlined-card-container-shape: 16px;
+  --mdc-filled-button-container-shape: var(--radius-md);
+  --mdc-outlined-button-container-shape: var(--radius-md);
+  --mdc-elevated-card-container-shape: var(--radius-lg);
+  --mdc-outlined-card-container-shape: var(--radius-lg);
 }
 
 .mat-mdc-card,
@@ -37,7 +37,7 @@ $enterprise-theme: mat.define-theme((
 }
 
 .mat-mdc-form-field {
-  --mdc-outlined-text-field-container-shape: 12px;
+  --mdc-outlined-text-field-container-shape: var(--radius-md);
 }
 
 .mat-mdc-chip {

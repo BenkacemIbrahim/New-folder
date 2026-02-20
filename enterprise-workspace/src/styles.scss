@@ -22,12 +22,14 @@ body {
 html {
   color-scheme: light;
   scroll-behavior: smooth;
+  background: var(--color-app-bg);
 }
 
 body {
   background: var(--color-app-bg);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  color: var(--color-text-primary);
 }
 
 a,
@@ -37,7 +39,7 @@ select,
 textarea,
 [tabindex] {
   &:focus-visible {
-    outline: 3px solid rgba(51, 92, 255, 0.38);
+    outline: 3px solid color-mix(in srgb, var(--color-accent) 34%, transparent);
     outline-offset: 2px;
   }
 }
@@ -47,6 +49,10 @@ input,
 textarea,
 select {
   font: inherit;
+}
+
+a {
+  color: inherit;
 }
 
 .sr-only {

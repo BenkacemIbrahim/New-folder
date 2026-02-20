@@ -1,24 +1,24 @@
 @use 'projects-tokens' as tokens;
 
 @mixin glass-card {
-  border: 1px solid rgba(148, 163, 184, 0.32);
+  border: 1px solid var(--color-border-soft);
   border-radius: var(--radius-xl);
-  background: tokens.$surface-glass-light;
+  background: color-mix(in srgb, tokens.$surface-glass-light 94%, transparent);
   backdrop-filter: blur(14px);
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+  box-shadow: var(--shadow-soft);
 }
 
 @mixin glass-card-dark {
-  border: 1px solid rgba(148, 163, 184, 0.24);
-  background: tokens.$surface-glass-dark;
-  box-shadow: 0 22px 46px rgba(2, 6, 23, 0.44);
+  border: 1px solid color-mix(in srgb, var(--color-border-soft) 72%, transparent);
+  background: color-mix(in srgb, tokens.$surface-glass-dark 92%, transparent);
+  box-shadow: var(--shadow-medium);
 }
 
 @mixin control-shell {
   width: 100%;
-  border: 1px solid rgba(148, 163, 184, 0.42);
+  border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--color-surface);
   color: var(--color-text-primary);
   min-height: 44px;
   padding: 0 var(--space-3);
@@ -26,7 +26,7 @@
   transition: border-color 150ms ease, box-shadow 150ms ease;
 
   &:focus {
-    border-color: rgba(37, 99, 235, 0.8);
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.16);
+    border-color: color-mix(in srgb, var(--color-accent) 60%, var(--color-border-strong));
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 18%, transparent);
   }
 }

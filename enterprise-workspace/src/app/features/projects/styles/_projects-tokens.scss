@@ -1,14 +1,6 @@
-$surface-glass-light: linear-gradient(
-  150deg,
-  rgba(255, 255, 255, 0.92),
-  rgba(255, 255, 255, 0.72)
-);
-$surface-glass-dark: linear-gradient(
-  150deg,
-  rgba(20, 29, 48, 0.92),
-  rgba(20, 29, 48, 0.76)
-);
+$surface-glass-light: #ffffff;
+$surface-glass-dark: #1f2933;
 
-$status-on-track: #16a34a;
-$status-at-risk: #f59e0b;
-$status-blocked: #e11d48;
+$status-on-track: #2e7d57;
+$status-at-risk: #a5742c;
+$status-blocked: #b64747;

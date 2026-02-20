@@ -68,8 +68,8 @@ h1 {
 .tab-nav {
   display: inline-flex;
   gap: var(--space-2);
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--color-border-soft);
+  background: color-mix(in srgb, var(--color-surface) 86%, transparent);
   border-radius: 999px;
   padding: 0.2rem;
 }
@@ -86,8 +86,8 @@ h1 {
 }
 
 .tab-nav button.active {
-  color: #1e40af;
-  background: rgba(219, 234, 254, 0.8);
+  color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent-soft) 82%, transparent);
 }
 
 .tab-host {
@@ -140,8 +140,8 @@ h1 {
   gap: var(--space-3);
   padding: var(--space-3);
   border-radius: var(--radius-md);
-  border: 1px solid rgba(148, 163, 184, 0.28);
-  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid var(--color-border-soft);
+  background: color-mix(in srgb, var(--color-surface) 88%, transparent);
   margin-bottom: var(--space-2);
 }
 
@@ -166,8 +166,8 @@ h1 {
   border-radius: 999px;
   font-size: 0.8rem;
   font-weight: 600;
-  color: #1e40af;
-  background: rgba(219, 234, 254, 0.75);
+  color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent-soft) 82%, transparent);
 }
 
 .team-panel .member-row {
@@ -177,8 +177,8 @@ h1 {
   align-items: center;
   padding: var(--space-3);
   border-radius: var(--radius-md);
-  border: 1px solid rgba(148, 163, 184, 0.28);
-  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid var(--color-border-soft);
+  background: color-mix(in srgb, var(--color-surface) 88%, transparent);
   margin-bottom: var(--space-2);
 }
 
@@ -193,10 +193,10 @@ h1 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: var(--color-surface);
   font-size: 0.78rem;
   font-weight: 600;
-  background: linear-gradient(145deg, #335cff, #1e40af);
+  background: var(--color-surface-elevated);
 }
 
 .member-row h4 {
@@ -237,21 +237,21 @@ h1 {
   border-radius: 999px;
   font-size: 0.76rem;
   font-weight: 600;
-  border: 1px solid rgba(148, 163, 184, 0.32);
+  border: 1px solid var(--color-border-soft);
   color: var(--color-text-secondary);
-  background: rgba(255, 255, 255, 0.9);
+  background: color-mix(in srgb, var(--color-surface) 90%, transparent);
 }
 
 .autosave-chip.saving {
-  color: #1e40af;
-  border-color: rgba(37, 99, 235, 0.45);
-  background: rgba(219, 234, 254, 0.75);
+  color: var(--color-accent);
+  border-color: color-mix(in srgb, var(--color-accent) 32%, transparent);
+  background: color-mix(in srgb, var(--color-accent-soft) 82%, transparent);
 }
 
 .autosave-chip.saved {
-  color: #166534;
-  border-color: rgba(34, 197, 94, 0.35);
-  background: rgba(187, 247, 208, 0.6);
+  color: var(--color-success);
+  border-color: color-mix(in srgb, var(--color-success) 30%, transparent);
+  background: color-mix(in srgb, var(--color-success-soft) 82%, transparent);
 }
 
 .settings-form {
@@ -289,7 +289,7 @@ textarea {
 
 .form-error {
   margin: 0;
-  color: #b91c1c;
+  color: var(--color-error);
   font-size: 0.78rem;
 }
 
@@ -312,19 +312,19 @@ textarea {
 }
 
 .secondary-btn {
-  border-color: rgba(148, 163, 184, 0.45);
-  background: #fff;
+  border-color: var(--color-border-soft);
+  background: var(--color-surface);
   color: var(--color-text-secondary);
 }
 
 .primary-btn {
-  color: #fff;
-  background: linear-gradient(140deg, #335cff, #1e40af);
+  color: var(--color-text-inverse);
+  background: var(--color-accent);
 }
 
 .danger-btn {
-  color: #fff;
-  background: linear-gradient(140deg, #e11d48, #be123c);
+  color: var(--color-text-inverse);
+  background: var(--color-error);
 }
 
 .archive-copy {

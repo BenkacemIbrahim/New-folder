@@ -5,7 +5,7 @@
   display: grid;
   place-items: center;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(248, 250, 252, 0.18), rgba(248, 250, 252, 0.1));
+  background: color-mix(in srgb, var(--color-app-bg) 84%, transparent);
   backdrop-filter: blur(2px);
 }
 
@@ -13,9 +13,9 @@
   min-width: 220px;
   padding: 0.72rem 1rem;
   border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  background: rgba(15, 23, 42, 0.92);
-  color: #f8fafc;
+  border: 1px solid var(--color-border-soft);
+  background: color-mix(in srgb, var(--color-surface) 94%, transparent);
+  color: var(--color-text-primary);
   font-size: 0.84rem;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -23,15 +23,15 @@
   align-items: center;
   justify-content: center;
   gap: 0.68rem;
-  box-shadow: 0 20px 44px rgba(15, 23, 42, 0.3);
+  box-shadow: var(--shadow-medium);
 }
 
 .spinner {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  border: 2px solid rgba(191, 219, 254, 0.5);
-  border-top-color: #60a5fa;
+  border: 2px solid color-mix(in srgb, var(--color-border-soft) 72%, transparent);
+  border-top-color: var(--color-accent);
   animation: spinner-rotate 0.8s linear infinite;
 }
 

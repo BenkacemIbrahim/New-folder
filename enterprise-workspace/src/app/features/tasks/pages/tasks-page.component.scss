@@ -7,7 +7,7 @@
   padding: var(--space-4);
   border-radius: var(--radius-xl);
   border: 1px solid rgba(148, 163, 184, 0.26);
-  background: linear-gradient(140deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.68));
+  background: var(--color-surface-elevated);
   backdrop-filter: blur(12px);
   display: flex;
   align-items: flex-start;
@@ -49,9 +49,7 @@
   min-height: 520px;
   border-radius: var(--radius-xl);
   border: 1px solid rgba(148, 163, 184, 0.26);
-  background:
-    radial-gradient(circle at 90% 0%, rgba(191, 219, 254, 0.28), transparent 34%),
-    linear-gradient(150deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.72));
+  background: var(--color-surface-elevated);
   backdrop-filter: blur(14px);
   box-shadow: 0 18px 44px rgba(15, 23, 42, 0.1);
   overflow: hidden;
@@ -90,16 +88,16 @@
   justify-content: center;
   font-size: 0.8rem;
   font-weight: 700;
-  color: #1d4ed8;
-  background: rgba(219, 234, 254, 0.92);
-  border: 1px solid rgba(147, 197, 253, 0.64);
+  color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent-soft) 88%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 24%, transparent);
 }
 
 .column-feedback {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(130deg, rgba(34, 197, 94, 0.2), rgba(14, 165, 233, 0.18));
+  background: var(--color-surface-elevated);
 }
 
 .task-list {
@@ -135,7 +133,7 @@
 .task-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 18px 34px rgba(15, 23, 42, 0.16);
-  border-color: rgba(59, 130, 246, 0.34);
+  border-color: color-mix(in srgb, var(--color-accent) 32%, transparent);
 }
 
 .priority-indicator {
@@ -146,19 +144,19 @@
 }
 
 .priority-indicator.critical {
-  background: #e11d48;
+  background: var(--color-error);
 }
 
 .priority-indicator.high {
-  background: #f97316;
+  background: color-mix(in srgb, var(--color-warning) 82%, var(--color-text-primary));
 }
 
 .priority-indicator.medium {
-  background: #f59e0b;
+  background: var(--color-warning);
 }
 
 .priority-indicator.low {
-  background: #22c55e;
+  background: var(--color-success);
 }
 
 .task-top {
@@ -179,11 +177,11 @@
 .points {
   font-size: 0.72rem;
   font-weight: 700;
-  color: #1d4ed8;
+  color: var(--color-accent);
   border-radius: 999px;
   padding: 0.18rem 0.56rem;
-  border: 1px solid rgba(147, 197, 253, 0.55);
-  background: rgba(219, 234, 254, 0.88);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 24%, transparent);
+  background: color-mix(in srgb, var(--color-accent-soft) 88%, transparent);
 }
 
 .task-card h3 {
@@ -208,7 +206,7 @@
   border-radius: 999px;
   font-size: 0.7rem;
   font-weight: 600;
-  color: #0f172a;
+  color: var(--color-text-primary);
   padding: 0.14rem 0.5rem;
   border: 1px solid rgba(148, 163, 184, 0.34);
   background: rgba(241, 245, 249, 0.92);
@@ -239,8 +237,8 @@
   justify-content: center;
   font-size: 0.66rem;
   font-weight: 700;
-  color: #fff;
-  background: linear-gradient(140deg, #335cff, #1e40af);
+  color: var(--color-surface);
+  background: var(--color-surface-elevated);
 }
 
 .task-footer time {
@@ -251,15 +249,15 @@
 .cdk-drag-preview {
   box-sizing: border-box;
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(59, 130, 246, 0.42);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 36%, transparent);
   box-shadow: 0 26px 46px rgba(15, 23, 42, 0.22);
 }
 
 .cdk-drag-placeholder {
   border-radius: var(--radius-lg);
-  border: 2px dashed rgba(59, 130, 246, 0.38);
+  border: 2px dashed color-mix(in srgb, var(--color-accent) 34%, transparent);
   min-height: 122px;
-  background: rgba(219, 234, 254, 0.5);
+  background: color-mix(in srgb, var(--color-accent-soft) 68%, transparent);
   animation: placeholder-pulse 1s ease-in-out infinite;
 }
 
@@ -284,7 +282,7 @@
 .task-drawer {
   width: min(460px, 100%);
   height: 100%;
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.92));
+  background: var(--color-surface-elevated);
   border-left: 1px solid rgba(148, 163, 184, 0.3);
   box-shadow: -18px 0 36px rgba(15, 23, 42, 0.2);
   display: grid;
@@ -318,7 +316,7 @@
   height: 34px;
   border-radius: 50%;
   border: 1px solid rgba(148, 163, 184, 0.38);
-  background: #fff;
+  background: var(--color-surface);
   color: var(--color-text-secondary);
   display: inline-flex;
   align-items: center;

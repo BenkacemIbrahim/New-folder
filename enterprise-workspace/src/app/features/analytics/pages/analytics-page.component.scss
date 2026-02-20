@@ -35,8 +35,8 @@
 .bar {
   width: min(56px, 100%);
   border-radius: var(--radius-md) var(--radius-md) 0 0;
-  background: linear-gradient(180deg, #5b7cfa 0%, #1d4ed8 100%);
-  box-shadow: 0 10px 24px rgba(59, 130, 246, 0.25);
+  background: var(--color-surface-elevated);
+  box-shadow: var(--shadow-soft);
 }
 
 .bar-item p {
