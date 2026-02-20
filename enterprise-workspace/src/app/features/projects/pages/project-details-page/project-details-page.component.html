@@ -1,0 +1,187 @@
+<section class="project-details-page">
+  <a routerLink="/projects" class="back-link">
+    <mat-icon>chevron_left</mat-icon>
+    Back to projects
+  </a>
+
+  <section *ngIf="loading()" class="loading-shell">
+    <mat-icon>hourglass_top</mat-icon>
+    <p>Loading project details...</p>
+  </section>
+
+  <ng-container *ngIf="!loading() && project() as currentProject">
+    <header class="details-header">
+      <div class="header-copy">
+        <p class="project-key">{{ currentProject.key }}</p>
+        <h1>{{ currentProject.name }}</h1>
+        <p class="summary">{{ currentProject.summary }}</p>
+
+        <div class="meta-row">
+          <app-project-status-badge [status]="currentProject.status" />
+          <span>Owner: {{ currentProject.owner }}</span>
+          <span>Due: {{ currentProject.dueDate | date: 'MMM d, y' }}</span>
+          <span>Budget: {{ currentProject.budget }}</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button type="button" class="secondary-btn" (click)="openArchiveModal()">Archive</button>
+        <button type="button" class="primary-btn" (click)="setActiveTab('settings')">Edit</button>
+      </div>
+    </header>
+
+    <nav class="tab-nav">
+      <button
+        type="button"
+        *ngFor="let tab of tabs"
+        [ngClass]="{ active: activeTab() === tab.key }"
+        (click)="setActiveTab(tab.key)"
+      >
+        {{ tab.label }}
+      </button>
+    </nav>
+
+    <section class="tab-host" [@tabSwitchAnimation]="activeTab()">
+      <article class="tab-pane" *ngIf="activeTab() === 'overview'">
+        <section class="stats-grid">
+          <article>
+            <p>Completion</p>
+            <h3>{{ currentProject.completionRate }}%</h3>
+          </article>
+          <article>
+            <p>Open tasks</p>
+            <h3>{{ currentProject.openTasks }}</h3>
+          </article>
+          <article>
+            <p>Sprint</p>
+            <h3>{{ currentProject.sprint }}</h3>
+          </article>
+          <article>
+            <p>Productivity</p>
+            <h3>{{ currentProject.productivity }} pts</h3>
+          </article>
+        </section>
+
+        <section class="panel">
+          <header>
+            <h3>Milestones</h3>
+          </header>
+
+          <article class="milestone" *ngFor="let milestone of currentProject.milestones; trackBy: trackByMilestone">
+            <div>
+              <h4>{{ milestone.name }}</h4>
+              <p>{{ milestone.dueDate | date: 'MMM d, y' }}</p>
+            </div>
+
+            <div class="completion-pill">{{ milestone.completion }}%</div>
+          </article>
+        </section>
+      </article>
+
+      <article class="tab-pane" *ngIf="activeTab() === 'team'">
+        <section class="panel team-panel">
+          <header>
+            <h3>Team Capacity</h3>
+          </header>
+
+          <article class="member-row" *ngFor="let member of currentProject.teamMembers; trackBy: trackByMember">
+            <div class="avatar">{{ member.initials }}</div>
+            <div>
+              <h4>{{ member.name }}</h4>
+              <p>{{ member.role }}</p>
+            </div>
+            <span>{{ member.allocation }}</span>
+          </article>
+        </section>
+      </article>
+
+      <article class="tab-pane" *ngIf="activeTab() === 'settings'">
+        <section class="panel settings-panel">
+          <header class="settings-head">
+            <div>
+              <h3>Project Settings</h3>
+              <p>Changes are auto-saved while you type.</p>
+            </div>
+
+            <p class="autosave-chip" [ngClass]="autosaveState()">
+              {{ autosaveState() === 'saving' ? 'Saving...' : autosaveState() === 'saved' ? 'Saved' : 'Idle' }}
+              <span *ngIf="lastSaved()">at {{ lastSaved() }}</span>
+            </p>
+          </header>
+
+          <form class="settings-form" [formGroup]="settingsForm" (ngSubmit)="saveSettingsNow()" novalidate>
+            <div class="field-grid">
+              <label>
+                <span>Project name</span>
+                <input type="text" formControlName="name" />
+                <p class="form-error" *ngIf="hasControlError('name')" [@formErrorAnimation]>
+                  {{ controlErrorText('name') }}
+                </p>
+              </label>
+
+              <label>
+                <span>Owner</span>
+                <input type="text" formControlName="owner" />
+                <p class="form-error" *ngIf="hasControlError('owner')" [@formErrorAnimation]>
+                  {{ controlErrorText('owner') }}
+                </p>
+              </label>
+
+              <label>
+                <span>Due date</span>
+                <input type="date" formControlName="dueDate" />
+                <p class="form-error" *ngIf="hasControlError('dueDate')" [@formErrorAnimation]>
+                  {{ controlErrorText('dueDate') }}
+                </p>
+              </label>
+
+              <label>
+                <span>Status</span>
+                <select formControlName="status">
+                  <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+                </select>
+              </label>
+            </div>
+
+            <label>
+              <span>Summary</span>
+              <textarea rows="3" formControlName="summary"></textarea>
+              <p class="form-error" *ngIf="hasControlError('summary')" [@formErrorAnimation]>
+                {{ controlErrorText('summary') }}
+              </p>
+            </label>
+
+            <label>
+              <span>Description</span>
+              <textarea rows="5" formControlName="description"></textarea>
+              <p class="form-error" *ngIf="hasControlError('description')" [@formErrorAnimation]>
+                {{ controlErrorText('description') }}
+              </p>
+            </label>
+
+            <div class="actions-row">
+              <button type="button" class="secondary-btn" (click)="resetSettings()">Reset</button>
+              <button type="submit" class="primary-btn">Save now</button>
+            </div>
+          </form>
+        </section>
+      </article>
+    </section>
+  </ng-container>
+</section>
+
+<app-project-modal
+  *ngIf="archiveModalOpen()"
+  title="Archive this project?"
+  subtitle="Archiving keeps history but marks delivery as inactive."
+  (closed)="closeArchiveModal()"
+>
+  <p class="archive-copy">
+    This action will move the project into read-only mode for the team. You can restore it later from settings.
+  </p>
+
+  <div class="actions-row">
+    <button type="button" class="secondary-btn" (click)="closeArchiveModal()">Cancel</button>
+    <button type="button" class="danger-btn" (click)="archiveProject()">Archive project</button>
+  </div>
+</app-project-modal>

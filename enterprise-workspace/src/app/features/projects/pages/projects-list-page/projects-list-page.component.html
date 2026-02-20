@@ -1,0 +1,127 @@
+<section class="projects-list-page">
+  <app-page-header
+    eyebrow="Portfolio"
+    title="Projects"
+    subtitle="Jira-style portfolio board for ownership, delivery confidence, and team output."
+    actionLabel="New project"
+    actionIcon="add"
+    (action)="openCreateModal()"
+  />
+
+  <section class="toolbar-shell">
+    <div class="filter-row">
+      <button
+        type="button"
+        *ngFor="let filter of statusFilters"
+        class="filter-chip"
+        [ngClass]="{ active: selectedFilter() === filter }"
+        (click)="setFilter(filter)"
+      >
+        {{ filter }}
+      </button>
+    </div>
+
+    <label class="search-shell">
+      <mat-icon>search</mat-icon>
+      <input
+        type="search"
+        placeholder="Search project, owner, or key"
+        [value]="searchTerm()"
+        (input)="setSearchTerm($any($event.target).value)"
+      />
+    </label>
+  </section>
+
+  <section class="projects-grid" [@listFilterAnimation]="listAnimationState()">
+    <article class="project-card" *ngFor="let project of filteredProjects(); trackBy: trackByProject">
+      <header class="card-header">
+        <p class="project-key">{{ project.key }}</p>
+        <app-project-status-badge [status]="project.status" />
+      </header>
+
+      <a [routerLink]="['/projects', project.id]" class="project-name">{{ project.name }}</a>
+      <p class="summary">{{ project.summary }}</p>
+
+      <div class="meta-grid">
+        <p><span>Owner</span>{{ project.owner }}</p>
+        <p><span>Due</span>{{ project.dueDate | date: 'MMM d, y' }}</p>
+        <p><span>Team</span>{{ project.teamSize }} members</p>
+        <p><span>Productivity</span>{{ project.productivity }} pts</p>
+      </div>
+
+      <div class="progress-shell">
+        <div class="progress-track">
+          <span [style.width.%]="project.progress"></span>
+        </div>
+        <p>{{ project.progress }}% complete</p>
+      </div>
+    </article>
+  </section>
+
+  <section class="empty-state" *ngIf="!loading() && filteredProjects().length === 0">
+    <mat-icon>filter_alt_off</mat-icon>
+    <h3>No projects match your filter</h3>
+    <p>Try another status or widen your search to view more portfolio items.</p>
+  </section>
+</section>
+
+<app-project-modal
+  *ngIf="createModalOpen()"
+  title="Create New Project"
+  subtitle="Capture core details now. Deeper configuration can follow inside project settings."
+  (closed)="closeCreateModal()"
+>
+  <form class="project-form" [formGroup]="createProjectForm" (ngSubmit)="createProject()" novalidate>
+    <div class="form-grid">
+      <label>
+        <span>Project name</span>
+        <input type="text" formControlName="name" placeholder="Platform Revamp" />
+        <p class="form-error" *ngIf="hasControlError('name')" [@formErrorAnimation]>
+          {{ controlErrorText('name') }}
+        </p>
+      </label>
+
+      <label>
+        <span>Owner</span>
+        <input type="text" formControlName="owner" placeholder="Priya Nair" />
+        <p class="form-error" *ngIf="hasControlError('owner')" [@formErrorAnimation]>
+          {{ controlErrorText('owner') }}
+        </p>
+      </label>
+
+      <label>
+        <span>Status</span>
+        <select formControlName="status">
+          <option value="On Track">On Track</option>
+          <option value="At Risk">At Risk</option>
+          <option value="Blocked">Blocked</option>
+        </select>
+      </label>
+
+      <label>
+        <span>Due date</span>
+        <input type="date" formControlName="dueDate" />
+        <p class="form-error" *ngIf="hasControlError('dueDate')" [@formErrorAnimation]>
+          {{ controlErrorText('dueDate') }}
+        </p>
+      </label>
+    </div>
+
+    <label class="summary-field">
+      <span>Summary</span>
+      <textarea formControlName="summary" rows="4" placeholder="Short executive overview"></textarea>
+      <p class="form-error" *ngIf="hasControlError('summary')" [@formErrorAnimation]>
+        {{ controlErrorText('summary') }}
+      </p>
+    </label>
+
+    <p class="form-error form-level" *ngIf="formError()" [@formErrorAnimation]>{{ formError() }}</p>
+
+    <div class="form-actions">
+      <button type="button" class="secondary-btn" (click)="closeCreateModal()">Cancel</button>
+      <button type="submit" class="primary-btn" [disabled]="submitting()">
+        {{ submitting() ? 'Creating...' : 'Create Project' }}
+      </button>
+    </div>
+  </form>
+</app-project-modal>
