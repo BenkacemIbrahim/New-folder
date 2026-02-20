@@ -1,0 +1,37 @@
+<section class="showcase-stack">
+  <article
+    class="showcase-row"
+    *ngFor="let item of items; trackBy: trackByItem; let idx = index"
+    [ngClass]="{ reverse: idx % 2 === 1 }"
+    data-reveal
+  >
+    <div class="showcase-media" [attr.data-parallax]="0.045 + idx * 0.01">
+      <div class="media-shell">
+        <header>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </header>
+        <div class="media-block top"></div>
+        <div class="media-block"></div>
+        <div class="media-grid">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="showcase-copy">
+      <p class="eyebrow">{{ item.eyebrow }}</p>
+      <h3>{{ item.title }}</h3>
+      <p class="summary">{{ item.description }}</p>
+      <ul>
+        <li *ngFor="let bullet of item.bullets">{{ bullet }}</li>
+      </ul>
+      <p class="metric">{{ item.metric }}</p>
+    </div>
+  </article>
+</section>
+

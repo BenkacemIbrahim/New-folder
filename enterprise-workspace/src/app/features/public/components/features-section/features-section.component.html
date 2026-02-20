@@ -1,0 +1,13 @@
+<section class="features-grid">
+  <article class="feature-card" *ngFor="let feature of features; trackBy: trackByFeature">
+    <span class="feature-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path [attr.d]="feature.iconPath"></path>
+      </svg>
+    </span>
+
+    <h3>{{ feature.title }}</h3>
+    <p>{{ feature.summary }}</p>
+  </article>
+</section>
+
