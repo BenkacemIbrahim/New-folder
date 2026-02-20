@@ -176,7 +176,13 @@ export class ProjectsApiService {
       completionRate: 12,
       openTasks: 24,
       teamMembers: [
-        { id: `tm-${idSuffix}-1`, name: payload.owner, role: 'Project Owner', allocation: '70%', initials: this.toInitials(payload.owner) }
+        {
+          id: `tm-${idSuffix}-1`,
+          name: payload.owner,
+          role: 'Project Owner',
+          allocation: '70%',
+          initials: this.toInitials(payload.owner)
+        }
       ],
       milestones: [
         { name: 'Kickoff and scope lock', dueDate: payload.dueDate, completion: 10 },

@@ -1,3 +1,4 @@
+import { NgIf } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -6,7 +7,7 @@ import { modalBackdropAnimation, modalPanelAnimation } from '../../animations/pr
 @Component({
   selector: 'app-project-modal',
   standalone: true,
-  imports: [MatIconModule],
+  imports: [NgIf, MatIconModule],
   templateUrl: './project-modal.component.html',
   styleUrl: './project-modal.component.scss',
   animations: [modalBackdropAnimation, modalPanelAnimation]
