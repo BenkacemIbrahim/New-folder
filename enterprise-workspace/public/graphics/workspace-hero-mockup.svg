@@ -1,0 +1,37 @@
+<svg width="960" height="620" viewBox="0 0 960 620" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="960" y2="620" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FAFF" />
+      <stop offset="1" stop-color="#EFF3FF" />
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#335CFF" stop-opacity="0.2" />
+      <stop offset="1" stop-color="#0EA5E9" stop-opacity="0.1" />
+    </linearGradient>
+  </defs>
+
+  <rect x="1" y="1" width="958" height="618" rx="24" fill="url(#bg)" stroke="#D8E0EE" />
+  <rect x="24" y="24" width="912" height="64" rx="16" fill="#FFFFFF" stroke="#D8E0EE" />
+  <rect x="44" y="46" width="170" height="20" rx="10" fill="#E2E8F0" />
+  <rect x="734" y="44" width="180" height="24" rx="12" fill="#DBEAFE" />
+
+  <rect x="24" y="108" width="256" height="488" rx="18" fill="#111827" />
+  <rect x="306" y="108" width="630" height="176" rx="18" fill="#FFFFFF" stroke="#D8E0EE" />
+  <rect x="306" y="304" width="300" height="292" rx="18" fill="#FFFFFF" stroke="#D8E0EE" />
+  <rect x="626" y="304" width="310" height="292" rx="18" fill="#FFFFFF" stroke="#D8E0EE" />
+
+  <rect x="44" y="142" width="216" height="46" rx="12" fill="#1F2937" />
+  <rect x="44" y="202" width="216" height="46" rx="12" fill="#1F2937" />
+  <rect x="44" y="262" width="216" height="46" rx="12" fill="#1F2937" />
+  <rect x="44" y="322" width="216" height="46" rx="12" fill="#1F2937" />
+
+  <rect x="332" y="136" width="280" height="24" rx="12" fill="#E2E8F0" />
+  <rect x="332" y="172" width="576" height="84" rx="16" fill="url(#card)" />
+  <rect x="332" y="326" width="248" height="36" rx="10" fill="#E2E8F0" />
+  <rect x="332" y="374" width="248" height="194" rx="14" fill="url(#card)" />
+  <rect x="652" y="326" width="252" height="36" rx="10" fill="#E2E8F0" />
+  <rect x="652" y="374" width="252" height="64" rx="14" fill="#EEF2FF" />
+  <rect x="652" y="448" width="252" height="64" rx="14" fill="#EFF6FF" />
+  <rect x="652" y="522" width="252" height="46" rx="14" fill="#F0F9FF" />
+</svg>
+

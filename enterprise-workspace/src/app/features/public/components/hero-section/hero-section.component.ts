@@ -1,3 +1,4 @@
+import { NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 
 import { LandingButtonComponent } from '../../ui/landing-button/landing-button.component';
@@ -5,7 +6,7 @@ import { LandingButtonComponent } from '../../ui/landing-button/landing-button.c
 @Component({
   selector: 'app-hero-section',
   standalone: true,
-  imports: [LandingButtonComponent],
+  imports: [LandingButtonComponent, NgFor],
   templateUrl: './hero-section.component.html',
   styleUrl: './hero-section.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -28,4 +29,3 @@ export class HeroSectionComponent {
     this.navigateTo.emit(sectionId);
   }
 }
-

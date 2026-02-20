@@ -41,7 +41,7 @@ import { SectionShellComponent } from '../../ui/section-shell/section-shell.comp
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MarketingHomePageComponent implements AfterViewInit, OnDestroy {
-  private readonly hostRef = inject(ElementRef<HTMLElement>);
+  private readonly hostRef = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly document = inject(DOCUMENT);
   private readonly prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -111,6 +111,9 @@ export class MarketingHomePageComponent implements AfterViewInit, OnDestroy {
     const cta = host.querySelector<HTMLElement>('.hero-cta');
     const trust = host.querySelector<HTMLElement>('.hero-trust');
     const mockup = host.querySelector<HTMLElement>('.hero-mockup');
+    const revealTargets = [support, cta, trust].filter(
+      (target): target is HTMLElement => target instanceof HTMLElement
+    );
 
     gsap.from(words, {
       y: 22,
@@ -120,14 +123,16 @@ export class MarketingHomePageComponent implements AfterViewInit, OnDestroy {
       ease: 'power3.out'
     });
 
-    gsap.from([support, cta, trust], {
-      y: 16,
-      autoAlpha: 0,
-      duration: 0.68,
-      stagger: 0.09,
-      delay: 0.18,
-      ease: 'power2.out'
-    });
+    if (revealTargets.length > 0) {
+      gsap.from(revealTargets, {
+        y: 16,
+        autoAlpha: 0,
+        duration: 0.68,
+        stagger: 0.09,
+        delay: 0.18,
+        ease: 'power2.out'
+      });
+    }
 
     gsap.from(mockup, {
       y: 24,
@@ -238,4 +243,3 @@ export class MarketingHomePageComponent implements AfterViewInit, OnDestroy {
     });
   }
 }
-
