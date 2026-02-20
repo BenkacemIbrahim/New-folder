@@ -1,28 +1,131 @@
 <app-page-header
   eyebrow="Execution"
-  title="Tasks"
-  subtitle="Current sprint tasks prioritized by urgency and delivery stage."
+  title="Kanban Workspace"
+  subtitle="Premium sprint board with smooth drag-and-drop, visual priority cues, and deep task context."
 />
 
-<section class="task-stack">
-  <mat-card *ngFor="let task of tasks" class="task-card">
-    <div class="task-header">
+<section class="kanban-header">
+  <div>
+    <p class="meta">Active Sprint Board</p>
+    <h2>{{ totalTasks() }} tasks in flow</h2>
+  </div>
+  <p class="hint">Drag a task between columns to update delivery status.</p>
+</section>
+
+<section class="kanban-board" cdkDropListGroup>
+  <article
+    class="kanban-column"
+    *ngFor="let column of columns; trackBy: trackByColumn"
+    [class.drop-feedback]="dropFeedbackColumn() === column.key"
+  >
+    <header class="column-header">
       <div>
-        <p class="task-id">{{ task.id }}</p>
+        <p class="column-title">{{ column.title }}</p>
+        <p class="column-subtitle">{{ column.subtitle }}</p>
+      </div>
+      <span class="count-pill">{{ columnCount(column.key) }}</span>
+    </header>
+
+    <div class="column-feedback" *ngIf="dropFeedbackColumn() === column.key" [@dropPulseAnimation]></div>
+
+    <section
+      class="task-list"
+      cdkDropList
+      [id]="column.key"
+      [cdkDropListData]="getTasksForColumn(column.key)"
+      [cdkDropListConnectedTo]="connectedDropLists"
+      (cdkDropListDropped)="drop($event, column.key)"
+    >
+      <article
+        class="task-card"
+        *ngFor="let task of getTasksForColumn(column.key); trackBy: trackByTask; let index = index"
+        cdkDrag
+        [cdkDragData]="task"
+        [style.animationDelay.ms]="index * 55"
+        (click)="openTask(task.id)"
+      >
+        <span class="priority-indicator" [ngClass]="priorityClass(task)"></span>
+
+        <div class="task-top">
+          <p class="task-id">{{ task.id }}</p>
+          <span class="points">{{ task.storyPoints }} SP</span>
+        </div>
+
+        <h3>{{ task.title }}</h3>
+        <p class="summary">{{ task.summary }}</p>
+
+        <div class="tag-row">
+          <span class="tag" *ngFor="let tag of task.tags">{{ tag }}</span>
+        </div>
+
+        <footer class="task-footer">
+          <div class="assignee">
+            <span class="avatar">{{ task.assigneeInitials }}</span>
+            <span>{{ task.assignee }}</span>
+          </div>
+          <time>{{ task.dueDate | date: 'MMM d' }}</time>
+        </footer>
+      </article>
+    </section>
+  </article>
+</section>
+
+<div
+  class="drawer-layer"
+  *ngIf="selectedTask() as task"
+  [@drawerBackdropAnimation]
+  (click)="closeDrawer()"
+>
+  <aside class="task-drawer" [@drawerSlideAnimation] (click)="$event.stopPropagation()">
+    <header class="drawer-header">
+      <div>
+        <p class="drawer-id">{{ task.id }}</p>
         <h3>{{ task.title }}</h3>
       </div>
+      <button type="button" class="close-btn" aria-label="Close details" (click)="closeDrawer()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </header>
 
-      <div class="chips">
-        <mat-chip [class.priority-high]="task.priority === 'High'" [class.priority-low]="task.priority === 'Low'">
-          {{ task.priority }}
-        </mat-chip>
-        <mat-chip>{{ task.status }}</mat-chip>
-      </div>
-    </div>
+    <section class="drawer-content">
+      <article class="detail-block">
+        <h4>Summary</h4>
+        <p>{{ task.summary }}</p>
+      </article>
 
-    <div class="task-meta">
-      <p><span>Assignee:</span> {{ task.assignee }}</p>
-      <p><span>Due:</span> {{ task.dueDate }}</p>
-    </div>
-  </mat-card>
-</section>
+      <article class="detail-grid">
+        <div>
+          <p class="label">Status</p>
+          <p class="value">{{ task.status }}</p>
+        </div>
+        <div>
+          <p class="label">Priority</p>
+          <p class="value">{{ task.priority }}</p>
+        </div>
+        <div>
+          <p class="label">Assignee</p>
+          <p class="value">{{ task.assignee }}</p>
+        </div>
+        <div>
+          <p class="label">Story Points</p>
+          <p class="value">{{ task.storyPoints }}</p>
+        </div>
+        <div>
+          <p class="label">Due Date</p>
+          <p class="value">{{ task.dueDate | date: 'MMM d, y' }}</p>
+        </div>
+        <div>
+          <p class="label">Updated</p>
+          <p class="value">{{ task.updatedAt | date: 'MMM d, y, h:mm a' }}</p>
+        </div>
+      </article>
+
+      <article class="detail-block">
+        <h4>Delivery Tags</h4>
+        <div class="tag-row">
+          <span class="tag" *ngFor="let tag of task.tags">{{ tag }}</span>
+        </div>
+      </article>
+    </section>
+  </aside>
+</div>
