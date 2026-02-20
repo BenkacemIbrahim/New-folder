@@ -1,4 +1,9 @@
-<aside class="workspace-sidebar" [class.collapsed]="collapsed && !mobile">
+<aside
+  class="workspace-sidebar"
+  role="complementary"
+  aria-label="Primary workspace navigation"
+  [class.collapsed]="collapsed && !mobile"
+>
   <div class="brand-block">
     <div class="logo">EW</div>
     <div class="brand-text" *ngIf="!collapsed || mobile">
@@ -7,12 +12,13 @@
     </div>
   </div>
 
-  <nav class="menu-links">
+  <nav id="workspace-sidebar-nav" class="menu-links" aria-label="Workspace sections">
     <a
       *ngFor="let item of navItems; trackBy: trackByRoute"
       [routerLink]="item.route"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: item.route === '/dashboard' }"
+      [attr.aria-label]="item.label"
       (click)="navigate.emit()"
     >
       <mat-icon>{{ item.icon }}</mat-icon>
@@ -21,7 +27,7 @@
     </a>
   </nav>
 
-  <button mat-stroked-button type="button" class="logout-btn" (click)="logout()">
+  <button mat-stroked-button type="button" class="logout-btn" aria-label="Logout" (click)="logout()">
     <mat-icon>logout</mat-icon>
     <span *ngIf="!collapsed || mobile">Logout</span>
   </button>

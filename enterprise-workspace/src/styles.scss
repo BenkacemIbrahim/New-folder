@@ -20,6 +20,7 @@ body {
 }
 
 html {
+  color-scheme: light;
   scroll-behavior: smooth;
 }
 
@@ -29,9 +30,46 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+a,
+button,
+input,
+select,
+textarea,
+[tabindex] {
+  &:focus-visible {
+    outline: 3px solid rgba(51, 92, 255, 0.38);
+    outline-offset: 2px;
+  }
+}
+
 button,
 input,
 textarea,
 select {
   font: inherit;
+}
+
+.sr-only {
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  border: 0;
+  overflow: hidden;
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

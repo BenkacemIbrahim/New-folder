@@ -2,83 +2,52 @@ import { Routes } from '@angular/router';
 
 import { authGuard } from './core/guards/auth.guard';
 import { guestGuard } from './core/guards/guest.guard';
-import { ShellComponent } from './layout/shell/shell.component';
 
 export const routes: Routes = [
   {
     path: 'auth',
     canActivate: [guestGuard],
-    children: [
-      {
-        path: 'login',
-        loadComponent: () =>
-          import('./features/auth/pages/login-page/login-page.component').then(
-            (m) => m.LoginPageComponent
-          ),
-        data: { animation: 'auth-login' }
-      },
-      {
-        path: 'register',
-        loadComponent: () =>
-          import('./features/auth/pages/register-page/register-page.component').then(
-            (m) => m.RegisterPageComponent
-          ),
-        data: { animation: 'auth-register' }
-      },
-      {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'login'
+    loadChildren: () => import('./features/auth/auth.routes').then((m) => m.AUTH_ROUTES)
+  },
+  {
+    path: 'error',
+    loadComponent: () =>
+      import('./features/system/pages/error-page/error-page.component').then(
+        (m) => m.ErrorPageComponent
+      ),
+    data: {
+      animation: 'error',
+      seo: {
+        title: 'Error',
+        description:
+          'An operational error occurred in Enterprise Workspace. Use the recovery actions to continue safely.',
+        robots: 'noindex,nofollow'
       }
-    ]
+    }
   },
   {
     path: '',
-    component: ShellComponent,
     canActivate: [authGuard],
+    loadComponent: () => import('./layout/shell/shell.component').then((m) => m.ShellComponent),
     children: [
       {
         path: 'dashboard',
-        loadComponent: () =>
-          import('./features/dashboard/pages/dashboard-page.component').then(
-            (m) => m.DashboardPageComponent
-          ),
-        data: { animation: 'dashboard' }
+        loadChildren: () =>
+          import('./features/dashboard/dashboard.routes').then((m) => m.DASHBOARD_ROUTES)
       },
       {
         path: 'projects',
-        children: [
-          {
-            path: '',
-            loadComponent: () =>
-              import('./features/projects/pages/projects-list-page/projects-list-page.component').then(
-                (m) => m.ProjectsListPageComponent
-              ),
-            data: { animation: 'projects-list' }
-          },
-          {
-            path: ':projectId',
-            loadComponent: () =>
-              import('./features/projects/pages/project-details-page/project-details-page.component').then(
-                (m) => m.ProjectDetailsPageComponent
-              ),
-            data: { animation: 'projects-details' }
-          }
-        ]
+        loadChildren: () =>
+          import('./features/projects/projects.routes').then((m) => m.PROJECTS_ROUTES)
       },
       {
         path: 'tasks',
-        loadComponent: () =>
-          import('./features/tasks/pages/tasks-page.component').then((m) => m.TasksPageComponent),
-        data: { animation: 'tasks' }
+        loadChildren: () => import('./features/tasks/tasks.routes').then((m) => m.TASKS_ROUTES)
       },
       {
         path: 'analytics',
-        loadComponent: () =>
-          import('./features/analytics/pages/analytics-page.component').then(
-            (m) => m.AnalyticsPageComponent
-          ),
-        data: { animation: 'analytics' }
+        loadChildren: () =>
+          import('./features/analytics/analytics.routes').then((m) => m.ANALYTICS_ROUTES)
       },
       {
         path: '',
@@ -89,6 +58,18 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: ''
+    loadComponent: () =>
+      import('./features/system/pages/not-found-page/not-found-page.component').then(
+        (m) => m.NotFoundPageComponent
+      ),
+    data: {
+      animation: 'not-found',
+      seo: {
+        title: 'Page Not Found',
+        description:
+          'The requested route was not found in Enterprise Workspace. Navigate back to active modules.',
+        robots: 'noindex,nofollow'
+      }
+    }
   }
 ];

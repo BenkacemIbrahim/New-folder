@@ -17,6 +17,7 @@ export class NavbarComponent {
   @Input() title = 'Enterprise Workspace';
   @Input() isMobile = false;
   @Input() isCollapsed = false;
+  @Input() isSidebarOpen = true;
   @Output() readonly sidebarToggle = new EventEmitter<void>();
 
   private readonly authService = inject(AuthService);

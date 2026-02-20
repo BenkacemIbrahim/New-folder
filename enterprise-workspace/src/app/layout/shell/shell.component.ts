@@ -1,5 +1,5 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, DestroyRef, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterOutlet } from '@angular/router';
@@ -16,7 +16,8 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
   imports: [MatSidenavModule, RouterOutlet, NavbarComponent, SidebarComponent],
   templateUrl: './shell.component.html',
   styleUrl: './shell.component.scss',
-  animations: [routeTransitionAnimation]
+  animations: [routeTransitionAnimation],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ShellComponent {
   protected readonly layout = inject(LayoutService);

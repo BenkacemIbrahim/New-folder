@@ -52,8 +52,8 @@
                                                                                                                             "budgets":  [
                                                                                                                                             {
                                                                                                                                                 "type":  "initial",
-                                                                                                                                                "maximumWarning":  "700kB",
-                                                                                                                                                "maximumError":  "1.2MB"
+                                                                                                                                                "maximumWarning":  "600kB",
+                                                                                                                                                "maximumError":  "1MB"
                                                                                                                                             },
                                                                                                                                             {
                                                                                                                                                 "type":  "anyComponentStyle",
@@ -62,7 +62,14 @@
                                                                                                                                             }
                                                                                                                                         ],
                                                                                                                             "outputHashing":  "all",
+                                                                                                                            "sourceMap":  false,
+                                                                                                                            "extractLicenses":  true,
                                                                                                                             "optimization":  {
+                                                                                                                                                 "scripts":  true,
+                                                                                                                                                 "styles":  {
+                                                                                                                                                                "minify":  true,
+                                                                                                                                                                "inlineCritical":  true
+                                                                                                                                                            },
                                                                                                                                                  "fonts":  false
                                                                                                                                              }
                                                                                                                         },

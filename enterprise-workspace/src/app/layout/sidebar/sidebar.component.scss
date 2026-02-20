@@ -58,7 +58,10 @@
   border-radius: var(--radius-md);
   min-height: 44px;
   padding: 0 var(--space-3);
-  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+  transition:
+    background-color var(--motion-fast) ease,
+    color var(--motion-fast) ease,
+    transform var(--motion-fast) ease;
 }
 
 .menu-links a:hover {

@@ -1,4 +1,4 @@
-<section class="dashboard-page" [attr.data-theme]="theme()">
+<section class="dashboard-page" [attr.data-theme]="theme()" aria-label="Enterprise dashboard">
   <header class="dashboard-hero">
     <div class="hero-copy">
       <p class="eyebrow hero-reveal">Executive View</p>
@@ -42,7 +42,7 @@
         </div>
       </header>
       <div class="chart-host">
-        <canvas #taskChart></canvas>
+        <canvas #taskChart role="img" aria-label="Pie chart showing task distribution"></canvas>
       </div>
     </article>
 
@@ -54,7 +54,7 @@
         </div>
       </header>
       <div class="chart-host">
-        <canvas #productivityChart></canvas>
+        <canvas #productivityChart role="img" aria-label="Bar chart showing project productivity"></canvas>
       </div>
     </article>
   </section>
@@ -67,8 +67,13 @@
       </div>
     </header>
 
-    <div #timelineScroller class="timeline-list">
-      <article #timelineItem class="timeline-item" *ngFor="let event of timelineEvents; trackBy: trackByTimeline">
+    <div #timelineScroller class="timeline-list" role="list" aria-label="Activity timeline">
+      <article
+        #timelineItem
+        class="timeline-item"
+        role="listitem"
+        *ngFor="let event of timelineEvents; trackBy: trackByTimeline"
+      >
         <span class="timeline-dot" [attr.data-type]="event.type"></span>
         <div class="timeline-content">
           <div class="timeline-head">

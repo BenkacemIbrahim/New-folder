@@ -1,6 +1,7 @@
 <mat-sidenav-container class="workspace-shell">
   <mat-sidenav
     class="workspace-sidenav"
+    aria-label="Workspace sidebar"
     [mode]="layout.sidenavMode()"
     [opened]="layout.sidenavOpened()"
     [class.collapsed]="!layout.isMobile() && layout.isSidebarCollapsed()"
@@ -17,6 +18,7 @@
       [title]="appTitle"
       [isMobile]="layout.isMobile()"
       [isCollapsed]="layout.isSidebarCollapsed()"
+      [isSidebarOpen]="layout.sidenavOpened()"
       (sidebarToggle)="onSidebarToggle()"
     />
 

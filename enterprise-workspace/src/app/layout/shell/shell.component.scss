@@ -8,7 +8,7 @@
 
 .workspace-sidenav {
   width: 280px;
-  transition: width 180ms ease;
+  transition: width var(--motion-base) var(--ease-standard);
   border-right: none;
 }
 

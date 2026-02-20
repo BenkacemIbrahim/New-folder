@@ -5,6 +5,7 @@ import { Observable, catchError, map, of, tap } from 'rxjs';
 import { AuthResponse, AuthUser, LoginRequest, RegisterRequest } from '../models/auth.model';
 import { AuthApiService } from './auth-api.service';
 import { JwtService } from './jwt.service';
+import { ToastService } from './toast.service';
 
 const USER_STORAGE_KEY = 'enterprise-workspace.user';
 
@@ -15,6 +16,7 @@ export class AuthService {
   private readonly router = inject(Router);
   private readonly authApiService = inject(AuthApiService);
   private readonly jwtService = inject(JwtService);
+  private readonly toastService = inject(ToastService);
 
   private readonly _user = signal<AuthUser | null>(this.restoreUser());
   private readonly _isAuthenticated = signal<boolean>(this.jwtService.hasValidAccessToken());
@@ -33,14 +35,23 @@ export class AuthService {
 
   login(payload: LoginRequest): Observable<AuthUser> {
     return this.authApiService.login(payload).pipe(
-      tap((response) => this.hydrateSession(response)),
+      tap((response) => {
+        this.hydrateSession(response);
+        this.toastService.success('Welcome back', 'You are now signed in and ready to work.');
+      }),
       map((response) => response.user)
     );
   }
 
   register(payload: RegisterRequest): Observable<AuthUser> {
     return this.authApiService.register(payload).pipe(
-      tap((response) => this.hydrateSession(response)),
+      tap((response) => {
+        this.hydrateSession(response);
+        this.toastService.success(
+          'Account created',
+          'Your workspace was provisioned successfully.'
+        );
+      }),
       map((response) => response.user)
     );
   }
@@ -63,6 +74,7 @@ export class AuthService {
 
   logout(): void {
     this.clearSession({ navigate: true });
+    this.toastService.info('Session closed', 'You have been signed out of Enterprise Workspace.');
   }
 
   private hydrateSession(response: AuthResponse): void {

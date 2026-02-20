@@ -1,5 +1,12 @@
 <mat-toolbar class="workspace-navbar">
-  <button mat-icon-button type="button" aria-label="Toggle sidebar" (click)="toggleSidebar()">
+  <button
+    mat-icon-button
+    type="button"
+    aria-label="Toggle sidebar"
+    [attr.aria-controls]="'workspace-sidebar-nav'"
+    [attr.aria-expanded]="isSidebarOpen"
+    (click)="toggleSidebar()"
+  >
     <mat-icon>{{ isMobile ? 'menu' : isCollapsed ? 'menu_open' : 'menu' }}</mat-icon>
   </button>
 
