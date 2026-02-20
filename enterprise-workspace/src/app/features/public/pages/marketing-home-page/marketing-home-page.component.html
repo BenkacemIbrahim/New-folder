@@ -3,20 +3,18 @@
     [activeSection]="activeSection()"
     [scrolled]="navScrolled()"
     (sectionNavigate)="scrollToSection($event)"
-    (openPreview)="openPreviewModal()"
   />
 
   <main>
     <section id="hero" data-spy data-section-id="hero">
-      <app-hero-section (openPreview)="openPreviewModal()" (navigateTo)="scrollToSection($event)" />
+      <app-hero-section (navigateTo)="scrollToSection($event)" />
     </section>
 
     <app-section-shell
       id="features"
       tone="subtle"
-      eyebrow="Platform Features"
-      title="Built for modern enterprise teams that need speed with governance."
-      description="Every interaction is designed to help operations, product, and delivery leads move with clarity."
+      eyebrow="Features"
+      title="Core tools for delivery teams."
     >
       <app-features-section />
     </app-section-shell>
@@ -24,9 +22,8 @@
     <app-section-shell
       id="showcase"
       tone="default"
-      eyebrow="Product Story"
-      title="From strategy to sprint execution, every view tells the same story."
-      description="Alternating product narratives help buyers understand how Enterprise Workspace scales across teams."
+      eyebrow="Workflow"
+      title="One workflow from planning to reporting."
     >
       <app-showcase-section />
     </app-section-shell>
@@ -34,8 +31,8 @@
     <app-section-shell
       id="stats"
       tone="highlight"
-      eyebrow="Trusted Outcomes"
-      title="Teams adopt Enterprise Workspace because it drives measurable performance."
+      eyebrow="Results"
+      title="Measured impact at scale."
     >
       <app-statistics-section />
     </app-section-shell>
@@ -43,18 +40,16 @@
     <app-section-shell
       id="testimonials"
       tone="default"
-      eyebrow="Customer Voice"
-      title="Operators and product leaders rely on Enterprise Workspace every week."
+      eyebrow="Customers"
+      title="Trusted by product and operations teams."
     >
       <app-testimonials-section />
     </app-section-shell>
 
     <app-section-shell id="cta" tone="default">
-      <app-cta-section (openPreview)="openPreviewModal()" />
+      <app-cta-section />
     </app-section-shell>
   </main>
 
   <app-public-footer />
-
-  <app-signup-preview-modal [open]="previewOpen()" (close)="closePreviewModal()" />
 </div>

@@ -12,7 +12,6 @@ import { LandingButtonComponent } from '../../ui/landing-button/landing-button.c
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeroSectionComponent {
-  @Output() readonly openPreview = new EventEmitter<void>();
   @Output() readonly navigateTo = new EventEmitter<string>();
 
   protected readonly trustItems = [
@@ -20,10 +19,6 @@ export class HeroSectionComponent {
     '34% fewer coordination delays',
     'SOC-ready access controls'
   ];
-
-  protected launchPreview(): void {
-    this.openPreview.emit();
-  }
 
   protected goTo(sectionId: string): void {
     this.navigateTo.emit(sectionId);

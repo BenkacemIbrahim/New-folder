@@ -15,7 +15,7 @@ export class FeaturesSectionComponent {
   protected readonly features: MarketingFeature[] = [
     {
       id: 'planning',
-      title: 'Portfolio Planning That Stays Aligned',
+      title: 'Portfolio Planning',
       summary:
         'Build initiatives, priorities, and dependencies with shared context so strategy and execution stay synchronized.',
       iconPath:
@@ -23,7 +23,7 @@ export class FeaturesSectionComponent {
     },
     {
       id: 'delivery',
-      title: 'Execution Boards for Cross-Functional Teams',
+      title: 'Team Execution Boards',
       summary:
         'Run sprint workflows with premium Kanban controls, operational guardrails, and real-time delivery visibility.',
       iconPath:
@@ -31,7 +31,7 @@ export class FeaturesSectionComponent {
     },
     {
       id: 'analytics',
-      title: 'Decision-Grade Analytics',
+      title: 'Operational Analytics',
       summary:
         'Track throughput, risk, and impact in one dashboard built for product leaders, PMOs, and executives.',
       iconPath:
@@ -39,7 +39,7 @@ export class FeaturesSectionComponent {
     },
     {
       id: 'governance',
-      title: 'Security and Governance by Default',
+      title: 'Enterprise Governance',
       summary:
         'Role-aware access, auditable activity history, and policy-safe delivery workflows for enterprise confidence.',
       iconPath:
@@ -47,7 +47,7 @@ export class FeaturesSectionComponent {
     },
     {
       id: 'automation',
-      title: 'Automation That Removes Busywork',
+      title: 'Workflow Automation',
       summary:
         'Auto-route work, trigger lifecycle updates, and simplify handoffs so teams spend more time delivering value.',
       iconPath:
@@ -55,7 +55,7 @@ export class FeaturesSectionComponent {
     },
     {
       id: 'scale',
-      title: 'Built to Scale Across Teams',
+      title: 'Scalable Workspace',
       summary:
         'From one squad to global programs, keep a consistent operating model without sacrificing team autonomy.',
       iconPath:

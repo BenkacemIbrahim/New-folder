@@ -15,8 +15,8 @@ export class ShowcaseSectionComponent {
   protected readonly items: ShowcaseItem[] = [
     {
       id: 'strategic',
-      eyebrow: 'Strategic Program View',
-      title: 'Coordinate priorities across portfolios without losing delivery detail.',
+      eyebrow: 'Strategic View',
+      title: 'Align portfolio priorities.',
       description:
         'Visualize strategic initiatives, owners, and blockers in one workspace built for alignment meetings and execution reviews.',
       bullets: [
@@ -28,8 +28,8 @@ export class ShowcaseSectionComponent {
     },
     {
       id: 'execution',
-      eyebrow: 'Execution Command Center',
-      title: 'Keep teams in flow with premium board interactions and real-time status clarity.',
+      eyebrow: 'Execution',
+      title: 'Keep teams moving with live status.',
       description:
         'From backlog grooming to release readiness, teams collaborate in a frictionless environment designed for momentum.',
       bullets: [
@@ -41,8 +41,8 @@ export class ShowcaseSectionComponent {
     },
     {
       id: 'reporting',
-      eyebrow: 'Outcome Reporting',
-      title: 'Turn daily activity into measurable business outcomes.',
+      eyebrow: 'Reporting',
+      title: 'Turn activity into clear outcomes.',
       description:
         'Automated insight panels surface risk, velocity, and performance trends so operations and executives stay informed.',
       bullets: [

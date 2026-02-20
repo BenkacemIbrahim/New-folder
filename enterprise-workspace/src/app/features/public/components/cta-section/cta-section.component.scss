@@ -30,15 +30,9 @@
 
 h2 {
   margin: var(--space-1) 0 0;
-  font-size: var(--text-h2);
-  max-width: 26ch;
-  line-height: 1.15;
-}
-
-.summary {
-  margin: var(--space-1) 0 0;
-  max-width: 52ch;
-  color: var(--color-text-secondary);
+  font-size: clamp(1.34rem, 2.1vw, 1.75rem);
+  max-width: 24ch;
+  line-height: 1.2;
 }
 
 .actions {

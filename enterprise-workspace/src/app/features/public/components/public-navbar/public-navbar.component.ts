@@ -21,7 +21,6 @@ export class PublicNavbarComponent {
   @Input() activeSection = 'hero';
   @Input() scrolled = false;
   @Output() readonly sectionNavigate = new EventEmitter<string>();
-  @Output() readonly openPreview = new EventEmitter<void>();
 
   protected readonly mobileMenuOpen = signal(false);
 
@@ -40,10 +39,5 @@ export class PublicNavbarComponent {
 
   protected toggleMenu(): void {
     this.mobileMenuOpen.update((open) => !open);
-  }
-
-  protected triggerPreview(): void {
-    this.openPreview.emit();
-    this.mobileMenuOpen.set(false);
   }
 }

@@ -21,7 +21,6 @@ import { HeroSectionComponent } from '../../components/hero-section/hero-section
 import { PublicFooterComponent } from '../../components/public-footer/public-footer.component';
 import { PublicNavbarComponent } from '../../components/public-navbar/public-navbar.component';
 import { ShowcaseSectionComponent } from '../../components/showcase-section/showcase-section.component';
-import { SignupPreviewModalComponent } from '../../components/signup-preview-modal/signup-preview-modal.component';
 import { StatisticsSectionComponent } from '../../components/statistics-section/statistics-section.component';
 import { TestimonialsSectionComponent } from '../../components/testimonials-section/testimonials-section.component';
 import { SectionShellComponent } from '../../ui/section-shell/section-shell.component';
@@ -38,8 +37,7 @@ import { SectionShellComponent } from '../../ui/section-shell/section-shell.comp
     StatisticsSectionComponent,
     TestimonialsSectionComponent,
     CtaSectionComponent,
-    PublicFooterComponent,
-    SignupPreviewModalComponent
+    PublicFooterComponent
   ],
   templateUrl: './marketing-home-page.component.html',
   styleUrl: './marketing-home-page.component.scss',
@@ -52,7 +50,6 @@ export class MarketingHomePageComponent implements AfterViewInit, OnDestroy {
 
   protected readonly activeSection = signal('hero');
   protected readonly navScrolled = signal(false);
-  protected readonly previewOpen = signal(false);
 
   private revealObserver: IntersectionObserver | null = null;
   private sectionObserver: IntersectionObserver | null = null;
@@ -116,14 +113,6 @@ export class MarketingHomePageComponent implements AfterViewInit, OnDestroy {
     };
 
     requestAnimationFrame(animate);
-  }
-
-  protected openPreviewModal(): void {
-    this.previewOpen.set(true);
-  }
-
-  protected closePreviewModal(): void {
-    this.previewOpen.set(false);
   }
 
   private initializeHeroAnimation(): void {

@@ -5,14 +5,15 @@
   scroll-margin-top: calc(tokens.$marketing-nav-height + 12px);
   @include mixins.section-spacing;
   @include mixins.reveal-ready;
+  background: var(--color-surface);
 }
 
 .section-shell.subtle {
-  background: var(--color-app-bg-subtle);
+  background: var(--color-surface);
 }
 
 .section-shell.highlight {
-  background: color-mix(in srgb, var(--color-accent-soft) 60%, var(--color-app-bg));
+  background: var(--color-surface);
 }
 
 .section-inner {
@@ -20,8 +21,8 @@
 }
 
 .section-head {
-  max-width: 58ch;
-  margin-bottom: var(--space-4);
+  max-width: 46ch;
+  margin-bottom: var(--space-3);
 }
 
 .eyebrow {
@@ -35,8 +36,8 @@
 
 h2 {
   margin: var(--space-1) 0 0;
-  font-size: var(--text-h2);
-  line-height: 1.15;
+  font-size: clamp(1.28rem, 2.05vw, 1.72rem);
+  line-height: 1.2;
 }
 
 .description {

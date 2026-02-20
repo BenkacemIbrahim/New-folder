@@ -1,4 +1,3 @@
-@use '../../styles/public-mixins' as mixins;
 @use '../../styles/public-tokens' as tokens;
 
 :host {
@@ -6,16 +5,16 @@
 }
 
 .marketing-page {
-  background: var(--color-app-bg);
+  background: var(--color-surface);
   color: var(--color-text-primary);
 }
 
 main {
   position: relative;
+  background: var(--color-surface);
 }
 
 #hero {
-  @include mixins.marketing-container;
   scroll-margin-top: tokens.$marketing-nav-height;
   min-height: calc(100dvh - tokens.$marketing-nav-height);
 }
