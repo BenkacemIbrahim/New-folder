@@ -1,0 +1,38 @@
+<section class="hero-section">
+  <div class="hero-grid">
+    <article class="hero-copy">
+      <p class="eyebrow hero-prelude">Enterprise Workflow Intelligence</p>
+
+      <h1>
+        <span class="hero-word">Manage Work.</span>
+        <span class="hero-word">Deliver Results.</span>
+        <span class="hero-word">Scale Teams.</span>
+      </h1>
+
+      <p class="hero-support">
+        Enterprise Workspace brings strategic planning, sprint execution, and performance analytics into one
+        polished command center designed for fast-moving organizations.
+      </p>
+
+      <div class="hero-cta">
+        <app-landing-button variant="primary" size="lg" (pressed)="launchPreview()">
+          Get Started
+        </app-landing-button>
+        <app-landing-button variant="secondary" size="lg" (pressed)="goTo('showcase')">
+          Explore Product
+        </app-landing-button>
+      </div>
+
+      <div class="hero-trust">
+        <p *ngFor="let item of highlights">{{ item }}</p>
+      </div>
+    </article>
+
+    <article class="hero-visual">
+      <div class="mockup-frame hero-mockup">
+        <img src="/graphics/workspace-hero-mockup.svg" alt="Enterprise Workspace product overview" />
+      </div>
+    </article>
+  </div>
+</section>
+

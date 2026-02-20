@@ -1,0 +1,58 @@
+<header class="public-navbar" [class.scrolled]="scrolled">
+  <div class="nav-inner">
+    <button class="brand" type="button" (click)="navigateTo('hero')" aria-label="Enterprise Workspace home">
+      <span class="brand-mark">EW</span>
+      <span class="brand-copy">
+        <strong>Enterprise Workspace</strong>
+        <small>Operational excellence platform</small>
+      </span>
+    </button>
+
+    <nav class="desktop-nav" aria-label="Section navigation">
+      <button
+        class="nav-link"
+        type="button"
+        *ngFor="let link of links"
+        [class.active]="activeSection === link.id"
+        (click)="navigateTo(link.id)"
+      >
+        {{ link.label }}
+      </button>
+    </nav>
+
+    <div class="desktop-actions">
+      <app-landing-button variant="ghost" routerLink="/auth/login">Login</app-landing-button>
+      <app-landing-button variant="primary" (pressed)="triggerPreview()">Get Started</app-landing-button>
+    </div>
+
+    <button
+      class="mobile-trigger"
+      type="button"
+      [attr.aria-expanded]="mobileMenuOpen()"
+      [attr.aria-label]="mobileMenuOpen() ? 'Close menu' : 'Open menu'"
+      (click)="toggleMenu()"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <div class="mobile-panel" *ngIf="mobileMenuOpen()">
+    <button
+      class="mobile-link"
+      type="button"
+      *ngFor="let link of links"
+      [class.active]="activeSection === link.id"
+      (click)="navigateTo(link.id)"
+    >
+      {{ link.label }}
+    </button>
+
+    <div class="mobile-actions">
+      <app-landing-button variant="ghost" routerLink="/auth/login">Login</app-landing-button>
+      <app-landing-button variant="primary" (pressed)="triggerPreview()">Get Started</app-landing-button>
+    </div>
+  </div>
+</header>
+

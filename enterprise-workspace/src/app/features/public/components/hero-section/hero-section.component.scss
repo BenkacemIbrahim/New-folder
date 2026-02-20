@@ -1,0 +1,122 @@
+@use '../../styles/public-mixins' as mixins;
+@use '../../styles/public-tokens' as tokens;
+
+.hero-section {
+  min-height: calc(100dvh - tokens.$marketing-nav-height);
+  display: grid;
+  align-items: center;
+  padding-block: clamp(2rem, 6vw, 4.8rem);
+}
+
+.hero-grid {
+  @include mixins.marketing-container;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  gap: clamp(1.5rem, 4vw, 3.4rem);
+  align-items: center;
+}
+
+.hero-copy {
+  max-width: 62ch;
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.73rem;
+  color: #475569;
+  font-weight: 700;
+}
+
+h1 {
+  @include mixins.headline-display;
+  margin: 1rem 0 0;
+  color: #0f172a;
+}
+
+.hero-word {
+  display: block;
+}
+
+.hero-support {
+  margin: 1.2rem 0 0;
+  font-size: 1.04rem;
+  color: #334155;
+  max-width: 50ch;
+}
+
+.hero-cta {
+  margin-top: 1.65rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.72rem;
+}
+
+.hero-trust {
+  margin-top: 1.55rem;
+  display: grid;
+  gap: 0.56rem;
+}
+
+.hero-trust p {
+  margin: 0;
+  color: #475569;
+  font-size: 0.84rem;
+  display: flex;
+  align-items: center;
+  gap: 0.54rem;
+}
+
+.hero-trust p::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(120deg, #22c55e, #0ea5e9);
+}
+
+.hero-visual {
+  position: relative;
+}
+
+.mockup-frame {
+  border-radius: 22px;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.72));
+  box-shadow: 0 26px 52px rgba(15, 23, 42, 0.16);
+  padding: clamp(0.58rem, 1.2vw, 0.86rem);
+}
+
+.mockup-frame img {
+  width: 100%;
+  border-radius: 14px;
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .hero-section {
+    min-height: auto;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-visual {
+    order: -1;
+    max-width: 680px;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 680px) {
+  .hero-support {
+    font-size: 0.96rem;
+  }
+
+  .hero-trust p {
+    font-size: 0.8rem;
+  }
+}
+
