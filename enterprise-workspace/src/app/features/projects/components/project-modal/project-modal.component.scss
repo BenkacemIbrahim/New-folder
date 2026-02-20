@@ -55,10 +55,16 @@ h2 {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition:
+    transform var(--motion-fast) var(--ease-standard),
+    border-color var(--motion-fast) var(--ease-standard),
+    background-color var(--motion-fast) var(--ease-standard);
 }
 
 .icon-btn:hover {
-  transform: scale(1.05);
+  transform: translateY(-1px);
+  border-color: var(--color-border-strong);
+  background: var(--color-surface);
 }
 
 .modal-content {

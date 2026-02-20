@@ -2,7 +2,7 @@ import { NgClass, NgFor } from '@angular/common';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, inject } from '@angular/core';
 
-import { MOTION_DURATION_BASE, MOTION_DURATION_FAST } from '../../../core/config/app.constants';
+import { MOTION_DISTANCE, MOTION_DURATION, motion } from '../../animations/motion.config';
 import { ToastMessage } from '../../../core/models/toast.model';
 import { ToastService } from '../../../core/services/toast.service';
 
@@ -15,16 +15,16 @@ import { ToastService } from '../../../core/services/toast.service';
   animations: [
     trigger('toastSlide', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(10px) translateX(20px)' }),
+        style({ opacity: 0, transform: `translateY(${MOTION_DISTANCE.page}px)` }),
         animate(
-          `${MOTION_DURATION_BASE}ms cubic-bezier(0.2, 0.8, 0.2, 1)`,
-          style({ opacity: 1, transform: 'translateY(0) translateX(0)' })
+          motion(MOTION_DURATION.base),
+          style({ opacity: 1, transform: 'translateY(0)' })
         )
       ]),
       transition(':leave', [
         animate(
-          `${MOTION_DURATION_FAST}ms ease-in`,
-          style({ opacity: 0, transform: 'translateY(-8px) translateX(16px)' })
+          motion(MOTION_DURATION.fast),
+          style({ opacity: 0, transform: `translateY(-${MOTION_DISTANCE.page}px)` })
         )
       ])
     ])

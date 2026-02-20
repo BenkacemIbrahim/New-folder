@@ -12,11 +12,10 @@ export const PUBLIC_ROUTES: Routes = [
       seo: {
         title: 'Enterprise Workspace',
         description:
-          'Enterprise Workspace helps teams manage work, deliver outcomes, and scale operations with premium workflow intelligence.',
+          'Enterprise Workspace gives product and operations teams one place to plan work, run delivery, and report outcomes.',
         keywords:
           'enterprise workspace, project management, kanban, delivery analytics, saas workflow platform'
       }
     }
   }
 ];
-

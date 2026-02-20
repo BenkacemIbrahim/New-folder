@@ -1,13 +1,13 @@
 $marketing-nav-height: 76px;
-$marketing-container: min(1180px, calc(100% - 3rem));
-$marketing-section-gap: clamp(4.5rem, 8vw, 7rem);
+$marketing-container: min(1140px, calc(100% - 3rem));
+$marketing-section-gap: clamp(3.5rem, 6vw, 5.5rem);
 $marketing-card-radius: var(--radius-xl);
 $marketing-card-radius-sm: var(--radius-md);
 
-$marketing-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
-$marketing-fast: 160ms;
-$marketing-base: 260ms;
-$marketing-slow: 360ms;
+$marketing-ease: var(--ease-standard);
+$marketing-fast: var(--motion-fast);
+$marketing-base: var(--motion-base);
+$marketing-slow: var(--motion-slow);
 
 $marketing-shadow-soft: var(--shadow-soft);
 $marketing-shadow-lift: var(--shadow-medium);

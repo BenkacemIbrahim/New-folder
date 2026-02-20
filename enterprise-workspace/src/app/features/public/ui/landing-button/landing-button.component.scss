@@ -1,7 +1,7 @@
 @use '../../styles/public-tokens' as tokens;
 
 .landing-button {
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-sm);
   font-weight: var(--font-weight-semibold);
   text-decoration: none;
   border: 1px solid transparent;
@@ -10,11 +10,11 @@
   justify-content: center;
   cursor: pointer;
   transition:
-    transform tokens.$marketing-fast ease,
-    background-color tokens.$marketing-fast ease,
-    border-color tokens.$marketing-fast ease,
-    box-shadow tokens.$marketing-fast ease,
-    color tokens.$marketing-fast ease;
+    transform tokens.$marketing-fast tokens.$marketing-ease,
+    background-color tokens.$marketing-fast tokens.$marketing-ease,
+    border-color tokens.$marketing-fast tokens.$marketing-ease,
+    box-shadow tokens.$marketing-fast tokens.$marketing-ease,
+    color tokens.$marketing-fast tokens.$marketing-ease;
 }
 
 .landing-button span {
@@ -43,7 +43,8 @@
 
 .landing-button.primary:hover {
   transform: translateY(-1px);
-  box-shadow: var(--shadow-medium);
+  background: color-mix(in srgb, var(--color-accent) 90%, var(--color-accent-strong));
+  box-shadow: var(--shadow-soft);
 }
 
 .landing-button.secondary {
@@ -54,6 +55,8 @@
 
 .landing-button.secondary:hover {
   border-color: var(--color-border-strong);
+  background: var(--color-app-bg-subtle);
+  transform: translateY(-1px);
 }
 
 .landing-button.ghost {

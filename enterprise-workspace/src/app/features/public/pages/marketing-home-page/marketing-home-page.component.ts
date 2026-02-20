@@ -10,6 +10,11 @@ import {
 } from '@angular/core';
 import { gsap } from 'gsap';
 
+import {
+  MOTION_DISTANCE,
+  MOTION_DURATION,
+  MOTION_EASE_GSAP
+} from '../../../../shared/animations/motion.config';
 import { CtaSectionComponent } from '../../components/cta-section/cta-section.component';
 import { FeaturesSectionComponent } from '../../components/features-section/features-section.component';
 import { HeroSectionComponent } from '../../components/hero-section/hero-section.component';
@@ -52,31 +57,21 @@ export class MarketingHomePageComponent implements AfterViewInit, OnDestroy {
   private revealObserver: IntersectionObserver | null = null;
   private sectionObserver: IntersectionObserver | null = null;
   private scrollHandler: (() => void) | null = null;
-  private rafId: number | null = null;
-  private parallaxNodes: HTMLElement[] = [];
-  private floatingTween: gsap.core.Tween | null = null;
 
   ngAfterViewInit(): void {
     this.initializeHeroAnimation();
     this.initializeRevealObserver();
     this.initializeSectionObserver();
     this.initializeScrollEffects();
-    this.captureParallaxNodes();
   }
 
   ngOnDestroy(): void {
     this.revealObserver?.disconnect();
     this.sectionObserver?.disconnect();
-    this.floatingTween?.kill();
 
     if (this.scrollHandler) {
       window.removeEventListener('scroll', this.scrollHandler);
       this.scrollHandler = null;
-    }
-
-    if (this.rafId !== null) {
-      cancelAnimationFrame(this.rafId);
-      this.rafId = null;
     }
   }
 
@@ -95,7 +90,10 @@ export class MarketingHomePageComponent implements AfterViewInit, OnDestroy {
     const startY = window.scrollY;
     const targetY = section.getBoundingClientRect().top + startY - navOffset;
     const distance = targetY - startY;
-    const duration = 620;
+    const duration = Math.max(
+      MOTION_DURATION.modal,
+      Math.min(MOTION_DURATION.slow, Math.abs(distance) * 0.15)
+    );
     let startTime: number | null = null;
 
     const easeInOut = (progress: number): number =>
@@ -144,41 +142,31 @@ export class MarketingHomePageComponent implements AfterViewInit, OnDestroy {
     );
 
     gsap.from(words, {
-      y: 22,
+      y: MOTION_DISTANCE.reveal,
       autoAlpha: 0,
-      duration: 0.72,
-      stagger: 0.1,
-      ease: 'power3.out'
+      duration: MOTION_DURATION.slow / 1000,
+      stagger: 0.04,
+      ease: MOTION_EASE_GSAP
     });
 
     if (revealTargets.length > 0) {
       gsap.from(revealTargets, {
-        y: 16,
+        y: MOTION_DISTANCE.reveal,
         autoAlpha: 0,
-        duration: 0.68,
-        stagger: 0.09,
-        delay: 0.18,
-        ease: 'power2.out'
+        duration: MOTION_DURATION.base / 1000,
+        stagger: 0.04,
+        delay: 0.06,
+        ease: MOTION_EASE_GSAP
       });
     }
 
     gsap.from(mockup, {
-      y: 24,
+      y: MOTION_DISTANCE.reveal,
       autoAlpha: 0,
-      duration: 0.84,
-      delay: 0.24,
-      ease: 'power3.out'
+      duration: MOTION_DURATION.slow / 1000,
+      delay: 0.08,
+      ease: MOTION_EASE_GSAP
     });
-
-    if (mockup) {
-      this.floatingTween = gsap.to(mockup, {
-        y: -10,
-        duration: 3.4,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut'
-      });
-    }
   }
 
   private initializeRevealObserver(): void {
@@ -233,41 +221,9 @@ export class MarketingHomePageComponent implements AfterViewInit, OnDestroy {
   private initializeScrollEffects(): void {
     this.scrollHandler = () => {
       this.navScrolled.set(window.scrollY > 10);
-      this.scheduleParallaxUpdate();
     };
 
     window.addEventListener('scroll', this.scrollHandler, { passive: true });
     this.scrollHandler();
-  }
-
-  private captureParallaxNodes(): void {
-    this.parallaxNodes = Array.from(
-      this.hostRef.nativeElement.querySelectorAll<HTMLElement>('[data-parallax]')
-    );
-    this.scheduleParallaxUpdate();
-  }
-
-  private scheduleParallaxUpdate(): void {
-    if (this.prefersReducedMotion || this.rafId !== null) {
-      return;
-    }
-
-    this.rafId = requestAnimationFrame(() => {
-      this.rafId = null;
-      this.updateParallax();
-    });
-  }
-
-  private updateParallax(): void {
-    const viewportMid = window.innerHeight / 2;
-
-    this.parallaxNodes.forEach((node) => {
-      const speed = Number(node.dataset['parallax'] ?? 0.05);
-      const rect = node.getBoundingClientRect();
-      const offset = rect.top + rect.height / 2 - viewportMid;
-      const translateY = Math.max(-16, Math.min(16, -offset * speed));
-
-      node.style.transform = `translate3d(0, ${translateY.toFixed(2)}px, 0)`;
-    });
   }
 }

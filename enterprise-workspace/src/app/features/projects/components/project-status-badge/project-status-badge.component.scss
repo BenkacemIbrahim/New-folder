@@ -16,15 +16,6 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  position: relative;
-}
-
-.status-dot::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  animation: badge-pulse 2.2s ease-out infinite;
 }
 
 .status-badge.on-track {
@@ -33,8 +24,7 @@
   border-color: color-mix(in srgb, var(--color-success) 28%, transparent);
 }
 
-.status-badge.on-track .status-dot,
-.status-badge.on-track .status-dot::after {
+.status-badge.on-track .status-dot {
   background: tokens.$status-on-track;
 }
 
@@ -44,8 +34,7 @@
   border-color: color-mix(in srgb, var(--color-warning) 28%, transparent);
 }
 
-.status-badge.at-risk .status-dot,
-.status-badge.at-risk .status-dot::after {
+.status-badge.at-risk .status-dot {
   background: tokens.$status-at-risk;
 }
 
@@ -55,24 +44,6 @@
   border-color: color-mix(in srgb, var(--color-error) 28%, transparent);
 }
 
-.status-badge.blocked .status-dot,
-.status-badge.blocked .status-dot::after {
+.status-badge.blocked .status-dot {
   background: tokens.$status-blocked;
-}
-
-@keyframes badge-pulse {
-  0% {
-    transform: scale(1);
-    opacity: 0.7;
-  }
-
-  75% {
-    transform: scale(2.2);
-    opacity: 0;
-  }
-
-  100% {
-    transform: scale(2.2);
-    opacity: 0;
-  }
 }

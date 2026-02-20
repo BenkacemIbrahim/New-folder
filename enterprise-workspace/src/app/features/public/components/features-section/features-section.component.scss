@@ -13,14 +13,16 @@
   padding: var(--space-3);
   box-shadow: var(--shadow-soft);
   transition:
-    transform tokens.$marketing-fast ease,
-    box-shadow tokens.$marketing-fast ease,
-    border-color tokens.$marketing-fast ease;
+    transform tokens.$marketing-fast tokens.$marketing-ease,
+    box-shadow tokens.$marketing-fast tokens.$marketing-ease,
+    border-color tokens.$marketing-fast tokens.$marketing-ease,
+    background-color tokens.$marketing-fast tokens.$marketing-ease;
 }
 
 .feature-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-medium);
+  transform: translateY(-1px);
+  background: var(--color-surface-elevated);
+  box-shadow: var(--shadow-soft);
   border-color: color-mix(in srgb, var(--color-accent) 25%, var(--color-border-soft));
 }
 
@@ -33,11 +35,11 @@
   justify-content: center;
   background: var(--color-accent-soft);
   border: 1px solid color-mix(in srgb, var(--color-accent) 20%, transparent);
-  transition: transform tokens.$marketing-fast ease;
+  transition: transform tokens.$marketing-fast tokens.$marketing-ease;
 }
 
 .feature-card:hover .feature-icon {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .feature-icon svg {

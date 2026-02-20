@@ -1,5 +1,6 @@
 import { NgClass, NgFor, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 import { LandingButtonComponent } from '../../ui/landing-button/landing-button.component';
 
@@ -11,7 +12,7 @@ interface NavLink {
 @Component({
   selector: 'app-public-navbar',
   standalone: true,
-  imports: [NgFor, NgIf, NgClass, LandingButtonComponent],
+  imports: [NgFor, NgIf, NgClass, LandingButtonComponent, RouterLink],
   templateUrl: './public-navbar.component.html',
   styleUrl: './public-navbar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -26,8 +27,8 @@ export class PublicNavbarComponent {
 
   protected readonly links: NavLink[] = [
     { id: 'hero', label: 'Overview' },
-    { id: 'features', label: 'Features' },
-    { id: 'showcase', label: 'Showcase' },
+    { id: 'features', label: 'Product' },
+    { id: 'showcase', label: 'Workflow' },
     { id: 'stats', label: 'Results' },
     { id: 'testimonials', label: 'Customers' }
   ];
@@ -46,4 +47,3 @@ export class PublicNavbarComponent {
     this.mobileMenuOpen.set(false);
   }
 }
-

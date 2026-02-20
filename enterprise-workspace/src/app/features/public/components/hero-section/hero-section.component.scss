@@ -5,19 +5,19 @@
   min-height: calc(100dvh - tokens.$marketing-nav-height);
   display: grid;
   align-items: center;
-  padding-block: clamp(2rem, 5vw, 4rem);
+  padding-block: clamp(2rem, 3.5vw, 3.25rem);
 }
 
 .hero-grid {
   @include mixins.marketing-container;
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
-  gap: clamp(1.5rem, 4vw, 3rem);
+  gap: clamp(1.5rem, 3.2vw, 2.75rem);
   align-items: center;
 }
 
 .hero-copy {
-  max-width: 60ch;
+  max-width: 52ch;
 }
 
 .eyebrow {
@@ -42,7 +42,7 @@ h1 {
 .hero-support {
   margin: var(--space-2) 0 0;
   color: var(--color-text-secondary);
-  max-width: 48ch;
+  max-width: 38ch;
 }
 
 .hero-cta {
@@ -55,13 +55,13 @@ h1 {
 .hero-trust {
   margin-top: var(--space-3);
   display: grid;
-  gap: 0.5rem;
+  gap: 0.45rem;
 }
 
 .hero-trust p {
   margin: 0;
   color: var(--color-text-muted);
-  font-size: 0.86rem;
+  font-size: var(--text-caption);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -69,10 +69,10 @@ h1 {
 
 .hero-trust p::before {
   content: '';
-  width: 8px;
-  height: 8px;
+  width: 5px;
+  height: 5px;
   border-radius: var(--radius-pill);
-  background: var(--color-accent);
+  background: var(--color-border-strong);
 }
 
 .hero-visual {
@@ -80,7 +80,7 @@ h1 {
 }
 
 .mockup-frame {
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-lg);
   border: 1px solid var(--color-border-soft);
   background: var(--color-surface);
   box-shadow: var(--shadow-medium);
@@ -89,8 +89,25 @@ h1 {
 
 .mockup-frame img {
   width: 100%;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   display: block;
+}
+
+.mockup-meta {
+  margin-top: 0.625rem;
+  border-top: 1px solid var(--color-border-soft);
+  padding-top: 0.625rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.mockup-meta p,
+.mockup-meta span {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
 }
 
 @media (max-width: 1024px) {
@@ -104,7 +121,7 @@ h1 {
 
   .hero-visual {
     order: -1;
-    max-width: 680px;
+    max-width: 720px;
     margin-inline: auto;
   }
 }

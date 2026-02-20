@@ -8,7 +8,7 @@
   padding: clamp(1.4rem, 4vw, 2.4rem);
   box-shadow: var(--shadow-soft);
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(var(--motion-distance-reveal));
   transition:
     opacity tokens.$marketing-slow tokens.$marketing-ease,
     transform tokens.$marketing-slow tokens.$marketing-ease;

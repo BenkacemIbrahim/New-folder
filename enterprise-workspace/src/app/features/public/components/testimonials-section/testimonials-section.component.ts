@@ -86,4 +86,3 @@ export class TestimonialsSectionComponent implements OnDestroy {
     }, 5200);
   }
 }
-

@@ -18,7 +18,7 @@
 
 @mixin reveal-ready {
   opacity: 0;
-  transform: translateY(26px);
+  transform: translateY(var(--motion-distance-reveal));
   transition:
     opacity tokens.$marketing-slow tokens.$marketing-ease,
     transform tokens.$marketing-slow tokens.$marketing-ease;
@@ -30,7 +30,7 @@
 }
 
 @mixin headline-display {
-  font-size: clamp(2.2rem, 5.4vw, 4.1rem);
-  line-height: 1.02;
+  font-size: clamp(2.1rem, 4.5vw, 3.6rem);
+  line-height: 1.05;
   letter-spacing: -0.03em;
 }

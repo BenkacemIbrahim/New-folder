@@ -12,7 +12,7 @@
   gap: var(--space-3);
   align-items: center;
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(var(--motion-distance-reveal));
   transition:
     opacity tokens.$marketing-slow tokens.$marketing-ease,
     transform tokens.$marketing-slow tokens.$marketing-ease;

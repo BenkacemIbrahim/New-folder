@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { gsap } from 'gsap';
 
+import { MOTION_DURATION, MOTION_EASE_GSAP } from '../../../../shared/animations/motion.config';
 import { MarketingStat } from '../../models/marketing-content.model';
 
 @Component({
@@ -98,9 +99,9 @@ export class StatisticsSectionComponent implements AfterViewInit, OnDestroy {
 
       gsap.to(state, {
         value: stat.value,
-        duration: 1.25,
-        delay: index * 0.1,
-        ease: 'power2.out',
+        duration: MOTION_DURATION.slow / 1000,
+        delay: index * 0.03,
+        ease: MOTION_EASE_GSAP,
         onUpdate: () => {
           this.currentValues.update((snapshot) => ({
             ...snapshot,
@@ -111,4 +112,3 @@ export class StatisticsSectionComponent implements AfterViewInit, OnDestroy {
     });
   }
 }
-

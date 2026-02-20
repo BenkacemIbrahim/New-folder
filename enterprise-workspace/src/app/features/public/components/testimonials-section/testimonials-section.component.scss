@@ -2,7 +2,7 @@
 
 .testimonials {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(var(--motion-distance-reveal));
   transition:
     opacity tokens.$marketing-slow tokens.$marketing-ease,
     transform tokens.$marketing-slow tokens.$marketing-ease;
@@ -22,7 +22,7 @@
 
 .slider-track {
   display: flex;
-  transition: transform 420ms tokens.$marketing-ease;
+  transition: transform tokens.$marketing-base tokens.$marketing-ease;
 }
 
 .testimonial-card {
@@ -96,7 +96,9 @@ footer {
   border: 0;
   background: var(--color-border-strong);
   cursor: pointer;
-  transition: transform tokens.$marketing-fast ease, background-color tokens.$marketing-fast ease;
+  transition:
+    transform tokens.$marketing-fast tokens.$marketing-ease,
+    background-color tokens.$marketing-fast tokens.$marketing-ease;
 }
 
 .dot.active {

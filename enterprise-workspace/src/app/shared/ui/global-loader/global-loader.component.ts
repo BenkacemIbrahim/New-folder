@@ -2,7 +2,7 @@ import { NgIf } from '@angular/common';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, effect, inject, signal } from '@angular/core';
 
-import { MOTION_DURATION_BASE, MOTION_DURATION_FAST } from '../../../core/config/app.constants';
+import { MOTION_DURATION, motion } from '../../animations/motion.config';
 import { LoadingService } from '../../../core/services/loading.service';
 
 @Component({
@@ -15,9 +15,9 @@ import { LoadingService } from '../../../core/services/loading.service';
     trigger('loaderFade', [
       transition(':enter', [
         style({ opacity: 0 }),
-        animate(`${MOTION_DURATION_FAST}ms ease-out`, style({ opacity: 1 }))
+        animate(motion(MOTION_DURATION.fast), style({ opacity: 1 }))
       ]),
-      transition(':leave', [animate(`${MOTION_DURATION_BASE}ms ease-in`, style({ opacity: 0 }))])
+      transition(':leave', [animate(motion(MOTION_DURATION.base), style({ opacity: 0 }))])
     ])
   ]
 })

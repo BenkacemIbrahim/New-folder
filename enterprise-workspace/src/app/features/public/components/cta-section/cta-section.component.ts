@@ -17,4 +17,3 @@ export class CtaSectionComponent {
     this.openPreview.emit();
   }
 }
-

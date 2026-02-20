@@ -54,7 +54,9 @@ h1 {
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border-soft);
   background: var(--color-surface);
-  transition: border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease;
+  transition:
+    border-color var(--motion-fast) var(--ease-standard),
+    box-shadow var(--motion-fast) var(--ease-standard);
 }
 
 .field-shell.focused {
@@ -83,7 +85,9 @@ h1 {
   top: 0.9rem;
   color: var(--color-text-muted);
   transform-origin: left top;
-  transition: transform var(--motion-fast) ease, color var(--motion-fast) ease;
+  transition:
+    transform var(--motion-fast) var(--ease-standard),
+    color var(--motion-fast) var(--ease-standard);
   pointer-events: none;
 }
 
@@ -130,12 +134,16 @@ h1 {
   color: var(--color-text-inverse);
   font-weight: var(--font-weight-semibold);
   cursor: pointer;
-  transition: transform var(--motion-fast) ease, box-shadow var(--motion-fast) ease;
+  transition:
+    transform var(--motion-fast) var(--ease-standard),
+    box-shadow var(--motion-fast) var(--ease-standard),
+    background-color var(--motion-fast) var(--ease-standard);
 }
 
 .submit-btn:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: var(--shadow-medium);
+  background: color-mix(in srgb, var(--color-accent) 92%, var(--color-text-primary));
+  box-shadow: var(--shadow-soft);
 }
 
 .submit-btn:disabled {

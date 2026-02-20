@@ -30,7 +30,11 @@
   font-size: 0.82rem;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 150ms ease, border-color 150ms ease, color 150ms ease;
+  transition:
+    transform var(--motion-fast) var(--ease-standard),
+    border-color var(--motion-fast) var(--ease-standard),
+    color var(--motion-fast) var(--ease-standard),
+    background-color var(--motion-fast) var(--ease-standard);
 }
 
 .filter-chip:hover {
@@ -78,12 +82,14 @@
   @include mixins.glass-card;
   padding: var(--space-4);
   transform: translateY(0);
-  transition: transform 220ms ease, box-shadow 220ms ease;
+  transition:
+    transform var(--motion-base) var(--ease-standard),
+    box-shadow var(--motion-base) var(--ease-standard);
 }
 
 .project-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-medium);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
 }
 
 .card-header {

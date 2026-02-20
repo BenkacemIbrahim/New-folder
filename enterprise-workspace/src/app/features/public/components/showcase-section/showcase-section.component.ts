@@ -58,4 +58,3 @@ export class ShowcaseSectionComponent {
     return item.id;
   }
 }
-

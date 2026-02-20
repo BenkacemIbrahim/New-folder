@@ -1,9 +1,6 @@
 import { animate, query, style, transition, trigger } from '@angular/animations';
 
-import {
-  MOTION_DURATION_FAST,
-  MOTION_DURATION_SLOW
-} from '../../core/config/app.constants';
+import { MOTION_DISTANCE, MOTION_DURATION, motion } from './motion.config';
 
 export const routeTransitionAnimation = trigger('routeTransition', [
   transition('* <=> *', [
@@ -23,10 +20,10 @@ export const routeTransitionAnimation = trigger('routeTransition', [
       ':leave',
       [
         animate(
-          `${MOTION_DURATION_FAST}ms ease-out`,
+          motion(MOTION_DURATION.base),
           style({
             opacity: 0,
-            transform: 'translateY(10px)'
+            transform: `translateY(${MOTION_DISTANCE.page}px)`
           })
         )
       ],
@@ -37,10 +34,10 @@ export const routeTransitionAnimation = trigger('routeTransition', [
       [
         style({
           opacity: 0,
-          transform: 'translateY(10px)'
+          transform: `translateY(${MOTION_DISTANCE.page}px)`
         }),
         animate(
-          `${MOTION_DURATION_SLOW}ms cubic-bezier(0.2, 0, 0, 1)`,
+          motion(MOTION_DURATION.base),
           style({
             opacity: 1,
             transform: 'translateY(0)'

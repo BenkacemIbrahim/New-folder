@@ -5,7 +5,7 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--space-2);
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(var(--motion-distance-reveal));
   transition:
     opacity tokens.$marketing-slow tokens.$marketing-ease,
     transform tokens.$marketing-slow tokens.$marketing-ease;

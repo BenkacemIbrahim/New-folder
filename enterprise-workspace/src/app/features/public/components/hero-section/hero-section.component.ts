@@ -1,5 +1,5 @@
-import { NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { NgFor } from '@angular/common';
 
 import { LandingButtonComponent } from '../../ui/landing-button/landing-button.component';
 
@@ -15,10 +15,10 @@ export class HeroSectionComponent {
   @Output() readonly openPreview = new EventEmitter<void>();
   @Output() readonly navigateTo = new EventEmitter<string>();
 
-  protected readonly highlights = [
-    'Trusted by digital academies and enterprise L&D teams',
-    'End-to-end visibility from portfolio planning to delivery',
-    'Built for cross-functional leaders who care about outcomes'
+  protected readonly trustItems = [
+    '14,000+ weekly active users',
+    '34% fewer coordination delays',
+    'SOC-ready access controls'
   ];
 
   protected launchPreview(): void {

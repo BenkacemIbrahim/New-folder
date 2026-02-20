@@ -30,4 +30,3 @@ export interface Testimonial {
   company: string;
   avatarSeed: string;
 }
-

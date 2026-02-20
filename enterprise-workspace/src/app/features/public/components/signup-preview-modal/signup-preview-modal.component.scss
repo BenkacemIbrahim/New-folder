@@ -11,7 +11,7 @@
 
 .modal-card {
   width: min(540px, 100%);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-lg);
   border: 1px solid var(--color-border-soft);
   background: var(--color-surface);
   box-shadow: var(--shadow-medium);
@@ -25,11 +25,21 @@
   right: 0.75rem;
   width: 30px;
   height: 30px;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-sm);
   border: 1px solid var(--color-border-soft);
   background: var(--color-surface);
   color: var(--color-text-secondary);
   cursor: pointer;
+  transition:
+    transform var(--motion-fast) var(--ease-standard),
+    border-color var(--motion-fast) var(--ease-standard),
+    background-color var(--motion-fast) var(--ease-standard);
+}
+
+.close-btn:hover {
+  transform: translateY(-1px);
+  border-color: var(--color-border-strong);
+  background: var(--color-surface-elevated);
 }
 
 .eyebrow {
@@ -49,6 +59,8 @@ h3 {
 
 .copy {
   margin: var(--space-1) 0 0;
+  color: var(--color-text-secondary);
+  max-width: 36ch;
 }
 
 ul {

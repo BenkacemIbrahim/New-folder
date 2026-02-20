@@ -17,7 +17,7 @@
   color: var(--color-text-inverse);
   text-decoration: none;
   transform: translateY(-140%);
-  transition: transform 180ms ease;
+  transition: transform var(--motion-fast) var(--ease-standard);
 }
 
 .skip-link:focus-visible {

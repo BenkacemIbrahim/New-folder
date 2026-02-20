@@ -23,7 +23,9 @@
   min-height: 44px;
   padding: 0 var(--space-3);
   outline: none;
-  transition: border-color 150ms ease, box-shadow 150ms ease;
+  transition:
+    border-color var(--motion-fast) var(--ease-standard),
+    box-shadow var(--motion-fast) var(--ease-standard);
 
   &:focus {
     border-color: color-mix(in srgb, var(--color-accent) 60%, var(--color-border-strong));

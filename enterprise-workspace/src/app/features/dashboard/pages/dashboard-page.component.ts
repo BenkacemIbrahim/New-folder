@@ -26,6 +26,12 @@ import {
 } from 'chart.js';
 import { gsap } from 'gsap';
 
+import {
+  MOTION_DISTANCE,
+  MOTION_DURATION,
+  MOTION_EASE_GSAP
+} from '../../../shared/animations/motion.config';
+
 Chart.register(
   DoughnutController,
   ArcElement,
@@ -270,9 +276,9 @@ export class DashboardPageComponent implements AfterViewInit, OnDestroy {
 
       gsap.to(animatedMetric, {
         current: metric.value,
-        duration: 1.5,
-        delay: 0.15 + index * 0.08,
-        ease: 'power3.out',
+        duration: MOTION_DURATION.slow / 1000,
+        delay: index * 0.03,
+        ease: MOTION_EASE_GSAP,
         onUpdate: () => {
           this.counterValues.update((snapshot) => ({
             ...snapshot,
@@ -309,8 +315,8 @@ export class DashboardPageComponent implements AfterViewInit, OnDestroy {
         maintainAspectRatio: false,
         cutout: '64%',
         animation: {
-          duration: 1100,
-          easing: 'easeOutCubic'
+          duration: MOTION_DURATION.slow,
+          easing: 'easeInOutCubic'
         },
         plugins: {
           legend: {
@@ -355,8 +361,8 @@ export class DashboardPageComponent implements AfterViewInit, OnDestroy {
         responsive: true,
         maintainAspectRatio: false,
         animation: {
-          duration: 1200,
-          easing: 'easeOutCubic'
+          duration: MOTION_DURATION.slow,
+          easing: 'easeInOutCubic'
         },
         plugins: {
           legend: {
@@ -406,29 +412,29 @@ export class DashboardPageComponent implements AfterViewInit, OnDestroy {
       const chartPanels = this.chartPanelRefs?.map((itemRef) => itemRef.nativeElement) ?? [];
 
       gsap.from('.dashboard-hero .hero-reveal', {
-        y: 18,
+        y: MOTION_DISTANCE.reveal,
         autoAlpha: 0,
-        duration: 0.7,
-        stagger: 0.08,
-        ease: 'power3.out'
+        duration: MOTION_DURATION.base / 1000,
+        stagger: 0.04,
+        ease: MOTION_EASE_GSAP
       });
 
       gsap.from(kpiCards, {
-        y: 24,
+        y: MOTION_DISTANCE.reveal,
         autoAlpha: 0,
-        duration: 0.8,
-        stagger: 0.08,
-        ease: 'power3.out',
-        delay: 0.2
+        duration: MOTION_DURATION.slow / 1000,
+        stagger: 0.04,
+        ease: MOTION_EASE_GSAP,
+        delay: 0.06
       });
 
       gsap.from(chartPanels, {
-        y: 26,
+        y: MOTION_DISTANCE.reveal,
         autoAlpha: 0,
-        duration: 0.85,
-        stagger: 0.12,
-        ease: 'power3.out',
-        delay: 0.35
+        duration: MOTION_DURATION.slow / 1000,
+        stagger: 0.05,
+        ease: MOTION_EASE_GSAP,
+        delay: 0.1
       });
     }, this.hostRef.nativeElement);
   }
@@ -454,14 +460,14 @@ export class DashboardPageComponent implements AfterViewInit, OnDestroy {
           gsap.fromTo(
             timelineItem,
             {
-              y: 22,
+              y: MOTION_DISTANCE.reveal,
               autoAlpha: 0
             },
             {
               y: 0,
               autoAlpha: 1,
-              duration: 0.65,
-              ease: 'power3.out'
+              duration: MOTION_DURATION.base / 1000,
+              ease: MOTION_EASE_GSAP
             }
           );
 

@@ -67,4 +67,3 @@ export class FeaturesSectionComponent {
     return feature.id;
   }
 }
-

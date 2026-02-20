@@ -4,7 +4,7 @@
       <span class="brand-mark">EW</span>
       <span class="brand-copy">
         <strong>Enterprise Workspace</strong>
-        <small>Operational excellence platform</small>
+        <small>Project operations</small>
       </span>
     </button>
 
@@ -21,7 +21,7 @@
     </nav>
 
     <div class="desktop-actions">
-      <app-landing-button variant="ghost" routerLink="/auth/login">Login</app-landing-button>
+      <a class="login-link" routerLink="/auth/login">Login</a>
       <app-landing-button variant="primary" (pressed)="triggerPreview()">Get Started</app-landing-button>
     </div>
 
@@ -50,9 +50,8 @@
     </button>
 
     <div class="mobile-actions">
-      <app-landing-button variant="ghost" routerLink="/auth/login">Login</app-landing-button>
+      <a class="login-link" routerLink="/auth/login">Login</a>
       <app-landing-button variant="primary" (pressed)="triggerPreview()">Get Started</app-landing-button>
     </div>
   </div>
 </header>
-
