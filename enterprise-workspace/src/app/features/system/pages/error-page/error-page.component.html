@@ -1,0 +1,30 @@
+<main class="status-shell" aria-labelledby="error-title">
+  <section class="status-card">
+    <p class="kicker">Platform Error</p>
+    <h1 id="error-title">Something interrupted this operation.</h1>
+    <p class="summary">
+      The request could not be completed. The workspace state is safe, and you can retry or continue
+      navigating other sections.
+    </p>
+
+    <p class="meta" *ngIf="hasStatus()">
+      Status: <strong>{{ statusCode() }}</strong>
+      <span *ngIf="statusText() as text">({{ text }})</span>
+    </p>
+
+    <div class="actions">
+      <button mat-flat-button color="primary" type="button" (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon>
+        Go Back
+      </button>
+      <a mat-stroked-button routerLink="/dashboard">
+        <mat-icon>home</mat-icon>
+        Dashboard
+      </a>
+      <a mat-stroked-button routerLink="/tasks">
+        <mat-icon>view_kanban</mat-icon>
+        Open Kanban
+      </a>
+    </div>
+  </section>
+</main>

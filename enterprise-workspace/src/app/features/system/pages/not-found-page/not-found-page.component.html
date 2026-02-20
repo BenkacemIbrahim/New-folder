@@ -1,0 +1,22 @@
+<main class="status-shell" aria-labelledby="not-found-title">
+  <section class="status-card">
+    <p class="kicker">Error 404</p>
+    <h1 id="not-found-title">The page you requested does not exist.</h1>
+    <p class="summary">
+      This route may have changed during a release. Continue to the dashboard and use navigation to
+      access the correct workspace.
+    </p>
+
+    <div class="actions">
+      <a mat-flat-button color="primary" routerLink="/dashboard">
+        <mat-icon>dashboard</mat-icon>
+        Back to Dashboard
+      </a>
+
+      <a mat-stroked-button routerLink="/projects">
+        <mat-icon>workspaces</mat-icon>
+        Go to Projects
+      </a>
+    </div>
+  </section>
+</main>

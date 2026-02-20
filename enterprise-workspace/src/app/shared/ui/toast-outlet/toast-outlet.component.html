@@ -1,0 +1,20 @@
+<section class="toast-region" aria-live="polite" aria-atomic="false">
+  <article
+    class="toast-card"
+    *ngFor="let toast of toasts(); trackBy: trackById"
+    [ngClass]="toast.variant"
+    @toastSlide
+    role="status"
+  >
+    <span class="status-dot" aria-hidden="true"></span>
+
+    <div class="toast-copy">
+      <h4>{{ toast.title }}</h4>
+      <p>{{ toast.message }}</p>
+    </div>
+
+    <button type="button" class="dismiss-btn" aria-label="Dismiss notification" (click)="dismiss(toast.id)">
+      x
+    </button>
+  </article>
+</section>
