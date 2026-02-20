@@ -1,0 +1,19 @@
+<section
+  class="section-shell"
+  [ngClass]="tone"
+  [attr.id]="id"
+  [attr.data-section-id]="id"
+  data-spy
+  data-reveal
+>
+  <div class="section-inner">
+    <header class="section-head" *ngIf="eyebrow || title || description">
+      <p class="eyebrow" *ngIf="eyebrow">{{ eyebrow }}</p>
+      <h2 *ngIf="title">{{ title }}</h2>
+      <p class="description" *ngIf="description">{{ description }}</p>
+    </header>
+
+    <ng-content />
+  </div>
+</section>
+

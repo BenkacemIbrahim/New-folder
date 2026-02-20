@@ -1,0 +1,50 @@
+@use '../../styles/public-mixins' as mixins;
+@use '../../styles/public-tokens' as tokens;
+
+.section-shell {
+  scroll-margin-top: calc(tokens.$marketing-nav-height + 18px);
+  @include mixins.section-spacing;
+  @include mixins.reveal-ready;
+}
+
+.section-shell.subtle {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.44), rgba(255, 255, 255, 0));
+}
+
+.section-shell.highlight {
+  background:
+    radial-gradient(circle at 8% 0%, rgba(56, 189, 248, 0.14), transparent 35%),
+    radial-gradient(circle at 92% 100%, rgba(37, 99, 235, 0.08), transparent 34%);
+}
+
+.section-inner {
+  @include mixins.marketing-container;
+}
+
+.section-head {
+  max-width: 58ch;
+  margin-bottom: clamp(1.8rem, 3.8vw, 2.8rem);
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  color: #475569;
+  font-weight: 700;
+}
+
+h2 {
+  margin: 0.76rem 0 0;
+  font-size: clamp(1.6rem, 3.1vw, 2.45rem);
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+  color: #0f172a;
+}
+
+.description {
+  margin: 0.78rem 0 0;
+  color: #334155;
+}
+

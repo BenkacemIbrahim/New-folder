@@ -1,0 +1,77 @@
+@use '../../styles/public-tokens' as tokens;
+
+.landing-button {
+  border: 0;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform tokens.$marketing-fast ease,
+    box-shadow tokens.$marketing-fast ease,
+    background-color tokens.$marketing-fast ease,
+    color tokens.$marketing-fast ease,
+    border-color tokens.$marketing-fast ease;
+  cursor: pointer;
+}
+
+.landing-button span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.landing-button.md {
+  min-height: 42px;
+  padding: 0 1.15rem;
+  font-size: 0.84rem;
+}
+
+.landing-button.lg {
+  min-height: 50px;
+  padding: 0 1.4rem;
+  font-size: 0.92rem;
+}
+
+.landing-button.primary {
+  color: #f8fafc;
+  background: linear-gradient(120deg, #2f5aff, #0f4ab8);
+  box-shadow: 0 12px 24px rgba(51, 92, 255, 0.3);
+}
+
+.landing-button.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 34px rgba(51, 92, 255, 0.32);
+}
+
+.landing-button.secondary {
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.landing-button.secondary:hover {
+  transform: translateY(-2px);
+  border-color: rgba(51, 92, 255, 0.45);
+}
+
+.landing-button.ghost {
+  color: #1e293b;
+  background: transparent;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.landing-button.ghost:hover {
+  border-color: rgba(51, 92, 255, 0.44);
+  color: #1d4ed8;
+}
+
+.landing-button.is-disabled {
+  pointer-events: none;
+  opacity: 0.48;
+  transform: none;
+}
+

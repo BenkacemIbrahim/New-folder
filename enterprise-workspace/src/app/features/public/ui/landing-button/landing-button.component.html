@@ -1,0 +1,40 @@
+<ng-container [ngSwitch]="renderMode">
+  <a
+    *ngSwitchCase="'router'"
+    class="landing-button"
+    [ngClass]="[variant, size, disabled ? 'is-disabled' : '']"
+    [routerLink]="routerLink"
+    [attr.aria-label]="ariaLabel"
+    [attr.aria-disabled]="disabled"
+    (click)="onPress($event)"
+  >
+    <span><ng-content /></span>
+  </a>
+
+  <a
+    *ngSwitchCase="'href'"
+    class="landing-button"
+    [ngClass]="[variant, size, disabled ? 'is-disabled' : '']"
+    [attr.href]="href"
+    [attr.target]="target ?? '_self'"
+    [attr.rel]="target === '_blank' ? 'noopener noreferrer' : null"
+    [attr.aria-label]="ariaLabel"
+    [attr.aria-disabled]="disabled"
+    (click)="onPress($event)"
+  >
+    <span><ng-content /></span>
+  </a>
+
+  <button
+    *ngSwitchDefault
+    class="landing-button"
+    [ngClass]="[variant, size, disabled ? 'is-disabled' : '']"
+    [type]="type"
+    [disabled]="disabled"
+    [attr.aria-label]="ariaLabel"
+    (click)="onPress($event)"
+  >
+    <span><ng-content /></span>
+  </button>
+</ng-container>
+
