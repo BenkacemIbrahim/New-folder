@@ -102,6 +102,33 @@ h1 {
   gap: var(--space-1);
 }
 
+.hero-start-link {
+  min-height: 46px;
+  padding: 0 1.25rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-semibold);
+  color: #ffffff;
+  background: color-mix(in srgb, var(--color-accent) 88%, var(--color-accent-strong));
+  box-shadow: var(--shadow-soft);
+  white-space: nowrap;
+  transition:
+    transform tokens.$marketing-fast tokens.$marketing-ease,
+    background-color tokens.$marketing-fast tokens.$marketing-ease,
+    box-shadow tokens.$marketing-fast tokens.$marketing-ease;
+}
+
+.hero-start-link:hover {
+  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--color-accent-strong) 85%, #0f2f6c);
+  box-shadow: var(--shadow-soft);
+}
+
 .hero-trust {
   margin-top: var(--space-3);
   display: grid;
@@ -170,7 +197,6 @@ h1 {
   }
 
   .hero-visual {
-    order: -1;
     max-width: 720px;
     margin-inline: auto;
   }

@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { NgFor } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 import { LandingButtonComponent } from '../../ui/landing-button/landing-button.component';
 
 @Component({
   selector: 'app-hero-section',
   standalone: true,
-  imports: [LandingButtonComponent, NgFor],
+  imports: [LandingButtonComponent, NgFor, RouterLink],
   templateUrl: './hero-section.component.html',
   styleUrl: './hero-section.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

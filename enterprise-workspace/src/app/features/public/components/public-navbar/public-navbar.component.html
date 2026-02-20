@@ -22,8 +22,10 @@
 
     <div class="desktop-actions">
       <a class="login-link" routerLink="/auth/login">Login</a>
-      <app-landing-button variant="primary" routerLink="/auth/register">Get Started</app-landing-button>
+      <a class="start-link" routerLink="/auth/register">Get Started</a>
     </div>
+
+    <a class="start-link mobile-start" routerLink="/auth/register">Get Started</a>
 
     <button
       class="mobile-trigger"
@@ -51,7 +53,6 @@
 
     <div class="mobile-actions">
       <a class="login-link" routerLink="/auth/login">Login</a>
-      <app-landing-button variant="primary" routerLink="/auth/register">Get Started</app-landing-button>
     </div>
   </div>
 </header>

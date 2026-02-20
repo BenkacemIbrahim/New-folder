@@ -110,6 +110,37 @@
   gap: 0.75rem;
 }
 
+.start-link {
+  min-height: 40px;
+  padding: 0 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: var(--font-weight-semibold);
+  color: #ffffff;
+  background: var(--color-accent);
+  box-shadow: var(--shadow-soft);
+  white-space: nowrap;
+  transition:
+    transform tokens.$marketing-fast tokens.$marketing-ease,
+    background-color tokens.$marketing-fast tokens.$marketing-ease,
+    box-shadow tokens.$marketing-fast tokens.$marketing-ease;
+}
+
+.start-link:hover {
+  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--color-accent) 90%, var(--color-accent-strong));
+  box-shadow: var(--shadow-soft);
+}
+
+.mobile-start {
+  display: none;
+}
+
 .login-link {
   font-size: 0.84rem;
   font-weight: var(--font-weight-medium);
@@ -181,6 +212,12 @@
     display: none;
   }
 
+  .mobile-start {
+    display: inline-flex;
+    min-height: 38px;
+    padding: 0 0.8rem;
+  }
+
   .mobile-trigger {
     display: inline-flex;
   }
@@ -194,6 +231,10 @@
 @media (max-width: 680px) {
   .nav-inner {
     width: min(100% - 1.5rem, tokens.$marketing-container);
+  }
+
+  .mobile-start {
+    font-size: 0.8rem;
   }
 
   .brand-copy small {

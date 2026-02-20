@@ -2,8 +2,6 @@ import { NgClass, NgFor, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-import { LandingButtonComponent } from '../../ui/landing-button/landing-button.component';
-
 interface NavLink {
   id: string;
   label: string;
@@ -12,7 +10,7 @@ interface NavLink {
 @Component({
   selector: 'app-public-navbar',
   standalone: true,
-  imports: [NgFor, NgIf, NgClass, LandingButtonComponent, RouterLink],
+  imports: [NgFor, NgIf, NgClass, RouterLink],
   templateUrl: './public-navbar.component.html',
   styleUrl: './public-navbar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
