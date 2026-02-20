@@ -1,0 +1,84 @@
+<section class="dashboard-page" [attr.data-theme]="theme()">
+  <header class="dashboard-hero">
+    <div class="hero-copy">
+      <p class="eyebrow hero-reveal">Executive View</p>
+      <h1 class="hero-reveal">Enterprise Delivery Command Center</h1>
+      <p class="hero-support hero-reveal">
+        Monitor portfolio performance, team capacity, and execution risks from one premium dashboard.
+      </p>
+    </div>
+
+    <div class="hero-actions hero-reveal">
+      <button type="button" class="theme-toggle" (click)="toggleTheme()" [attr.aria-label]="themeLabel()">
+        <mat-icon>{{ themeIcon() }}</mat-icon>
+        <span>{{ themeLabel() }}</span>
+      </button>
+      <p class="refresh-copy">Last refresh: {{ lastRefresh }}</p>
+    </div>
+  </header>
+
+  <section class="kpi-grid">
+    <article #kpiCard class="kpi-card" *ngFor="let metric of kpis; trackBy: trackByKpi">
+      <div class="kpi-head">
+        <p>{{ metric.label }}</p>
+        <mat-icon>{{ metric.icon }}</mat-icon>
+      </div>
+      <h2>{{ kpiValueLabel(metric) }}</h2>
+      <p
+        class="kpi-trend"
+        [ngClass]="{ positive: metric.trendDirection === 'up', negative: metric.trendDirection === 'down' }"
+      >
+        {{ metric.trend }}
+      </p>
+    </article>
+  </section>
+
+  <section class="chart-grid">
+    <article #chartPanel class="panel chart-panel">
+      <header class="panel-head">
+        <div>
+          <p>Task Distribution</p>
+          <h3>Current Delivery Mix</h3>
+        </div>
+      </header>
+      <div class="chart-host">
+        <canvas #taskChart></canvas>
+      </div>
+    </article>
+
+    <article #chartPanel class="panel chart-panel">
+      <header class="panel-head">
+        <div>
+          <p>Project Productivity</p>
+          <h3>Squad Throughput Score</h3>
+        </div>
+      </header>
+      <div class="chart-host">
+        <canvas #productivityChart></canvas>
+      </div>
+    </article>
+  </section>
+
+  <section #chartPanel class="panel timeline-panel">
+    <header class="panel-head">
+      <div>
+        <p>Activity Timeline</p>
+        <h3>Operational Updates</h3>
+      </div>
+    </header>
+
+    <div #timelineScroller class="timeline-list">
+      <article #timelineItem class="timeline-item" *ngFor="let event of timelineEvents; trackBy: trackByTimeline">
+        <span class="timeline-dot" [attr.data-type]="event.type"></span>
+        <div class="timeline-content">
+          <div class="timeline-head">
+            <h4>{{ event.title }}</h4>
+            <time>{{ event.time }}</time>
+          </div>
+          <p>{{ event.summary }}</p>
+          <span class="timeline-owner">{{ event.owner }}</span>
+        </div>
+      </article>
+    </div>
+  </section>
+</section>

@@ -1,0 +1,29 @@
+<mat-sidenav-container class="workspace-shell">
+  <mat-sidenav
+    class="workspace-sidenav"
+    [mode]="layout.sidenavMode()"
+    [opened]="layout.sidenavOpened()"
+    [class.collapsed]="!layout.isMobile() && layout.isSidebarCollapsed()"
+  >
+    <app-sidebar
+      [collapsed]="layout.isSidebarCollapsed()"
+      [mobile]="layout.isMobile()"
+      (navigate)="onSidebarNavigate()"
+    />
+  </mat-sidenav>
+
+  <mat-sidenav-content class="workspace-main">
+    <app-navbar
+      [title]="appTitle"
+      [isMobile]="layout.isMobile()"
+      [isCollapsed]="layout.isSidebarCollapsed()"
+      (sidebarToggle)="onSidebarToggle()"
+    />
+
+    <main class="workspace-content">
+      <section class="content-host" [@routeTransition]="prepareRoute(outlet)">
+        <router-outlet #outlet="outlet"></router-outlet>
+      </section>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

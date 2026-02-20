@@ -1,0 +1,45 @@
+@use '@angular/material' as mat;
+
+$enterprise-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$azure-palette,
+    tertiary: mat.$blue-palette
+  ),
+  typography: (
+    brand-family: 'Inter, "Segoe UI", sans-serif',
+    plain-family: 'Inter, "Segoe UI", sans-serif',
+    medium-weight: 500,
+    regular-weight: 400,
+    bold-weight: 600
+  ),
+  density: (
+    scale: -1
+  )
+));
+
+@include mat.core();
+
+:root {
+  @include mat.all-component-themes($enterprise-theme);
+
+  --mdc-filled-button-container-shape: 12px;
+  --mdc-outlined-button-container-shape: 12px;
+  --mdc-elevated-card-container-shape: 16px;
+  --mdc-outlined-card-container-shape: 16px;
+}
+
+.mat-mdc-card,
+.mat-mdc-menu-panel,
+.mat-mdc-select-panel {
+  border: 1px solid var(--color-border-soft);
+  box-shadow: var(--shadow-soft);
+}
+
+.mat-mdc-form-field {
+  --mdc-outlined-text-field-container-shape: 12px;
+}
+
+.mat-mdc-chip {
+  border-radius: 999px;
+}

@@ -1,0 +1,103 @@
+<section class="auth-screen" [@authPageAnimation]>
+  <app-auth-hero-panel
+    [title]="'Turn strategy into shipped outcomes.'"
+    [subtitle]="'Run your learning and delivery operations from one premium control center inspired by modern product teams.'"
+    [highlights]="highlights"
+    [metrics]="heroMetrics"
+  />
+
+  <div class="auth-pane">
+    <article class="auth-card" [@staggerTextAnimation]>
+      <p class="eyebrow reveal-item">Sign in</p>
+      <h1 class="reveal-item">Welcome back</h1>
+      <p class="support reveal-item">
+        Continue where your team left off. Secure sign-in with session-based JWT authentication.
+      </p>
+
+      <form class="auth-form" [formGroup]="loginForm" (ngSubmit)="signIn()" novalidate>
+        <div class="field-group reveal-item">
+          <label
+            class="field-shell"
+            [class.focused]="focusedField() === 'email'"
+            [class.invalid]="hasError('email')"
+            [class.has-value]="!!loginForm.controls.email.value"
+          >
+            <input
+              type="email"
+              formControlName="email"
+              autocomplete="email"
+              placeholder=" "
+              (focus)="setFocusedField('email')"
+              (blur)="setFocusedField(null)"
+            />
+            <span class="floating-label">Work email</span>
+          </label>
+          <p class="field-error" *ngIf="hasError('email')" [@fieldErrorAnimation]>
+            {{ errorText('email') }}
+          </p>
+        </div>
+
+        <div class="field-group reveal-item">
+          <label
+            class="field-shell"
+            [class.focused]="focusedField() === 'password'"
+            [class.invalid]="hasError('password')"
+            [class.has-value]="!!loginForm.controls.password.value"
+          >
+            <input
+              type="password"
+              formControlName="password"
+              autocomplete="current-password"
+              placeholder=" "
+              (focus)="setFocusedField('password')"
+              (blur)="setFocusedField(null)"
+            />
+            <span class="floating-label">Password</span>
+          </label>
+          <p class="field-error" *ngIf="hasError('password')" [@fieldErrorAnimation]>
+            {{ errorText('password') }}
+          </p>
+        </div>
+
+        <label class="remember-row reveal-item">
+          <input type="checkbox" formControlName="rememberMe" />
+          <span>Keep me signed in for 30 days</span>
+        </label>
+
+        <p class="form-error" *ngIf="errorMessage()" [@fieldErrorAnimation]>{{ errorMessage() }}</p>
+
+        <button type="submit" class="submit-btn reveal-item" [disabled]="isSubmitting()">
+          {{ isSubmitting() ? 'Signing in...' : 'Sign in to Workspace' }}
+        </button>
+      </form>
+
+      <div class="auth-footer reveal-item">
+        <button type="button" class="ghost-btn" (click)="openDemoModal()">Demo credentials</button>
+        <p>
+          Need an account?
+          <a routerLink="/auth/register">Create one</a>
+        </p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<app-auth-modal
+  *ngIf="showDemoModal()"
+  title="Demo Access"
+  description="Use the seeded credentials below to preview the platform experience."
+  primaryActionLabel="Use demo account"
+  (closed)="closeDemoModal()"
+  (primaryAction)="fillDemoCredentials()"
+>
+  <ul class="demo-list">
+    <li>
+      <span>Email</span>
+      <strong>team&#64;enterprise.io</strong>
+    </li>
+    <li>
+      <span>Password</span>
+      <strong>workspace</strong>
+    </li>
+  </ul>
+</app-auth-modal>

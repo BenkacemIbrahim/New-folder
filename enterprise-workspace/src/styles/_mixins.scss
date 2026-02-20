@@ -1,0 +1,19 @@
+@mixin surface-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-soft);
+  background: var(--color-surface-elevated);
+  box-shadow: var(--shadow-soft);
+}
+
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 3px solid rgba(51, 92, 255, 0.35);
+    outline-offset: 2px;
+  }
+}
+
+@mixin auto-grid($minWidth: 260px) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($minWidth, 1fr));
+  gap: var(--space-4);
+}

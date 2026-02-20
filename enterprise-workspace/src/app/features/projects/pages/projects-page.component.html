@@ -1,0 +1,29 @@
+<app-page-header
+  eyebrow="Portfolio"
+  title="Projects"
+  subtitle="Portfolio-level view of schedule confidence, ownership, and delivery progress."
+/>
+
+<section class="projects-grid">
+  <mat-card *ngFor="let project of projects" class="project-card">
+    <div class="project-head">
+      <p class="project-id">{{ project.id }}</p>
+      <mat-chip>{{ project.status }}</mat-chip>
+    </div>
+
+    <h3>{{ project.name }}</h3>
+
+    <div class="meta-row">
+      <span>Owner</span>
+      <strong>{{ project.owner }}</strong>
+    </div>
+
+    <div class="meta-row">
+      <span>Due</span>
+      <strong>{{ project.dueDate }}</strong>
+    </div>
+
+    <mat-progress-bar mode="determinate" [value]="project.progress" />
+    <p class="progress-copy">{{ project.progress }}% complete</p>
+  </mat-card>
+</section>

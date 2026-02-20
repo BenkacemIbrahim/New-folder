@@ -1,0 +1,28 @@
+<aside class="workspace-sidebar" [class.collapsed]="collapsed && !mobile">
+  <div class="brand-block">
+    <div class="logo">EW</div>
+    <div class="brand-text" *ngIf="!collapsed || mobile">
+      <h1>Enterprise</h1>
+      <p>Workspace</p>
+    </div>
+  </div>
+
+  <nav class="menu-links">
+    <a
+      *ngFor="let item of navItems; trackBy: trackByRoute"
+      [routerLink]="item.route"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: item.route === '/dashboard' }"
+      (click)="navigate.emit()"
+    >
+      <mat-icon>{{ item.icon }}</mat-icon>
+      <span class="label" *ngIf="!collapsed || mobile">{{ item.label }}</span>
+      <span class="badge" *ngIf="item.badge && (!collapsed || mobile)">{{ item.badge }}</span>
+    </a>
+  </nav>
+
+  <button mat-stroked-button type="button" class="logout-btn" (click)="logout()">
+    <mat-icon>logout</mat-icon>
+    <span *ngIf="!collapsed || mobile">Logout</span>
+  </button>
+</aside>

@@ -1,0 +1,35 @@
+<mat-toolbar class="workspace-navbar">
+  <button mat-icon-button type="button" aria-label="Toggle sidebar" (click)="toggleSidebar()">
+    <mat-icon>{{ isMobile ? 'menu' : isCollapsed ? 'menu_open' : 'menu' }}</mat-icon>
+  </button>
+
+  <div class="title-block">
+    <p class="product-name">Enterprise Workspace</p>
+    <h2>{{ title }}</h2>
+  </div>
+
+  <span class="spacer"></span>
+
+  <button mat-icon-button type="button" aria-label="Search" class="icon-button">
+    <mat-icon>search</mat-icon>
+  </button>
+
+  <button mat-icon-button type="button" aria-label="Notifications" class="icon-button">
+    <mat-icon>notifications</mat-icon>
+  </button>
+
+  <button mat-button type="button" [matMenuTriggerFor]="profileMenu" class="profile-button">
+    <span class="avatar">EW</span>
+  </button>
+</mat-toolbar>
+
+<mat-menu #profileMenu="matMenu" xPosition="before">
+  <button mat-menu-item disabled>
+    <mat-icon>circle</mat-icon>
+    <span>Status: {{ statusLabel() }}</span>
+  </button>
+  <button mat-menu-item type="button" (click)="logout()">
+    <mat-icon>logout</mat-icon>
+    <span>Sign out</span>
+  </button>
+</mat-menu>

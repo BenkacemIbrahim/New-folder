@@ -1,0 +1,66 @@
+.workspace-navbar {
+  height: 72px;
+  padding: 0 var(--space-4);
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border-soft);
+  position: sticky;
+  top: 0;
+  z-index: 4;
+}
+
+.title-block {
+  margin-left: var(--space-2);
+}
+
+.product-name {
+  margin: 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.title-block h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.icon-button {
+  margin-right: var(--space-2);
+}
+
+.profile-button {
+  padding: 0;
+  min-width: auto;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: linear-gradient(160deg, var(--color-primary), var(--color-secondary));
+  box-shadow: var(--shadow-soft);
+}
+
+@media (max-width: 768px) {
+  .workspace-navbar {
+    padding: 0 var(--space-3);
+  }
+
+  .title-block h2 {
+    font-size: 0.95rem;
+  }
+}

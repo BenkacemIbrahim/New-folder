@@ -1,0 +1,25 @@
+<app-page-header
+  eyebrow="Insights"
+  title="Analytics"
+  subtitle="Operational metrics and learning outcomes mapped to weekly delivery cadence."
+/>
+
+<section class="analytics-grid">
+  <app-metric-card
+    *ngFor="let metric of metrics"
+    [label]="metric.label"
+    [value]="metric.value"
+    [trend]="metric.trend"
+    [icon]="metric.icon"
+  />
+</section>
+
+<section class="chart-panel">
+  <h3>Weekly Throughput</h3>
+  <div class="bars">
+    <div class="bar-item" *ngFor="let bar of throughput">
+      <div class="bar" [style.height.%]="bar.value"></div>
+      <p>{{ bar.label }}</p>
+    </div>
+  </div>
+</section>

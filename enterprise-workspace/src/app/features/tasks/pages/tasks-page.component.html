@@ -1,0 +1,28 @@
+<app-page-header
+  eyebrow="Execution"
+  title="Tasks"
+  subtitle="Current sprint tasks prioritized by urgency and delivery stage."
+/>
+
+<section class="task-stack">
+  <mat-card *ngFor="let task of tasks" class="task-card">
+    <div class="task-header">
+      <div>
+        <p class="task-id">{{ task.id }}</p>
+        <h3>{{ task.title }}</h3>
+      </div>
+
+      <div class="chips">
+        <mat-chip [class.priority-high]="task.priority === 'High'" [class.priority-low]="task.priority === 'Low'">
+          {{ task.priority }}
+        </mat-chip>
+        <mat-chip>{{ task.status }}</mat-chip>
+      </div>
+    </div>
+
+    <div class="task-meta">
+      <p><span>Assignee:</span> {{ task.assignee }}</p>
+      <p><span>Due:</span> {{ task.dueDate }}</p>
+    </div>
+  </mat-card>
+</section>

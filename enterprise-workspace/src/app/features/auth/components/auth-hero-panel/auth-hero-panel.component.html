@@ -1,0 +1,19 @@
+<aside class="hero-panel" [@staggerTextAnimation]>
+  <p class="eyebrow reveal-item">Enterprise Workspace</p>
+  <h1 class="reveal-item">{{ title }}</h1>
+  <p class="subtitle reveal-item">{{ subtitle }}</p>
+
+  <ul class="feature-list">
+    <li *ngFor="let highlight of highlights" class="reveal-item">
+      <span class="bullet"></span>
+      <span>{{ highlight }}</span>
+    </li>
+  </ul>
+
+  <div class="metric-grid">
+    <article class="metric-card reveal-item" *ngFor="let metric of metrics">
+      <p>{{ metric.label }}</p>
+      <h3>{{ metric.value }}</h3>
+    </article>
+  </div>
+</aside>

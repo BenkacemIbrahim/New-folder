@@ -1,0 +1,17 @@
+<div class="auth-modal-backdrop" [@modalBackdropAnimation] (click)="closeModal()">
+  <section class="auth-modal-panel" [@modalPanelAnimation] (click)="$event.stopPropagation()">
+    <button type="button" class="close-button" aria-label="Close" (click)="closeModal()">
+      <mat-icon>close</mat-icon>
+    </button>
+
+    <p class="modal-eyebrow">Enterprise Workspace</p>
+    <h2>{{ title }}</h2>
+    <p class="modal-description">{{ description }}</p>
+
+    <div class="modal-content">
+      <ng-content></ng-content>
+    </div>
+
+    <button type="button" class="primary-action" (click)="confirmAction()">{{ primaryActionLabel }}</button>
+  </section>
+</div>

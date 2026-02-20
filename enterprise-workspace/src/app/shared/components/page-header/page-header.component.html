@@ -1,0 +1,12 @@
+<header class="page-header">
+  <div class="header-copy">
+    <p class="eyebrow">{{ eyebrow }}</p>
+    <h1>{{ title }}</h1>
+    <p class="subtitle" *ngIf="subtitle">{{ subtitle }}</p>
+  </div>
+
+  <button mat-flat-button class="action-btn" *ngIf="actionLabel" (click)="action.emit()">
+    <mat-icon>{{ actionIcon }}</mat-icon>
+    {{ actionLabel }}
+  </button>
+</header>

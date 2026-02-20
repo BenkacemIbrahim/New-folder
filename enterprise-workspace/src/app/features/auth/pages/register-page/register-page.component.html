@@ -1,0 +1,168 @@
+<section class="auth-screen" [@authPageAnimation]>
+  <app-auth-hero-panel
+    [title]="'Build your enterprise workspace in one guided flow.'"
+    [subtitle]="'Provision secure teams, onboard stakeholders quickly, and centralize delivery intelligence from day one.'"
+    [highlights]="highlights"
+    [metrics]="heroMetrics"
+  />
+
+  <div class="auth-pane">
+    <article class="auth-card" [@staggerTextAnimation]>
+      <p class="eyebrow reveal-item">Register</p>
+      <h1 class="reveal-item">Create your workspace</h1>
+      <p class="support reveal-item">
+        Set up a premium SaaS workspace with secure account creation and policy-aware validation.
+      </p>
+
+      <form class="auth-form" [formGroup]="registerForm" (ngSubmit)="createAccount()" novalidate>
+        <div class="field-group reveal-item">
+          <label
+            class="field-shell"
+            [class.focused]="focusedField() === 'fullName'"
+            [class.invalid]="hasError('fullName')"
+            [class.has-value]="!!registerForm.controls.fullName.value"
+          >
+            <input
+              type="text"
+              formControlName="fullName"
+              autocomplete="name"
+              placeholder=" "
+              (focus)="setFocusedField('fullName')"
+              (blur)="setFocusedField(null)"
+            />
+            <span class="floating-label">Full name</span>
+          </label>
+          <p class="field-error" *ngIf="hasError('fullName')" [@fieldErrorAnimation]>
+            {{ errorText('fullName') }}
+          </p>
+        </div>
+
+        <div class="field-group reveal-item">
+          <label
+            class="field-shell"
+            [class.focused]="focusedField() === 'organization'"
+            [class.invalid]="hasError('organization')"
+            [class.has-value]="!!registerForm.controls.organization.value"
+          >
+            <input
+              type="text"
+              formControlName="organization"
+              autocomplete="organization"
+              placeholder=" "
+              (focus)="setFocusedField('organization')"
+              (blur)="setFocusedField(null)"
+            />
+            <span class="floating-label">Organization</span>
+          </label>
+          <p class="field-error" *ngIf="hasError('organization')" [@fieldErrorAnimation]>
+            {{ errorText('organization') }}
+          </p>
+        </div>
+
+        <div class="field-group reveal-item">
+          <label
+            class="field-shell"
+            [class.focused]="focusedField() === 'email'"
+            [class.invalid]="hasError('email')"
+            [class.has-value]="!!registerForm.controls.email.value"
+          >
+            <input
+              type="email"
+              formControlName="email"
+              autocomplete="email"
+              placeholder=" "
+              (focus)="setFocusedField('email')"
+              (blur)="setFocusedField(null)"
+            />
+            <span class="floating-label">Business email</span>
+          </label>
+          <p class="field-error" *ngIf="hasError('email')" [@fieldErrorAnimation]>
+            {{ errorText('email') }}
+          </p>
+        </div>
+
+        <div class="field-group reveal-item">
+          <label
+            class="field-shell"
+            [class.focused]="focusedField() === 'password'"
+            [class.invalid]="hasError('password')"
+            [class.has-value]="!!registerForm.controls.password.value"
+          >
+            <input
+              type="password"
+              formControlName="password"
+              autocomplete="new-password"
+              placeholder=" "
+              (focus)="setFocusedField('password')"
+              (blur)="setFocusedField(null)"
+            />
+            <span class="floating-label">Create password</span>
+          </label>
+          <p class="field-error" *ngIf="hasError('password')" [@fieldErrorAnimation]>
+            {{ errorText('password') }}
+          </p>
+        </div>
+
+        <div class="field-group reveal-item">
+          <label
+            class="field-shell"
+            [class.focused]="focusedField() === 'confirmPassword'"
+            [class.invalid]="hasError('confirmPassword') || hasPasswordMismatch()"
+            [class.has-value]="!!registerForm.controls.confirmPassword.value"
+          >
+            <input
+              type="password"
+              formControlName="confirmPassword"
+              autocomplete="new-password"
+              placeholder=" "
+              (focus)="setFocusedField('confirmPassword')"
+              (blur)="setFocusedField(null)"
+            />
+            <span class="floating-label">Confirm password</span>
+          </label>
+          <p
+            class="field-error"
+            *ngIf="hasError('confirmPassword') || hasPasswordMismatch()"
+            [@fieldErrorAnimation]
+          >
+            {{ hasPasswordMismatch() ? 'Passwords must match.' : errorText('confirmPassword') }}
+          </p>
+        </div>
+
+        <label class="terms-row reveal-item">
+          <input type="checkbox" formControlName="acceptTerms" />
+          <span>I agree to the Terms of Service and Privacy Policy.</span>
+        </label>
+        <p class="field-error" *ngIf="hasTermsError()" [@fieldErrorAnimation]>
+          You must accept the terms to continue.
+        </p>
+
+        <p class="form-error" *ngIf="errorMessage()" [@fieldErrorAnimation]>{{ errorMessage() }}</p>
+
+        <button type="submit" class="submit-btn reveal-item" [disabled]="isSubmitting()">
+          {{ isSubmitting() ? 'Provisioning workspace...' : 'Create workspace' }}
+        </button>
+      </form>
+
+      <div class="auth-footer reveal-item">
+        <p>
+          Already have access?
+          <a routerLink="/auth/login">Sign in</a>
+        </p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<app-auth-modal
+  *ngIf="showSuccessModal()"
+  title="Workspace Ready"
+  description="Your account was provisioned successfully. Continue to your dashboard to start managing projects and tasks."
+  primaryActionLabel="Enter workspace"
+  (closed)="completeRegistration()"
+  (primaryAction)="completeRegistration()"
+>
+  <p class="success-message">
+    JWT access and refresh tokens are now active, and protected routes are unlocked.
+  </p>
+</app-auth-modal>
