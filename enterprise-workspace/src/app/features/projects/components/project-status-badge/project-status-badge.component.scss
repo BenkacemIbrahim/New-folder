@@ -1,0 +1,78 @@
+@use '../../styles/projects-tokens' as tokens;
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  border-radius: 999px;
+  padding: 0.2rem 0.62rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: 1px solid transparent;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.status-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  animation: badge-pulse 2.2s ease-out infinite;
+}
+
+.status-badge.on-track {
+  color: #166534;
+  background: rgba(187, 247, 208, 0.45);
+  border-color: rgba(34, 197, 94, 0.4);
+}
+
+.status-badge.on-track .status-dot,
+.status-badge.on-track .status-dot::after {
+  background: tokens.$status-on-track;
+}
+
+.status-badge.at-risk {
+  color: #9a3412;
+  background: rgba(254, 215, 170, 0.45);
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+.status-badge.at-risk .status-dot,
+.status-badge.at-risk .status-dot::after {
+  background: tokens.$status-at-risk;
+}
+
+.status-badge.blocked {
+  color: #9f1239;
+  background: rgba(251, 207, 232, 0.45);
+  border-color: rgba(225, 29, 72, 0.42);
+}
+
+.status-badge.blocked .status-dot,
+.status-badge.blocked .status-dot::after {
+  background: tokens.$status-blocked;
+}
+
+@keyframes badge-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+
+  75% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}

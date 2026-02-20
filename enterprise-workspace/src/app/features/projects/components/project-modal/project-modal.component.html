@@ -1,0 +1,19 @@
+<div class="modal-backdrop" [@modalBackdropAnimation] (click)="close()">
+  <section class="modal-panel" [@modalPanelAnimation] (click)="$event.stopPropagation()">
+    <header class="modal-header">
+      <div>
+        <p class="eyebrow">Projects</p>
+        <h2>{{ title }}</h2>
+        <p class="subtitle" *ngIf="subtitle">{{ subtitle }}</p>
+      </div>
+
+      <button type="button" class="icon-btn" aria-label="Close" (click)="close()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </header>
+
+    <div class="modal-content">
+      <ng-content></ng-content>
+    </div>
+  </section>
+</div>
