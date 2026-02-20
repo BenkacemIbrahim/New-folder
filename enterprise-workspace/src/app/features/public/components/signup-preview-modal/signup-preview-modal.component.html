@@ -1,0 +1,29 @@
+<div class="modal-layer" *ngIf="open" @modalBackdrop (click)="closeModal()">
+  <article class="modal-card" @modalPanel (click)="$event.stopPropagation()">
+    <button class="close-btn" type="button" aria-label="Close signup preview" (click)="closeModal()">
+      x
+    </button>
+
+    <p class="eyebrow">Signup Preview</p>
+    <h3>Launch your workspace in minutes.</h3>
+    <p class="copy">
+      Start with team onboarding, configure project workflows, and track delivery outcomes with zero setup friction.
+    </p>
+
+    <ul>
+      <li>Invite unlimited collaborators</li>
+      <li>Provision role-based access controls</li>
+      <li>Activate analytics and Kanban in one click</li>
+    </ul>
+
+    <div class="actions">
+      <app-landing-button variant="primary" routerLink="/auth/register" (pressed)="closeModal()">
+        Continue to Signup
+      </app-landing-button>
+      <app-landing-button variant="ghost" routerLink="/auth/login" (pressed)="closeModal()">
+        I already have an account
+      </app-landing-button>
+    </div>
+  </article>
+</div>
+

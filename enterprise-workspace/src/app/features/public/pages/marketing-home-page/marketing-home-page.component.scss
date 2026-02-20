@@ -1,0 +1,31 @@
+@use '../../styles/public-mixins' as mixins;
+@use '../../styles/public-tokens' as tokens;
+
+:host {
+  display: block;
+}
+
+.marketing-page {
+  background:
+    radial-gradient(circle at 8% 2%, rgba(191, 219, 254, 0.46), transparent 36%),
+    radial-gradient(circle at 93% 0%, rgba(186, 230, 253, 0.36), transparent 32%),
+    #f4f7fc;
+  color: #0f172a;
+}
+
+main {
+  position: relative;
+}
+
+#hero {
+  @include mixins.marketing-container;
+  scroll-margin-top: tokens.$marketing-nav-height;
+  min-height: calc(100dvh - tokens.$marketing-nav-height);
+}
+
+@media (max-width: 1024px) {
+  #hero {
+    min-height: auto;
+  }
+}
+
