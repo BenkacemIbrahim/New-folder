@@ -1,4 +1,4 @@
-import { DatePipe, NgClass, NgFor, NgIf, NgSwitch, NgSwitchCase } from '@angular/common';
+import { DatePipe, NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, DestroyRef, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -26,8 +26,6 @@ type AutosaveState = 'idle' | 'saving' | 'saved';
     NgIf,
     NgFor,
     NgClass,
-    NgSwitch,
-    NgSwitchCase,
     RouterLink,
     DatePipe,
     ReactiveFormsModule,

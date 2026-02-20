@@ -47,11 +47,24 @@ export const routes: Routes = [
       },
       {
         path: 'projects',
-        loadComponent: () =>
-          import('./features/projects/pages/projects-page.component').then(
-            (m) => m.ProjectsPageComponent
-          ),
-        data: { animation: 'projects' }
+        children: [
+          {
+            path: '',
+            loadComponent: () =>
+              import('./features/projects/pages/projects-list-page/projects-list-page.component').then(
+                (m) => m.ProjectsListPageComponent
+              ),
+            data: { animation: 'projects-list' }
+          },
+          {
+            path: ':projectId',
+            loadComponent: () =>
+              import('./features/projects/pages/project-details-page/project-details-page.component').then(
+                (m) => m.ProjectDetailsPageComponent
+              ),
+            data: { animation: 'projects-details' }
+          }
+        ]
       },
       {
         path: 'tasks',
