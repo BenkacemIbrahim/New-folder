@@ -1,0 +1,14 @@
+$marketing-nav-height: 76px;
+$marketing-container: min(1180px, calc(100% - 3rem));
+$marketing-section-gap: clamp(4.5rem, 8vw, 7rem);
+$marketing-card-radius: 20px;
+$marketing-card-radius-sm: 14px;
+
+$marketing-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+$marketing-fast: 160ms;
+$marketing-base: 260ms;
+$marketing-slow: 360ms;
+
+$marketing-shadow-soft: 0 16px 34px rgba(15, 23, 42, 0.08);
+$marketing-shadow-lift: 0 26px 48px rgba(15, 23, 42, 0.16);
+
