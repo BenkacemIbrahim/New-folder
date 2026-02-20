@@ -86,10 +86,38 @@ export class MarketingHomePageComponent implements AfterViewInit, OnDestroy {
       return;
     }
 
-    section.scrollIntoView({
-      behavior: this.prefersReducedMotion ? 'auto' : 'smooth',
-      block: 'start'
-    });
+    if (this.prefersReducedMotion) {
+      section.scrollIntoView({ behavior: 'auto', block: 'start' });
+      return;
+    }
+
+    const navOffset = 82;
+    const startY = window.scrollY;
+    const targetY = section.getBoundingClientRect().top + startY - navOffset;
+    const distance = targetY - startY;
+    const duration = 620;
+    let startTime: number | null = null;
+
+    const easeInOut = (progress: number): number =>
+      progress < 0.5
+        ? 4 * progress * progress * progress
+        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+    const animate = (timestamp: number): void => {
+      if (startTime === null) {
+        startTime = timestamp;
+      }
+
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      window.scrollTo({ top: startY + distance * easeInOut(progress) });
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+
+    requestAnimationFrame(animate);
   }
 
   protected openPreviewModal(): void {
