@@ -1,11 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-
-import { LandingButtonComponent } from '../../ui/landing-button/landing-button.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cta-section',
   standalone: true,
-  imports: [LandingButtonComponent],
+  imports: [RouterLink],
   templateUrl: './cta-section.component.html',
   styleUrl: './cta-section.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

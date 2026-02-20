@@ -41,17 +41,6 @@ export class LoginPageComponent {
   protected readonly errorMessage = signal<string | null>(null);
   protected readonly showDemoModal = signal(false);
 
-  protected readonly highlights = [
-    'Authenticate teams with enterprise-ready controls and audit visibility.',
-    'Coordinate delivery across programs, projects, and sprint workstreams.',
-    'Monitor adoption and completion outcomes from a unified dashboard.'
-  ];
-
-  protected readonly heroMetrics = [
-    { label: 'Teams onboarded', value: '890+' },
-    { label: 'Weekly sessions', value: '164k' }
-  ];
-
   protected signIn(): void {
     this.submitted.set(true);
     this.errorMessage.set(null);

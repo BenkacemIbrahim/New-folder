@@ -51,17 +51,6 @@ export class RegisterPageComponent {
   protected readonly errorMessage = signal<string | null>(null);
   protected readonly showSuccessModal = signal(false);
 
-  protected readonly highlights = [
-    'Launch enterprise-ready workspaces with secure JWT session handling.',
-    'Support onboarding with guardrails, role access, and audit-friendly state.',
-    'Move from sign-up to operational dashboard in minutes.'
-  ];
-
-  protected readonly heroMetrics = [
-    { label: 'Average setup', value: '14 minutes' },
-    { label: 'Productivity lift', value: '+21%' }
-  ];
-
   protected createAccount(): void {
     this.submitted.set(true);
     this.errorMessage.set(null);
