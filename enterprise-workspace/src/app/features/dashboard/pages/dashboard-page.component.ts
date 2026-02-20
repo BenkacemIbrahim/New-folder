@@ -336,8 +336,9 @@ export class DashboardPageComponent implements AfterViewInit, OnDestroy {
             data: this.productivityBySquad.map((point) => point.value),
             backgroundColor: themeTokens.barColor,
             hoverBackgroundColor: themeTokens.barHoverColor,
-            borderRadius: 12,
+            borderRadius: 0,
             borderSkipped: false,
+            borderWidth: 0,
             maxBarThickness: 36
           }
         ]

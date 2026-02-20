@@ -1,26 +1,41 @@
 <footer class="public-footer">
-  <div class="footer-grid">
-    <section class="brand-column">
-      <div class="brand-head">
-        <span class="brand-mark">EW</span>
-        <div>
-          <h3>Enterprise Workspace</h3>
-          <p>Designing the future of enterprise delivery systems.</p>
-        </div>
-      </div>
-
-      <div class="socials" aria-label="Social links">
-        <a href="#" aria-label="LinkedIn">in</a>
-        <a href="#" aria-label="X">x</a>
-        <a href="#" aria-label="GitHub">gh</a>
-      </div>
-    </section>
-
-    <section class="link-column" *ngFor="let group of groups">
-      <p class="title">{{ group.title }}</p>
-      <a *ngFor="let link of group.links" [href]="link.href">{{ link.label }}</a>
-    </section>
+  <div class="public-footer-wave">
+    <svg
+      viewBox="0 0 1440 120"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M0,40 C360,120 1080,0 1440,60 L1440,120 L0,120 Z"
+        style="fill: var(--color-surface);"
+      />
+    </svg>
   </div>
 
-  <p class="copyright">&copy; Enterprise Workspace. All rights reserved.</p>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <section class="brand-column">
+        <div class="brand-head">
+          <span class="brand-mark">EW</span>
+          <div>
+            <h3>Enterprise Workspace</h3>
+            <p>Designing the future of enterprise delivery systems.</p>
+          </div>
+        </div>
+
+        <div class="socials" aria-label="Social links">
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="X">x</a>
+          <a href="#" aria-label="GitHub">gh</a>
+        </div>
+      </section>
+
+      <section class="link-column" *ngFor="let group of groups">
+        <p class="title">{{ group.title }}</p>
+        <a *ngFor="let link of group.links" [href]="link.href">{{ link.label }}</a>
+      </section>
+    </div>
+
+    <p class="copyright">&copy; Enterprise Workspace. All rights reserved.</p>
+  </div>
 </footer>

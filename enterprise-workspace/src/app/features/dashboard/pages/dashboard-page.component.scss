@@ -13,9 +13,9 @@
   --trend-negative: var(--color-error);
   --timeline-line: rgba(148, 163, 184, 0.35);
 
-  padding: var(--space-5);
-  border-radius: var(--radius-xl);
-  background: var(--color-surface-elevated);
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
   color: var(--headline-color);
   transition:
     background-color var(--motion-base) var(--ease-standard),
@@ -36,7 +36,7 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: var(--space-6);
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-4);
 }
 
 .hero-copy {
@@ -174,19 +174,7 @@ h2 {
 .timeline-list {
   display: grid;
   gap: var(--space-3);
-  max-height: 420px;
-  overflow-y: auto;
-  padding-right: var(--space-2);
-  scroll-behavior: smooth;
-}
-
-.timeline-list::-webkit-scrollbar {
-  width: 10px;
-}
-
-.timeline-list::-webkit-scrollbar-thumb {
-  border-radius: 999px;
-  background: rgba(148, 163, 184, 0.4);
+  padding-right: 0;
 }
 
 .timeline-item {

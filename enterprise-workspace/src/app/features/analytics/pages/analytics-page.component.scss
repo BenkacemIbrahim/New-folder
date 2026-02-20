@@ -19,29 +19,6 @@
 
 .bars {
   min-height: 260px;
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: var(--space-4);
-  align-items: end;
-}
-
-.bar-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-2);
-}
-
-.bar {
-  width: min(56px, 100%);
-  border-radius: var(--radius-md) var(--radius-md) 0 0;
-  background: var(--color-surface-elevated);
-  box-shadow: var(--shadow-soft);
-}
-
-.bar-item p {
-  margin: 0;
-  color: var(--color-text-muted);
 }
 
 @media (max-width: 960px) {

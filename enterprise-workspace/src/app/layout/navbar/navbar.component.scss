@@ -13,15 +13,6 @@
   margin-left: var(--space-1);
 }
 
-.product-name {
-  margin: 0;
-  font-size: var(--text-caption);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-text-muted);
-  font-weight: var(--font-weight-semibold);
-}
-
 .title-block h2 {
   margin: 0;
   font-size: 1rem;
@@ -41,6 +32,12 @@
     color var(--motion-fast) var(--ease-standard);
 }
 
+.icon-button .mat-icon {
+  font-size: 1.4rem;
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
 .icon-button:hover {
   background: var(--color-surface-elevated);
   color: var(--color-text-primary);
@@ -49,20 +46,6 @@
 .profile-button {
   padding: 0;
   min-width: auto;
-}
-
-.avatar {
-  width: 34px;
-  height: 34px;
-  border-radius: var(--radius-pill);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-text-inverse);
-  font-size: 0.72rem;
-  font-weight: var(--font-weight-semibold);
-  background: var(--color-accent);
-  box-shadow: var(--shadow-soft);
 }
 
 @media (max-width: 768px) {

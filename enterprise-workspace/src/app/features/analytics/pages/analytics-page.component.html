@@ -16,9 +16,10 @@
 <section class="chart-panel">
   <h3>Weekly Throughput</h3>
   <div class="bars">
-    <div class="bar-item" *ngFor="let bar of throughput">
-      <div class="bar" [style.height.%]="bar.value"></div>
-      <p>{{ bar.label }}</p>
-    </div>
+    <canvas
+      #throughputChart
+      role="img"
+      aria-label="Bar chart showing weekly throughput"
+    ></canvas>
   </div>
 </section>
