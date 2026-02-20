@@ -6,7 +6,7 @@ Production-ready Angular workspace for enterprise operations: premium auth, anal
 
 - Standalone Angular architecture (Angular 18 compatible with 17+ patterns).
 - Strict TypeScript and feature-based routing.
-- Enterprise shell with collapsible sidebar + responsive navbar.
+- Enterprise shell with collapsible sidebar and responsive navbar.
 - Premium authentication UX (login/register, JWT flow, guards, interceptor).
 - High-end dashboard with Chart.js + GSAP + reveal interactions.
 - Projects feature with list/details/modal/forms patterns.
@@ -14,7 +14,7 @@ Production-ready Angular workspace for enterprise operations: premium auth, anal
 - Global loading overlay with fade animation.
 - Global toast notification outlet with slide animation.
 - Dedicated 404 and error pages with modern UI.
-- Route-level SEO metadata + canonical URL updates.
+- Route-level SEO metadata and canonical URL updates.
 - Accessibility baseline (skip link, focus-visible styles, reduced motion support).
 - Docker-ready production container with SPA-friendly nginx config.
 
@@ -22,42 +22,42 @@ Production-ready Angular workspace for enterprise operations: premium auth, anal
 
 ```text
 enterprise-workspace/
-├── src/
-│   ├── app/
-│   │   ├── core/
-│   │   │   ├── config/
-│   │   │   ├── guards/
-│   │   │   ├── interceptors/
-│   │   │   ├── models/
-│   │   │   └── services/
-│   │   ├── features/
-│   │   │   ├── analytics/
-│   │   │   ├── auth/
-│   │   │   ├── dashboard/
-│   │   │   ├── projects/
-│   │   │   ├── system/
-│   │   │   └── tasks/
-│   │   ├── layout/
-│   │   │   ├── navbar/
-│   │   │   ├── shell/
-│   │   │   └── sidebar/
-│   │   ├── shared/
-│   │   │   ├── animations/
-│   │   │   ├── components/
-│   │   │   └── ui/
-│   │   ├── app.config.ts
-│   │   └── app.routes.ts
-│   ├── styles/
-│   │   ├── _material-theme.scss
-│   │   ├── _mixins.scss
-│   │   ├── _spacing.scss
-│   │   ├── _typography.scss
-│   │   └── _variables.scss
-│   └── styles.scss
-├── Dockerfile
-├── nginx.conf
-├── netlify.toml
-└── vercel.json
+|-- src/
+|   |-- app/
+|   |   |-- core/
+|   |   |   |-- config/
+|   |   |   |-- guards/
+|   |   |   |-- interceptors/
+|   |   |   |-- models/
+|   |   |   `-- services/
+|   |   |-- features/
+|   |   |   |-- analytics/
+|   |   |   |-- auth/
+|   |   |   |-- dashboard/
+|   |   |   |-- projects/
+|   |   |   |-- system/
+|   |   |   `-- tasks/
+|   |   |-- layout/
+|   |   |   |-- navbar/
+|   |   |   |-- shell/
+|   |   |   `-- sidebar/
+|   |   |-- shared/
+|   |   |   |-- animations/
+|   |   |   |-- components/
+|   |   |   `-- ui/
+|   |   |-- app.config.ts
+|   |   `-- app.routes.ts
+|   |-- styles/
+|   |   |-- _material-theme.scss
+|   |   |-- _mixins.scss
+|   |   |-- _spacing.scss
+|   |   |-- _typography.scss
+|   |   `-- _variables.scss
+|   `-- styles.scss
+|-- Dockerfile
+|-- nginx.conf
+|-- netlify.toml
+`-- vercel.json
 ```
 
 ## UI/UX Philosophy
@@ -127,7 +127,7 @@ Open: `http://localhost:8080`
 2. Configure build:
    - Build command: `npm run build:prod`
    - Output directory: `dist/enterprise-workspace/browser`
-3. Keep `vercel.json` in repo root (SPA rewrite already included).
+3. Keep `vercel.json` in repo root (SPA rewrite included).
 4. Deploy.
 
 ### Netlify
@@ -141,7 +141,7 @@ Open: `http://localhost:8080`
 
 ### VPS (Ubuntu + Docker)
 
-1. Install Docker + Docker Compose.
+1. Install Docker and Docker Compose.
 2. Clone repository and run:
    - `docker build -t enterprise-workspace:latest .`
    - `docker run -d -p 80:80 --restart unless-stopped enterprise-workspace:latest`
