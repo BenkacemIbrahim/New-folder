@@ -34,33 +34,22 @@
   background: none;
   display: inline-flex;
   align-items: center;
-  gap: var(--space-1);
+  justify-content: flex-start;
+  width: 196px;
+  max-width: min(32vw, 196px);
+  height: 56px;
+  overflow: hidden;
   cursor: pointer;
 }
 
 .brand-mark {
-  width: 34px;
-  height: 34px;
-  border-radius: var(--radius-sm);
-  display: grid;
-  place-items: center;
-  font-size: 0.74rem;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-inverse);
-  background: var(--color-accent);
-}
-
-.brand-copy {
-  display: grid;
-}
-
-.brand-copy strong {
-  font-size: 0.88rem;
-}
-
-.brand-copy small {
-  color: var(--color-text-muted);
-  font-size: 0.74rem;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  flex: 0 0 auto;
+  transform: scale(2.25);
+  transform-origin: center;
 }
 
 .desktop-nav {
@@ -233,11 +222,18 @@
     width: min(100% - 1.5rem, tokens.$marketing-container);
   }
 
+  .brand {
+    width: 168px;
+    max-width: 168px;
+    height: 48px;
+  }
+
+  .brand-mark {
+    transform: scale(2.35);
+  }
+
   .mobile-start {
     font-size: 0.8rem;
   }
 
-  .brand-copy small {
-    display: none;
-  }
 }

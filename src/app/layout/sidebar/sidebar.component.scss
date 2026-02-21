@@ -16,33 +16,20 @@
 .brand-block {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  width: 180px;
+  max-width: 100%;
+  height: 64px;
+  overflow: hidden;
   margin-bottom: var(--space-3);
 }
 
 .logo {
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-md);
-  display: grid;
-  place-content: center;
-  font-size: 0.75rem;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-inverse);
-  background: var(--color-accent);
-  box-shadow: var(--shadow-soft);
-}
-
-.brand-text h1 {
-  margin: 0;
-  font-size: 0.92rem;
-  font-weight: var(--font-weight-semibold);
-}
-
-.brand-text p {
-  margin: 0;
-  color: var(--color-text-muted);
-  font-size: var(--text-caption);
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  transform: scale(2.2);
+  transform-origin: center;
 }
 
 .menu-links {
@@ -106,6 +93,16 @@
 .workspace-sidebar.collapsed .menu-links a {
   justify-content: center;
   padding-inline: 0;
+}
+
+.workspace-sidebar.collapsed .brand-block {
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+}
+
+.workspace-sidebar.collapsed .logo {
+  transform: scale(2.6);
 }
 
 .workspace-sidebar.collapsed .logout-btn {
