@@ -1,7 +1,7 @@
 # Enterprise Workspace
 
 <p align="center">
-  <img src="public/graphics/workspace-hero-mockup.svg" alt="Enterprise Workspace logo" width="220" />
+  <img src="https://res.cloudinary.com/dhqavjbx6/image/upload/v1771695669/ChatGPT_Image_Feb_21_2026_05_40_39_PM_vbdoec.png" alt="Enterprise Workspace logo" width="220" />
 </p>
 
 Enterprise Workspace is a production-ready Angular application that combines authentication, analytics, project portfolio views, and Kanban task execution in one enterprise UI.
