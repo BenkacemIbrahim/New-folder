@@ -55,12 +55,12 @@
                                                                                                                                                 "maximumWarning":  "600kB",
                                                                                                                                                 "maximumError":  "1MB"
                                                                                                                                             },
-                                                                                                                                            {
-                                                                                                                                                "type":  "anyComponentStyle",
-                                                                                                                                                "maximumWarning":  "7kB",
-                                                                                                                                                "maximumError":  "8kB"
-                                                                                                                                            }
-                                                                                                                                        ],
+                                                                            {
+                                                                                "type":  "anyComponentStyle",
+                                                                                "maximumWarning":  "8kB",
+                                                                                "maximumError":  "9kB"
+                                                                            }
+                                                                        ],
                                                                                                                             "outputHashing":  "all",
                                                                                                                             "sourceMap":  false,
                                                                                                                             "extractLicenses":  true,

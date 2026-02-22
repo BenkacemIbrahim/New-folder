@@ -1,172 +1,112 @@
 # Enterprise Workspace
 
-Production-ready Angular workspace for enterprise operations: premium auth, analytics dashboard, Kanban tasks, and project management with smooth motion design.
+Enterprise Workspace is a production-ready Angular application that combines authentication, analytics, project portfolio views, and Kanban task execution in one enterprise UI.
 
-## Features
+## Why This Project
 
-- Standalone Angular architecture (Angular 18 compatible with 17+ patterns).
-- Strict TypeScript and feature-based routing.
-- Enterprise shell with collapsible sidebar and responsive navbar.
-- Premium authentication UX (login/register, JWT flow, guards, interceptor).
-- High-end dashboard with Chart.js + GSAP + reveal interactions.
-- Projects feature with list/details/modal/forms patterns.
-- Tasks Kanban board with polished drag/drop and side drawer details.
-- Global loading overlay with fade animation.
-- Global toast notification outlet with slide animation.
-- Dedicated 404 and error pages with modern UI.
-- Route-level SEO metadata and canonical URL updates.
-- Accessibility baseline (skip link, focus-visible styles, reduced motion support).
-- Docker-ready production container with SPA-friendly nginx config.
+Teams often split dashboards, delivery tracking, and operational task flow across multiple tools. This project demonstrates how to unify those workflows into a single frontend platform with modern UX, accessibility, and deployment readiness.
 
-## Architecture
+## Core Capabilities
 
-```text
-enterprise-workspace/
-|-- src/
-|   |-- app/
-|   |   |-- core/
-|   |   |   |-- config/
-|   |   |   |-- guards/
-|   |   |   |-- interceptors/
-|   |   |   |-- models/
-|   |   |   `-- services/
-|   |   |-- features/
-|   |   |   |-- analytics/
-|   |   |   |-- auth/
-|   |   |   |-- dashboard/
-|   |   |   |-- projects/
-|   |   |   |-- system/
-|   |   |   `-- tasks/
-|   |   |-- layout/
-|   |   |   |-- navbar/
-|   |   |   |-- shell/
-|   |   |   `-- sidebar/
-|   |   |-- shared/
-|   |   |   |-- animations/
-|   |   |   |-- components/
-|   |   |   `-- ui/
-|   |   |-- app.config.ts
-|   |   `-- app.routes.ts
-|   |-- styles/
-|   |   |-- _material-theme.scss
-|   |   |-- _mixins.scss
-|   |   |-- _spacing.scss
-|   |   |-- _typography.scss
-|   |   `-- _variables.scss
-|   `-- styles.scss
-|-- Dockerfile
-|-- nginx.conf
-|-- netlify.toml
-`-- vercel.json
-```
+- Standalone Angular architecture with feature-based routing.
+- Auth flow with guards, interceptors, JWT session handling, and graceful mock fallback.
+- Dashboard experience with KPI cards, Chart.js visualizations, and motion-driven feedback.
+- Projects workspace with list filtering, details view, modal form creation, and settings updates.
+- Tasks Kanban board with drag-and-drop and contextual side drawer details.
+- Global systems for loading state, toast notifications, SEO metadata, theming, and localization.
+- Multi-language support (`en`, `fr`, `es`, `de`, `ar`, `it`) with RTL handling.
 
-## UI/UX Philosophy
+## Tech Stack
 
-- Jira/Coursera-inspired enterprise clarity: strong hierarchy, clean spacing, reliable interaction affordances.
-- Motion as feedback, not decoration: consistent durations for route/page/state transitions.
-- Premium visual language: soft glass surfaces, restrained gradients, and professional color contrast.
-- Performance-first rendering with `OnPush`, signals, trackBy, and lazy route chunks.
+- Angular 18 (standalone APIs)
+- TypeScript (strict mode)
+- Angular Material + CDK DragDrop
+- Chart.js
+- GSAP
+- ngx-translate
+- SCSS design tokens and module-level styling
 
-## Key Technical Decisions
+## Quick Start
 
-- Feature-level lazy loading via route files (`loadChildren`) for improved initial bundle size.
-- Global platform systems in `core`:
-  - `LoadingService` + `loadingInterceptor`
-  - `ToastService` + toast outlet
-  - `SeoService` (title/meta/robots/canonical)
-  - `authInterceptor` + `errorInterceptor`
-- Router enhancements:
-  - `withViewTransitions()`
-  - `withInMemoryScrolling({ scrollPositionRestoration: 'top', anchorScrolling: 'enabled' })`
+### Prerequisites
 
-## Local Development
+- Node.js `>= 20.11.1`
+- npm `>= 10`
+
+### Install and Run
 
 ```bash
-npm install
+npm ci
 npm start
 ```
 
-## Production Build Commands
+Open `http://localhost:4200`.
 
-```bash
-# Standard build
-npm run build
+## Scripts
 
-# Production build (optimized)
-npm run build:prod
+| Script | Description |
+| --- | --- |
+| `npm start` | Start local dev server |
+| `npm run start:host` | Start dev server on `0.0.0.0:4200` |
+| `npm run build` | Create a default build |
+| `npm run build:prod` | Create an optimized production build |
+| `npm run build:stats` | Production build with stats output |
+| `npm run serve:dist` | Serve built artifacts locally |
+| `npm run test` | Run unit tests in watch mode |
+| `npm run test:ci` | Run unit tests once (headless) |
+| `npm run verify` | Run production build verification |
 
-# Production build + stats json
-npm run build:stats
-
-# Serve built artifacts locally
-npm run serve:dist
-```
-
-Build output directory:
+## Architecture Snapshot
 
 ```text
-dist/enterprise-workspace/browser
+src/app/
+|-- core/          # app-wide services, guards, interceptors, config, models
+|-- features/      # domain modules: auth, dashboard, projects, tasks, analytics, public, system
+|-- layout/        # shell, sidebar, navbar
+|-- shared/        # reusable UI components and animations
+|-- app.config.ts  # providers, router, interceptors, app initializers
+`-- app.routes.ts  # route composition and lazy feature boundaries
 ```
 
-## Docker Deployment
+Detailed docs:
 
-Build and run:
+- `docs/ARCHITECTURE.md`
+- `docs/DEVELOPMENT.md`
+- `docs/DEPLOYMENT.md`
+- `docs/API_CONTRACTS.md`
+- `docs/LINKEDIN_KIT.md`
 
-```bash
-docker build -t enterprise-workspace:latest .
-docker run -d -p 8080:80 --name enterprise-workspace enterprise-workspace:latest
-```
+## API Behavior
 
-Open: `http://localhost:8080`
+The UI targets REST endpoints under `/api/*`. If endpoints are unavailable, the app transparently falls back to local mocked responses in service layers so the full product flow remains demoable.
 
-## Deployment Guide
+## Deployment
 
-### Vercel
+This repository includes deployment-ready configuration for:
 
-1. Import repository in Vercel.
-2. Configure build:
-   - Build command: `npm run build:prod`
-   - Output directory: `dist/enterprise-workspace/browser`
-3. Keep `vercel.json` in repo root (SPA rewrite included).
-4. Deploy.
+- Docker + Nginx (`Dockerfile`, `nginx.conf`)
+- Vercel (`vercel.json`)
+- Netlify (`netlify.toml`, `public/_redirects`)
 
-### Netlify
+See `docs/DEPLOYMENT.md` for full instructions.
 
-1. Import repository in Netlify.
-2. Build settings:
-   - Build command: `npm run build:prod`
-   - Publish directory: `dist/enterprise-workspace/browser`
-3. Keep `public/_redirects` (SPA fallback) and `netlify.toml` in repo root.
-4. Deploy.
+## Repository Standards
 
-### VPS (Ubuntu + Docker)
+This repo includes baseline professional project files:
 
-1. Install Docker and Docker Compose.
-2. Clone repository and run:
-   - `docker build -t enterprise-workspace:latest .`
-   - `docker run -d -p 80:80 --restart unless-stopped enterprise-workspace:latest`
-3. Optional TLS: place behind reverse proxy (nginx/Caddy/Traefik) with HTTPS certs.
+- `LICENSE`
+- `CODE_OF_CONDUCT.md`
+- `CONTRIBUTING.md`
+- `SECURITY.md`
+- `CHANGELOG.md`
+- `.github/workflows/ci.yml`
+- `.github/ISSUE_TEMPLATE/*`
+- `.github/PULL_REQUEST_TEMPLATE.md`
 
-## Screenshot Sections
+## Screenshots
 
-Place screenshots under `docs/screenshots/` and reference them below.
+Add product screenshots to `docs/screenshots/` and update references in `docs/SCREENSHOTS.md`.
 
-### 1. Authentication (Split Layout)
+## License
 
-![Authentication](docs/screenshots/auth-login.png)
-
-### 2. Dashboard (KPI + Charts + Timeline)
-
-![Dashboard](docs/screenshots/dashboard.png)
-
-### 3. Projects (List + Details + Modal)
-
-![Projects](docs/screenshots/projects.png)
-
-### 4. Kanban Board (Drag & Drop + Drawer)
-
-![Kanban](docs/screenshots/kanban.png)
-
-### 5. Error and 404 Experience
-
-![System Pages](docs/screenshots/system-pages.png)
+Released under the MIT License. See `LICENSE`.

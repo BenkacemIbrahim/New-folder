@@ -1,17 +1,26 @@
 {
   "name": "enterprise-workspace",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Enterprise-grade Angular workspace for analytics, project operations, and Kanban execution.",
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:host": "ng serve --host 0.0.0.0 --port 4200",
     "build": "ng build",
     "build:prod": "ng build --configuration production",
     "build:stats": "ng build --configuration production --stats-json",
     "serve:dist": "npx http-server dist/enterprise-workspace/browser -p 4200 -c-1",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "test:ci": "ng test --watch=false --browsers=ChromeHeadless",
+    "verify": "npm run build:prod"
   },
   "private": true,
+  "engines": {
+    "node": ">=20.11.1",
+    "npm": ">=10"
+  },
   "dependencies": {
     "@angular/animations": "^18.2.0",
     "@angular/cdk": "^18.2.14",
