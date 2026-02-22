@@ -1,19 +1,19 @@
-<section class="dashboard-page" aria-label="Enterprise dashboard">
+<section class="dashboard-page" [attr.aria-label]="'DASHBOARD.ARIA' | translate">
   <header class="dashboard-hero">
     <div class="hero-copy">
-      <p class="eyebrow hero-reveal">Overview</p>
-      <h1 class="hero-reveal">Dashboard</h1>
+      <p class="eyebrow hero-reveal">{{ 'DASHBOARD.EYEBROW' | translate }}</p>
+      <h1 class="hero-reveal">{{ 'DASHBOARD.TITLE' | translate }}</h1>
     </div>
 
     <div class="hero-actions hero-reveal">
-      <p class="refresh-copy">Last refresh: {{ lastRefresh }}</p>
+      <p class="refresh-copy">{{ 'DASHBOARD.LAST_REFRESH' | translate: { minutes: refreshMinutes } }}</p>
     </div>
   </header>
 
   <section class="kpi-grid">
     <article #kpiCard class="kpi-card" *ngFor="let metric of kpis; trackBy: trackByKpi">
       <div class="kpi-head">
-        <p>{{ metric.label }}</p>
+        <p>{{ metric.labelKey | translate }}</p>
         <mat-icon>{{ metric.icon }}</mat-icon>
       </div>
       <h2>{{ kpiValueLabel(metric) }}</h2>
@@ -21,7 +21,7 @@
         class="kpi-trend"
         [ngClass]="{ positive: metric.trendDirection === 'up', negative: metric.trendDirection === 'down' }"
       >
-        {{ metric.trend }}
+        {{ metric.trendKey | translate }}
       </p>
     </article>
   </section>
@@ -30,24 +30,24 @@
     <article #chartPanel class="panel chart-panel">
       <header class="panel-head">
         <div>
-          <p>Task Distribution</p>
-          <h3>Current Delivery Mix</h3>
+          <p>{{ 'DASHBOARD.CHARTS.TASK_DISTRIBUTION.TITLE' | translate }}</p>
+          <h3>{{ 'DASHBOARD.CHARTS.TASK_DISTRIBUTION.SUBTITLE' | translate }}</h3>
         </div>
       </header>
       <div class="chart-host">
-        <canvas #taskChart role="img" aria-label="Pie chart showing task distribution"></canvas>
+        <canvas #taskChart role="img" [attr.aria-label]="'DASHBOARD.CHARTS.TASK_DISTRIBUTION.ARIA' | translate"></canvas>
       </div>
     </article>
 
     <article #chartPanel class="panel chart-panel">
       <header class="panel-head">
         <div>
-          <p>Project Productivity</p>
-          <h3>Squad Throughput Score</h3>
+          <p>{{ 'DASHBOARD.CHARTS.PRODUCTIVITY.TITLE' | translate }}</p>
+          <h3>{{ 'DASHBOARD.CHARTS.PRODUCTIVITY.SUBTITLE' | translate }}</h3>
         </div>
       </header>
       <div class="chart-host">
-        <canvas #productivityChart role="img" aria-label="Bar chart showing project productivity"></canvas>
+        <canvas #productivityChart role="img" [attr.aria-label]="'DASHBOARD.CHARTS.PRODUCTIVITY.ARIA' | translate"></canvas>
       </div>
     </article>
   </section>
@@ -55,12 +55,12 @@
   <section #chartPanel class="panel timeline-panel">
     <header class="panel-head">
       <div>
-        <p>Activity Timeline</p>
-        <h3>Operational Updates</h3>
+        <p>{{ 'DASHBOARD.TIMELINE.TITLE' | translate }}</p>
+        <h3>{{ 'DASHBOARD.TIMELINE.SUBTITLE' | translate }}</h3>
       </div>
     </header>
 
-    <div #timelineScroller class="timeline-list" role="list" aria-label="Activity timeline">
+    <div #timelineScroller class="timeline-list" role="list" [attr.aria-label]="'DASHBOARD.TIMELINE.ARIA' | translate">
       <article
         #timelineItem
         class="timeline-item"
@@ -70,11 +70,11 @@
         <span class="timeline-dot" [attr.data-type]="event.type"></span>
         <div class="timeline-content">
           <div class="timeline-head">
-            <h4>{{ event.title }}</h4>
+            <h4>{{ event.titleKey | translate }}</h4>
             <time>{{ event.time }}</time>
           </div>
-          <p>{{ event.summary }}</p>
-          <span class="timeline-owner">{{ event.owner }}</span>
+          <p>{{ event.summaryKey | translate }}</p>
+          <span class="timeline-owner">{{ 'DASHBOARD.TIMELINE.OWNER' | translate: { owner: event.owner } }}</span>
         </div>
       </article>
     </div>

@@ -1,9 +1,7 @@
-@use '../../styles/public-mixins' as mixins;
-
 .public-footer {
   position: relative;
-  margin-top: var(--space-6);
-  padding: var(--space-5) 0 var(--space-4);
+  margin-top: calc(var(--space-6) - 1rem);
+  padding: calc(var(--space-6) + 1rem) 0 var(--space-5);
   overflow: hidden;
   background: var(--color-accent);
   color: var(--color-text-inverse);
@@ -29,7 +27,8 @@
 }
 
 .footer-grid {
-  @include mixins.marketing-container;
+  width: 100%;
+  padding-inline: clamp(0.6rem, 1.6vw, 1.6rem);
   display: grid;
   grid-template-columns: minmax(240px, 1.35fr) repeat(4, minmax(120px, 1fr));
   gap: var(--space-2);
@@ -54,10 +53,34 @@
   transform-origin: center;
 }
 
-.socials {
+.footer-meta-row {
   margin-top: var(--space-2);
   display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
   gap: 0.45rem;
+}
+
+.socials {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.footer-bottom {
+  width: 100%;
+  margin-top: var(--space-3);
+  padding-inline: clamp(0.6rem, 1.6vw, 1.6rem);
+  padding-top: var(--space-2);
+  border-top: 1px solid rgba(255, 255, 255, 0.24);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.footer-language-bottom {
+  margin-inline-start: auto;
+  flex-shrink: 0;
 }
 
 .socials a {
@@ -67,17 +90,29 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.7rem;
-  font-weight: var(--font-weight-semibold);
   text-decoration: none;
   color: rgba(255, 255, 255, 0.84);
   border: 1px solid rgba(255, 255, 255, 0.35);
   background: transparent;
+  transition:
+    background-color var(--motion-fast) var(--ease-standard),
+    color var(--motion-fast) var(--ease-standard),
+    border-color var(--motion-fast) var(--ease-standard),
+    transform var(--motion-fast) var(--ease-standard);
+}
+
+.socials a svg {
+  width: 14px;
+  height: 14px;
+  display: block;
+  fill: currentColor;
 }
 
 .socials a:hover {
   background: #ffffff;
   color: var(--color-accent);
+  border-color: #ffffff;
+  transform: translateY(-1px);
 }
 
 .title {
@@ -106,10 +141,7 @@
 }
 
 .copyright {
-  @include mixins.marketing-container;
-  margin: var(--space-3) auto 0;
-  padding-top: var(--space-2);
-  border-top: 1px solid rgba(255, 255, 255, 0.24);
+  margin: 0;
   color: rgba(255, 255, 255, 0.78);
   font-size: var(--text-caption);
 }
@@ -123,5 +155,9 @@
 @media (max-width: 640px) {
   .footer-grid {
     grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-wrap: wrap;
   }
 }

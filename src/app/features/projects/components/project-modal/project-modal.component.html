@@ -2,12 +2,12 @@
   <section class="modal-panel" [@modalPanelAnimation] (click)="$event.stopPropagation()">
     <header class="modal-header">
       <div>
-        <p class="eyebrow">Projects</p>
+        <p class="eyebrow">{{ 'PROJECTS.MODAL.EYEBROW' | translate }}</p>
         <h2>{{ title }}</h2>
         <p class="subtitle" *ngIf="subtitle">{{ subtitle }}</p>
       </div>
 
-      <button type="button" class="icon-btn" aria-label="Close" (click)="close()">
+      <button type="button" class="icon-btn" [attr.aria-label]="'COMMON.ACTIONS.CLOSE' | translate" (click)="close()">
         <mat-icon>close</mat-icon>
       </button>
     </header>

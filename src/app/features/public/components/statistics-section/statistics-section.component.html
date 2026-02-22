@@ -3,6 +3,6 @@
     <p class="value">
       {{ formattedValue(stat) }}<span>{{ stat.suffix ?? '' }}</span>
     </p>
-    <p class="label">{{ stat.label }}</p>
+    <p class="label">{{ stat.labelKey | translate }}</p>
   </article>
 </section>

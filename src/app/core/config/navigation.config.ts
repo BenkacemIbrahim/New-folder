@@ -2,24 +2,24 @@ import { NavItem } from '../models/nav-item.model';
 
 export const NAV_ITEMS: NavItem[] = [
   {
-    label: 'Dashboard',
+    labelKey: 'NAVBAR.NAV_ITEMS.DASHBOARD',
     icon: 'dashboard',
     route: '/dashboard'
   },
   {
-    label: 'Projects',
+    labelKey: 'NAVBAR.NAV_ITEMS.PROJECTS',
     icon: 'workspaces',
     route: '/projects',
     badge: '12'
   },
   {
-    label: 'Tasks',
+    labelKey: 'NAVBAR.NAV_ITEMS.TASKS',
     icon: 'task_alt',
     route: '/tasks',
     badge: '8'
   },
   {
-    label: 'Analytics',
+    labelKey: 'NAVBAR.NAV_ITEMS.ANALYTICS',
     icon: 'insert_chart',
     route: '/analytics'
   }

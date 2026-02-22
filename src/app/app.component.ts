@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 import { SeoService } from './core/services/seo.service';
 import { ToastOutletComponent } from './shared/ui/toast-outlet/toast-outlet.component';
@@ -7,7 +8,7 @@ import { ToastOutletComponent } from './shared/ui/toast-outlet/toast-outlet.comp
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ToastOutletComponent],
+  imports: [RouterOutlet, ToastOutletComponent, TranslatePipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

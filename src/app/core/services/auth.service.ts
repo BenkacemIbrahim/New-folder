@@ -6,6 +6,7 @@ import { AuthResponse, AuthUser, LoginRequest, RegisterRequest } from '../models
 import { AuthApiService } from './auth-api.service';
 import { JwtService } from './jwt.service';
 import { ToastService } from './toast.service';
+import { TranslationService } from './translation.service';
 
 const USER_STORAGE_KEY = 'enterprise-workspace.user';
 
@@ -17,6 +18,7 @@ export class AuthService {
   private readonly authApiService = inject(AuthApiService);
   private readonly jwtService = inject(JwtService);
   private readonly toastService = inject(ToastService);
+  private readonly translationService = inject(TranslationService);
 
   private readonly _user = signal<AuthUser | null>(this.restoreUser());
   private readonly _isAuthenticated = signal<boolean>(this.jwtService.hasValidAccessToken());
@@ -37,7 +39,10 @@ export class AuthService {
     return this.authApiService.login(payload).pipe(
       tap((response) => {
         this.hydrateSession(response);
-        this.toastService.success('Welcome back', 'You are now signed in and ready to work.');
+        this.toastService.success(
+          this.translationService.translate('AUTH.TOAST.LOGIN_SUCCESS_TITLE'),
+          this.translationService.translate('AUTH.TOAST.LOGIN_SUCCESS_MESSAGE')
+        );
       }),
       map((response) => response.user)
     );
@@ -48,8 +53,8 @@ export class AuthService {
       tap((response) => {
         this.hydrateSession(response);
         this.toastService.success(
-          'Account created',
-          'Your workspace was provisioned successfully.'
+          this.translationService.translate('AUTH.TOAST.REGISTER_SUCCESS_TITLE'),
+          this.translationService.translate('AUTH.TOAST.REGISTER_SUCCESS_MESSAGE')
         );
       }),
       map((response) => response.user)
@@ -74,7 +79,10 @@ export class AuthService {
 
   logout(): void {
     this.clearSession({ navigate: true });
-    this.toastService.info('Session closed', 'You have been signed out of Enterprise Workspace.');
+    this.toastService.info(
+      this.translationService.translate('AUTH.TOAST.LOGOUT_TITLE'),
+      this.translationService.translate('AUTH.TOAST.LOGOUT_MESSAGE')
+    );
   }
 
   private hydrateSession(response: AuthResponse): void {

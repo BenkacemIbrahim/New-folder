@@ -1,5 +1,9 @@
-<aside class="workspace-sidebar" role="complementary" aria-label="Primary workspace navigation"
-  [class.collapsed]="collapsed && !mobile">
+<aside
+  class="workspace-sidebar"
+  role="complementary"
+  [attr.aria-label]="'NAVBAR.PRIMARY_NAV' | translate"
+  [class.collapsed]="collapsed && !mobile"
+>
   <div class="brand-block">
     <img
       class="logo"
@@ -8,12 +12,17 @@
     />
   </div>
 
-  <nav id="workspace-sidebar-nav" class="menu-links" aria-label="Workspace sections">
-    <a *ngFor="let item of navItems; trackBy: trackByRoute" [routerLink]="item.route" routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: item.route === '/dashboard' }" [attr.aria-label]="item.label"
-      (click)="navigate.emit()">
+  <nav id="workspace-sidebar-nav" class="menu-links" [attr.aria-label]="'NAVBAR.WORKSPACE_SECTIONS' | translate">
+    <a
+      *ngFor="let item of navItems; trackBy: trackByRoute"
+      [routerLink]="item.route"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: item.route === '/dashboard' }"
+      [attr.aria-label]="item.labelKey | translate"
+      (click)="navigate.emit()"
+    >
       <mat-icon>{{ item.icon }}</mat-icon>
-      <span class="label" *ngIf="!collapsed || mobile">{{ item.label }}</span>
+      <span class="label" *ngIf="!collapsed || mobile">{{ item.labelKey | translate }}</span>
       <span class="badge" *ngIf="item.badge && (!collapsed || mobile)">{{ item.badge }}</span>
     </a>
   </nav>

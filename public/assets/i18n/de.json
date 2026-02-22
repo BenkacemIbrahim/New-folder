@@ -1,0 +1,572 @@
+{
+  "COMMON": {
+    "APP_NAME": "Enterprise Workspace",
+    "SKIP_TO_MAIN": "Zum Hauptinhalt springen",
+    "LANGUAGES": {
+      "ENGLISH": "Englisch",
+      "FRENCH": "Französisch",
+      "SPANISH": "Spanisch",
+      "GERMAN": "Deutsch",
+      "ARABIC": "Arabisch",
+      "ITALIAN": "Italienisch"
+    },
+    "STATUS": {
+      "ONLINE": "Online",
+      "OFFLINE": "Offline"
+    },
+    "ACTIONS": {
+      "TOGGLE_SIDEBAR": "Seitenleiste umschalten",
+      "SEARCH": "Suchen",
+      "NOTIFICATIONS": "Benachrichtigungen",
+      "USER_MENU": "Benutzermenü",
+      "SIGN_OUT": "Abmelden",
+      "CHANGE_LANGUAGE": "Sprache ändern",
+      "SWITCH_TO_DARK": "Wechseln Sie in den Dunkelmodus",
+      "SWITCH_TO_LIGHT": "Wechseln Sie in den Lichtmodus",
+      "CLOSE": "Schließen",
+      "CANCEL": "Stornieren",
+      "RESET": "Zurücksetzen",
+      "SAVE_NOW": "Jetzt sparen",
+      "EDIT": "Bearbeiten",
+      "ARCHIVE": "Archiv",
+      "BACK_TO_PROJECTS": "Zurück zu Projekten",
+      "OPEN_MENU": "Menü öffnen",
+      "CLOSE_MENU": "Menü schließen",
+      "DISMISS_NOTIFICATION": "Benachrichtigung verwerfen"
+    }
+  },
+  "NAVBAR": {
+    "PRIMARY_NAV": "Primäre Arbeitsbereichsnavigation",
+    "WORKSPACE_SECTIONS": "Arbeitsbereichsabschnitte",
+    "SEARCH_COMING_SOON": "Suche folgt bald",
+    "STATUS_LABEL": "Status: {{status}}",
+    "SECTION_NAV": "Abschnittsnavigation",
+    "GET_STARTED": "Legen Sie los",
+    "NAV_ITEMS": {
+      "DASHBOARD": "Armaturenbrett",
+      "PROJECTS": "Projekte",
+      "TASKS": "Aufgaben",
+      "ANALYTICS": "Analytik"
+    },
+    "PUBLIC_LINKS": {
+      "OVERVIEW": "Überblick",
+      "PRODUCT": "Produkt",
+      "WORKFLOW": "Arbeitsablauf",
+      "RESULTS": "Ergebnisse",
+      "CUSTOMERS": "Kunden"
+    }
+  },
+  "FOOTER": {
+    "GROUPS": {
+      "PRODUCT": "Produkt",
+      "COMPANY": "Unternehmen",
+      "RESOURCES": "Ressourcen",
+      "LEGAL": "Legal"
+    },
+    "LINKS": {
+      "PLATFORM_OVERVIEW": "Plattformübersicht",
+      "CORE_FEATURES": "Kernfunktionen",
+      "WORKFLOW_SHOWCASE": "Workflow-Schaufenster",
+      "ABOUT": "Um",
+      "CAREERS": "Karrieren",
+      "CONTACT_SALES": "Kontaktieren Sie den Vertrieb",
+      "DOCUMENTATION": "Dokumentation",
+      "SECURITY": "Sicherheit",
+      "STATUS": "Status",
+      "TERMS": "Bedingungen",
+      "PRIVACY": "Privatsphäre",
+      "COMPLIANCE": "Einhaltung"
+    },
+    "COPYRIGHT": "© Enterprise Workspace. Alle Rechte vorbehalten."
+  },
+  "DASHBOARD": {
+    "ARIA": "Unternehmens-Dashboard",
+    "EYEBROW": "Überblick",
+    "TITLE": "Armaturenbrett",
+    "LAST_REFRESH": "Letzte Aktualisierung: vor {{minutes}} Minuten",
+    "KPIS": {
+      "ACTIVE_PROJECTS": {
+        "LABEL": "Aktive Projekte",
+        "TREND": "+8,4 % gegenüber dem Vormonat"
+      },
+      "DELIVERY_THROUGHPUT": {
+        "LABEL": "Lieferdurchsatz",
+        "TREND": "+112 geschlossene Aufgaben diese Woche"
+      },
+      "TEAM_VELOCITY": {
+        "LABEL": "Teamgeschwindigkeit",
+        "TREND": "+3,1 Sprintpunkte"
+      },
+      "DELIVERY_RISK": {
+        "LABEL": "Lieferrisikoindex",
+        "TREND": "-4 % Risikoreduzierung"
+      }
+    },
+    "CHARTS": {
+      "TASK_DISTRIBUTION": {
+        "TITLE": "Aufgabenverteilung",
+        "SUBTITLE": "Aktueller Liefermix",
+        "ARIA": "Kreisdiagramm, das die Aufgabenverteilung zeigt",
+        "IN_PROGRESS": "Im Gange",
+        "REVIEW": "Rezension",
+        "BLOCKED": "Blockiert",
+        "DONE": "Erledigt"
+      },
+      "PRODUCTIVITY": {
+        "TITLE": "Projektproduktivität",
+        "SUBTITLE": "Squad-Durchsatz-Score",
+        "ARIA": "Balkendiagramm, das die Projektproduktivität zeigt"
+      },
+      "PRODUCTIVITY_DATASET_LABEL": "Produktivitätsbewertung",
+      "PRODUCTIVITY_BY_SQUAD": {
+        "PLATFORM": "Plattform",
+        "CONTENT": "Inhalt",
+        "DATA": "Daten",
+        "GROWTH": "Wachstum",
+        "OPS": "Ops"
+      }
+    },
+    "TIMELINE": {
+      "TITLE": "Aktivitätszeitleiste",
+      "SUBTITLE": "Betriebsaktualisierungen",
+      "ARIA": "Zeitleiste der Aktivität",
+      "OWNER": "Besitzer: {{owner}}",
+      "EVENTS": {
+        "EVT_1": {
+          "TITLE": "Migrationswelle 3 abgeschlossen",
+          "SUMMARY": "Platform Squad hat 12 Dienste auf die neue Orchestrierungsebene verschoben."
+        },
+        "EVT_2": {
+          "TITLE": "Sicherheitsüberprüfung geplant",
+          "SUMMARY": "Überprüfung des Identitätsföderations-Workflows für die Governance-Sitzung am Freitag erstellt."
+        },
+        "EVT_3": {
+          "TITLE": "Revenue Analytics-Benachrichtigung",
+          "SUMMARY": "Das wöchentliche Dashboard hat eine Anomalie von >12 % im abschlussgesteuerten Upsell-Trichter festgestellt."
+        },
+        "EVT_4": {
+          "TITLE": "Meilenstein des Q2-Lernprogramms",
+          "SUMMARY": "Der Leadership Enablement Track erreichte in allen Unternehmenskohorten eine Einführung von 80 %."
+        },
+        "EVT_5": {
+          "TITLE": "Abhängigkeit behoben",
+          "SUMMARY": "Das Problem mit dem externen SSO-Anbieter wurde behoben und die blockierte Integrationsarbeit wurde wieder aufgenommen."
+        },
+        "EVT_6": {
+          "TITLE": "Portfolio-Lenkungshinweise veröffentlicht",
+          "SUMMARY": "Entscheidungszusammenfassung und Risikokontrollen werden mit Direktoren und PM-Leitern geteilt."
+        }
+      }
+    }
+  },
+  "AUTH": {
+    "LOGIN": {
+      "EYEBROW": "anmelden",
+      "TITLE": "Willkommen zurück",
+      "FIELDS": {
+        "EMAIL": "Arbeits-E-Mail",
+        "PASSWORD": "Passwort"
+      },
+      "KEEP_SIGNED_IN": "Halten Sie mich 30 Tage lang angemeldet",
+      "SUBMIT": "Melden Sie sich bei Workspace an",
+      "SUBMITTING": "Anmelden...",
+      "DEMO_BUTTON": "Demo-Zugangsdaten",
+      "NEED_ACCOUNT": "Benötigen Sie ein Konto?",
+      "CREATE_ONE": "Erstellen Sie eins",
+      "DEMO_MODAL": {
+        "TITLE": "Demo-Zugang",
+        "DESCRIPTION": "Verwenden Sie die unten aufgeführten Anmeldeinformationen, um eine Vorschau der Plattformerfahrung anzuzeigen.",
+        "PRIMARY_ACTION": "Demokonto nutzen",
+        "EMAIL": "E-Mail",
+        "PASSWORD": "Passwort"
+      },
+      "ERRORS": {
+        "AUTH_FAILED": "Die Anmeldung ist im Moment nicht möglich. Bitte versuchen Sie es erneut.",
+        "EMAIL_REQUIRED": "E-Mail ist erforderlich.",
+        "EMAIL_INVALID": "Geben Sie eine gültige geschäftliche E-Mail-Adresse ein.",
+        "PASSWORD_REQUIRED": "Passwort ist erforderlich.",
+        "PASSWORD_MIN": "Das Passwort muss mindestens 8 Zeichen lang sein.",
+        "GENERIC": "Bitte überprüfen Sie dieses Feld."
+      }
+    },
+    "REGISTER": {
+      "EYEBROW": "Registrieren",
+      "TITLE": "Erstellen Sie Ihren Arbeitsbereich",
+      "FIELDS": {
+        "FULL_NAME": "Vollständiger Name",
+        "ORGANIZATION": "Organisation",
+        "EMAIL": "Geschäftliche E-Mail",
+        "PASSWORD": "Passwort erstellen",
+        "CONFIRM_PASSWORD": "Passwort bestätigen"
+      },
+      "ACCEPT_TERMS": "Ich stimme den Nutzungsbedingungen und Datenschutzbestimmungen zu.",
+      "SUBMIT": "Arbeitsbereich erstellen",
+      "SUBMITTING": "Arbeitsbereich wird bereitgestellt...",
+      "ALREADY_HAVE_ACCESS": "Sie haben bereits Zugang?",
+      "SIGN_IN": "anmelden",
+      "SUCCESS_MODAL": {
+        "TITLE": "Bereit für den Arbeitsbereich",
+        "DESCRIPTION": "Ihr Konto wurde erfolgreich bereitgestellt. Fahren Sie mit Ihrem Dashboard fort, um mit der Verwaltung von Projekten und Aufgaben zu beginnen.",
+        "PRIMARY_ACTION": "Betreten Sie den Arbeitsbereich",
+        "NOTE": "JWT-Zugriffs- und Aktualisierungstoken sind jetzt aktiv und geschützte Routen sind entsperrt."
+      },
+      "ERRORS": {
+        "PROVISION_FAILED": "Die Kontobereitstellung ist fehlgeschlagen. Bitte versuchen Sie es in ein paar Augenblicken noch einmal.",
+        "REQUIRED": "Dieses Feld ist erforderlich.",
+        "EMAIL_INVALID": "Verwenden Sie ein gültiges geschäftliches E-Mail-Format.",
+        "PASSWORD_MIN": "Das Passwort muss mindestens 10 Zeichen lang sein.",
+        "MIN_GENERIC": "Bitte geben Sie mindestens 2 Zeichen ein.",
+        "PASSWORD_PATTERN": "Geben Sie mindestens einen Großbuchstaben und eine Zahl ein.",
+        "PASSWORD_MISMATCH": "Passwörter müssen übereinstimmen.",
+        "TERMS_REQUIRED": "Sie müssen die Bedingungen akzeptieren, um fortfahren zu können.",
+        "GENERIC": "Bitte überprüfen Sie diesen Beitrag."
+      }
+    },
+    "TOAST": {
+      "LOGIN_SUCCESS_TITLE": "Willkommen zurück",
+      "LOGIN_SUCCESS_MESSAGE": "Sie sind jetzt angemeldet und können mit der Arbeit beginnen.",
+      "REGISTER_SUCCESS_TITLE": "Konto erstellt",
+      "REGISTER_SUCCESS_MESSAGE": "Ihr Arbeitsbereich wurde erfolgreich bereitgestellt.",
+      "LOGOUT_TITLE": "Sitzung geschlossen",
+      "LOGOUT_MESSAGE": "Sie wurden von Enterprise Workspace abgemeldet."
+    }
+  },
+  "PROJECTS": {
+    "EYEBROW": "Portfolio",
+    "TITLE": "Projekte",
+    "SEARCH_PLACEHOLDER": "Suchen Sie nach Projekt, Eigentümer oder Schlüssel",
+    "DUE_DATE": "Fälligkeitsdatum",
+    "PROGRESS": "{{value}}% abgeschlossen",
+    "ACTIONS": {
+      "OPEN_FILTERS": "Filter",
+      "CLOSE_FILTERS": "Filter schließen",
+      "CREATE_PROJECT": "Projekt erstellen",
+      "CREATING": "Erstellen..."
+    },
+    "FILTERS": {
+      "ALL": "Alle"
+    },
+    "STATUS": {
+      "ON_TRACK": "Auf dem richtigen Weg",
+      "AT_RISK": "Gefährdet",
+      "BLOCKED": "Blockiert"
+    },
+    "META": {
+      "OWNER": "Eigentümer",
+      "DUE": "Fällig",
+      "TEAM": "Team",
+      "TEAM_MEMBERS": "{{count}} Mitglieder",
+      "PRODUCTIVITY": "Produktivität",
+      "PRODUCTIVITY_POINTS": "{{value}} Punkte"
+    },
+    "EMPTY_STATE": {
+      "TITLE": "Keine Projekte entsprechen Ihrem Filter",
+      "DESCRIPTION": "Versuchen Sie es mit einem anderen Status oder erweitern Sie Ihre Suche, um weitere Portfolioelemente anzuzeigen."
+    },
+    "CREATE_MODAL": {
+      "TITLE": "Neues Projekt erstellen",
+      "SUBTITLE": "Erfassen Sie jetzt die wichtigsten Details. Eine tiefergehende Konfiguration kann innerhalb der Projekteinstellungen erfolgen."
+    },
+    "MODAL": {
+      "EYEBROW": "Projekte"
+    },
+    "FIELDS": {
+      "PROJECT_NAME": "Projektname",
+      "OWNER": "Eigentümer",
+      "STATUS": "Status",
+      "DUE_DATE": "Fälligkeitsdatum",
+      "SUMMARY": "Zusammenfassung"
+    },
+    "PLACEHOLDERS": {
+      "PROJECT_NAME": "Plattformüberarbeitung",
+      "OWNER": "Priya Nair",
+      "SUMMARY": "Kurzer Executive-Überblick"
+    },
+    "FORM_ERRORS": {
+      "CREATE_FAILED": "Die Projekterstellung ist fehlgeschlagen. Bitte versuchen Sie es in einem Moment noch einmal.",
+      "REQUIRED": "Dieses Feld ist erforderlich.",
+      "SUMMARY_MIN": "Die Zusammenfassung benötigt mindestens 12 Zeichen.",
+      "SUMMARY_MAX": "Die Zusammenfassung sollte unter 180 Zeichen bleiben.",
+      "DESCRIPTION_MIN": "Die Beschreibung benötigt mindestens 20 Zeichen.",
+      "MIN_GENERIC": "Bitte geben Sie einen klareren Wert an.",
+      "MAX_GENERIC": "Dieser Wert ist zu lang.",
+      "GENERIC": "Bitte überprüfen Sie dieses Feld."
+    },
+    "DETAILS": {
+      "LOADING": "Projektdetails werden geladen...",
+      "BUDGET": "Budget",
+      "MILESTONES": "Meilensteine",
+      "TEAM_CAPACITY": "Teamkapazität",
+      "TABS": {
+        "OVERVIEW": "Überblick",
+        "TEAM": "Team",
+        "SETTINGS": "Einstellungen"
+      },
+      "STATS": {
+        "COMPLETION": "Fertigstellung",
+        "OPEN_TASKS": "Offene Aufgaben",
+        "SPRINT": "Sprint",
+        "PRODUCTIVITY": "Produktivität"
+      },
+      "SETTINGS": {
+        "TITLE": "Projekteinstellungen",
+        "SUBTITLE": "Änderungen werden während der Eingabe automatisch gespeichert.",
+        "DESCRIPTION": "Beschreibung"
+      },
+      "AUTOSAVE": {
+        "IDLE": "Leerlauf",
+        "SAVING": "Sparen...",
+        "SAVED": "Gespeichert",
+        "AT": "um {{time}}"
+      },
+      "ARCHIVE_MODAL": {
+        "TITLE": "Dieses Projekt archivieren?",
+        "SUBTITLE": "Bei der Archivierung bleibt der Verlauf erhalten, die Zustellung wird jedoch als inaktiv markiert.",
+        "DESCRIPTION": "Durch diese Aktion wird das Projekt für das Team in den schreibgeschützten Modus versetzt. Sie können es später über die Einstellungen wiederherstellen.",
+        "CONFIRM": "Archivprojekt"
+      }
+    }
+  },
+  "TASKS": {
+    "EYEBROW": "Ausführung",
+    "TITLE": "Kanban",
+    "FLOW_COUNT": "{{count}} Aufgaben im Fluss",
+    "STORY_POINTS": "{{points}} SP",
+    "COLUMNS": {
+      "TODO": {
+        "TITLE": "Zu tun",
+        "SUBTITLE": "Bereit zur Ausführung"
+      },
+      "IN_PROGRESS": {
+        "TITLE": "Im Gange",
+        "SUBTITLE": "Wird aktiv geliefert"
+      },
+      "DONE": {
+        "TITLE": "Erledigt",
+        "SUBTITLE": "Versendet und validiert"
+      }
+    },
+    "STATUS": {
+      "TODO": "Zu tun",
+      "IN_PROGRESS": "Im Gange",
+      "DONE": "Erledigt"
+    },
+    "PRIORITY": {
+      "CRITICAL": "Kritisch",
+      "HIGH": "Hoch",
+      "MEDIUM": "Medium",
+      "LOW": "Niedrig"
+    },
+    "TAGS": {
+      "SECURITY": "Sicherheit",
+      "PLATFORM": "Plattform",
+      "QUALITY": "Qualität",
+      "BILLING": "Abrechnung",
+      "RELIABILITY": "Zuverlässigkeit",
+      "ANALYTICS": "Analytik",
+      "DATA": "Daten",
+      "FRONTEND": "Frontend"
+    },
+    "ITEMS": {
+      "TASK_748": {
+        "TITLE": "Finalisieren Sie die Unternehmenszugriffsmatrix",
+        "SUMMARY": "Passen Sie die Berechtigungsbereiche für PMO, Führungskräfte und regionale Betriebsteams an."
+      },
+      "TASK_752": {
+        "TITLE": "Entwurf eines Sprint-Qualitätskontrollpunkts",
+        "SUMMARY": "Definieren Sie eine Checkliste für die Release-Bereitschaft für die Integration und die QA-Übergabe."
+      },
+      "TASK_733": {
+        "TITLE": "Implementieren Sie ein Abrechnungs-Failover-Playbook",
+        "SUMMARY": "Versand-Fallback-Workflow für Teilzahlungsereignisse und Wiederholungsorchestrierung."
+      },
+      "TASK_736": {
+        "TITLE": "Refactor Analytics-Ereignisschema",
+        "SUMMARY": "Normalisieren Sie Abschlussereignisse des Lernenden vor der Warehouse-Aufnahme."
+      },
+      "TASK_701": {
+        "TITLE": "Veröffentlichung des Navigationsleistungs-Patches",
+        "SUMMARY": "Reduzierter Routenübergangsaufwand und verbesserte Konsistenz des Shell-Renderings."
+      }
+    },
+    "DRAWER": {
+      "CLOSE": "Details schließen",
+      "SUMMARY": "Zusammenfassung",
+      "STATUS": "Status",
+      "PRIORITY": "Priorität",
+      "ASSIGNEE": "Bevollmächtigter",
+      "STORY_POINTS": "Story-Punkte",
+      "DUE_DATE": "Fälligkeitsdatum",
+      "UPDATED": "Aktualisiert",
+      "DELIVERY_TAGS": "Lieferanhänger"
+    }
+  },
+  "ANALYTICS": {
+    "EYEBROW": "Einblicke",
+    "TITLE": "Analytik",
+    "METRICS": {
+      "ADOPTION": {
+        "LABEL": "Akzeptanzrate",
+        "TREND": "+4 % QoQ"
+      },
+      "COMPLETION": {
+        "LABEL": "Abschlussrate",
+        "TREND": "+6 % QoQ"
+      },
+      "NPS": {
+        "LABEL": "NPS des Lernenden",
+        "TREND": "+3 Punkte"
+      }
+    },
+    "CHART": {
+      "TITLE": "Wöchentlicher Durchsatz",
+      "ARIA": "Balkendiagramm mit wöchentlichem Durchsatz",
+      "DATASET": "Abgeschlossene Artikel",
+      "DAYS": {
+        "MON": "Mo",
+        "TUE": "Di",
+        "WED": "Heiraten",
+        "THU": "Do",
+        "FRI": "Fr"
+      }
+    }
+  },
+  "MARKETING": {
+    "BRAND": {
+      "LOGO_ALT": "Enterprise Workspace-Logo",
+      "SOCIAL_ARIA": "Soziale Links"
+    },
+    "SECTIONS": {
+      "FEATURES": {
+        "EYEBROW": "Merkmale",
+        "TITLE": "Kerntools für Lieferteams."
+      },
+      "SHOWCASE": {
+        "EYEBROW": "Arbeitsablauf",
+        "TITLE": "Ein Workflow von der Planung bis zum Reporting."
+      },
+      "STATS": {
+        "EYEBROW": "Ergebnisse",
+        "TITLE": "Gemessene Wirkung im großen Maßstab."
+      },
+      "TESTIMONIALS": {
+        "EYEBROW": "Kunden",
+        "TITLE": "Produkt- und Betriebsteams vertrauen darauf."
+      }
+    },
+    "HERO": {
+      "TITLE": {
+        "LINE_1": "Führen Sie Projekte mit aus",
+        "LINE_2": "betriebliche Klarheit."
+      },
+      "SUPPORT": "Planen Sie Prioritäten, führen Sie die tägliche Arbeit aus und berichten Sie über Ergebnisse aus einem System.",
+      "PRIMARY_CTA": "Legen Sie los",
+      "SECONDARY_CTA": "Siehe Workflow",
+      "TRUST": {
+        "USERS": "Über 14.000 wöchentlich aktive Benutzer",
+        "DELAYS": "34 % weniger Koordinationsverzögerungen",
+        "SECURITY": "SOC-fähige Zugangskontrollen"
+      },
+      "MOCKUP": {
+        "ALT": "Enterprise Workspace Produktübersicht",
+        "REVIEW": "Wöchentlicher Rückblick",
+        "METRIC": "24 aktive Projekte / 6 gefährdet"
+      }
+    },
+    "FEATURES": {
+      "PLANNING": {
+        "TITLE": "Portfolioplanung",
+        "SUMMARY": "Erstellen Sie Initiativen, Prioritäten und Abhängigkeiten mit gemeinsamem Kontext, damit Strategie und Ausführung synchronisiert bleiben."
+      },
+      "DELIVERY": {
+        "TITLE": "Teamausführungsausschüsse",
+        "SUMMARY": "Führen Sie Sprint-Workflows mit erstklassigen Kanban-Kontrollen, betrieblichen Leitplanken und Liefertransparenz in Echtzeit aus."
+      },
+      "ANALYTICS": {
+        "TITLE": "Betriebsanalytik",
+        "SUMMARY": "Verfolgen Sie Durchsatz, Risiko und Auswirkungen in einem Dashboard, das für Produktleiter, PMOs und Führungskräfte entwickelt wurde."
+      },
+      "GOVERNANCE": {
+        "TITLE": "Unternehmensführung",
+        "SUMMARY": "Rollenbewusster Zugriff, überprüfbarer Aktivitätsverlauf und richtliniensichere Bereitstellungsworkflows für Unternehmensvertrauen."
+      },
+      "AUTOMATION": {
+        "TITLE": "Workflow-Automatisierung",
+        "SUMMARY": "Leiten Sie Arbeit automatisch weiter, lösen Sie Lebenszyklusaktualisierungen aus und vereinfachen Sie Übergaben, damit Teams mehr Zeit für die Wertschöpfung haben."
+      },
+      "SCALE": {
+        "TITLE": "Skalierbarer Arbeitsbereich",
+        "SUMMARY": "Behalten Sie von einem Team bis hin zu globalen Programmen ein konsistentes Betriebsmodell bei, ohne die Teamautonomie zu opfern."
+      }
+    },
+    "SHOWCASE": {
+      "STRATEGIC": {
+        "EYEBROW": "Strategische Sicht",
+        "TITLE": "Passen Sie die Portfolioprioritäten an.",
+        "DESCRIPTION": "Visualisieren Sie strategische Initiativen, Eigentümer und Blockierer in einem Arbeitsbereich, der für Abstimmungsbesprechungen und Ausführungsüberprüfungen konzipiert ist.",
+        "BULLETS": {
+          "ONE": "Einheitliche Roadmap + Sprint-Kontext",
+          "TWO": "Abhängigkeitszuordnung über Trupps hinweg",
+          "THREE": "Führungsgerechte Narrativ-Dashboards"
+        },
+        "METRIC": "27 % schnellere Planungszyklen"
+      },
+      "EXECUTION": {
+        "EYEBROW": "Ausführung",
+        "TITLE": "Halten Sie Ihre Teams mit dem Live-Status in Bewegung.",
+        "DESCRIPTION": "Von der Bearbeitung des Backlogs bis zur Release-Bereitschaft arbeiten Teams in einer reibungslosen Umgebung zusammen, die auf Dynamik ausgelegt ist.",
+        "BULLETS": {
+          "ONE": "Kanban-Lebenszyklus per Drag-and-Drop",
+          "TWO": "Prioritätssignale und Aktivitätszeitleiste",
+          "THREE": "Kontextschublade für schnelle Entscheidungen"
+        },
+        "METRIC": "34 % weniger Koordinationsverzögerungen"
+      },
+      "REPORTING": {
+        "EYEBROW": "Berichterstattung",
+        "TITLE": "Verwandeln Sie Aktivitäten in klare Ergebnisse.",
+        "DESCRIPTION": "Automatisierte Insight-Panels zeigen Risiko-, Geschwindigkeits- und Leistungstrends auf, sodass Betriebsabläufe und Führungskräfte auf dem Laufenden bleiben.",
+        "BULLETS": {
+          "ONE": "Animiertes KPI- und Trend-Reporting",
+          "TWO": "Gesundheitsindikatoren auf Programmebene",
+          "THREE": "Für Stakeholder geeignete Exporte und Zusammenfassungen"
+        },
+        "METRIC": "2,3-mal schnellere Stakeholder-Berichterstattung"
+      }
+    },
+    "STATS": {
+      "USERS": "Aktive wöchentliche Benutzer",
+      "THROUGHPUT": "Höherer Teamdurchsatz",
+      "SATISFACTION": "Bewertung der betrieblichen Zufriedenheit",
+      "TIME": "Wird jede Woche pro Manager gespart"
+    },
+    "TESTIMONIALS": {
+      "PREVIOUS_ARIA": "Vorheriger Erfahrungsbericht",
+      "NEXT_ARIA": "Nächstes Zeugnis",
+      "GO_TO_ARIA": "Zum Erfahrungsbericht {{index}}",
+      "ITEMS": {
+        "C1": {
+          "QUOTE": "Enterprise Workspace gab uns einen einheitlichen Betriebsrhythmus für Produkte, Daten und Abläufe. Lieferüberprüfungen konzentrieren sich jetzt auf Entscheidungen und nicht auf Statusverfolgung.",
+          "ROLE": "Vizepräsident für Lieferung",
+          "COMPANY": "Northpoint-Lerngruppe"
+        },
+        "C2": {
+          "QUOTE": "Das Produkt fühlt sich hochwertig und praktisch an. Unser PMO hat in weniger als zwei Wochen von fragmentierten Tabellenkalkulationen auf eine gemeinsame Ausführung umgestellt.",
+          "ROLE": "Leiter PMO",
+          "COMPANY": "Coursetrail Enterprise"
+        },
+        "C3": {
+          "QUOTE": "Von der Roadmap-Planung bis zur Sprint-Analyse – unser Führungsteam erhält in wenigen Minuten den vollständigen Überblick. Es hat die Art und Weise verändert, wie wir unsere vierteljährliche Strategie verfolgen.",
+          "ROLE": "Chief Product Officer",
+          "COMPANY": "Atlas Skills Network"
+        }
+      }
+    },
+    "CTA": {
+      "EYEBROW": "Legen Sie los",
+      "TITLE": "Führen Sie die Lieferung in einem Arbeitsbereich aus.",
+      "PRIMARY": "Legen Sie los",
+      "SECONDARY": "Login"
+    }
+  }
+}

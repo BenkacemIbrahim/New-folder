@@ -2,6 +2,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { TranslatePipe } from '@ngx-translate/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 import { NAV_ITEMS } from '../../core/config/navigation.config';
@@ -11,7 +12,15 @@ import { AuthService } from '../../core/services/auth.service';
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [NgFor, NgIf, RouterLink, RouterLinkActive, MatIconModule, MatButtonModule],
+  imports: [
+    NgFor,
+    NgIf,
+    RouterLink,
+    RouterLinkActive,
+    MatIconModule,
+    MatButtonModule,
+    TranslatePipe
+  ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })

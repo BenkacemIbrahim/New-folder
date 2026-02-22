@@ -1,12 +1,12 @@
 <section class="project-details-page">
   <a routerLink="/projects" class="back-link">
     <mat-icon>chevron_left</mat-icon>
-    Back to projects
+    {{ 'COMMON.ACTIONS.BACK_TO_PROJECTS' | translate }}
   </a>
 
   <section *ngIf="loading()" class="loading-shell">
     <mat-icon>hourglass_top</mat-icon>
-    <p>Loading project details...</p>
+    <p>{{ 'PROJECTS.DETAILS.LOADING' | translate }}</p>
   </section>
 
   <ng-container *ngIf="!loading() && project() as currentProject">
@@ -17,15 +17,19 @@
 
         <div class="meta-row">
           <app-project-status-badge [status]="currentProject.status" />
-          <span>Owner: {{ currentProject.owner }}</span>
-          <span>Due: {{ currentProject.dueDate | date: 'MMM d, y' }}</span>
-          <span>Budget: {{ currentProject.budget }}</span>
+          <span>{{ 'PROJECTS.META.OWNER' | translate }}: {{ currentProject.owner }}</span>
+          <span>{{ 'PROJECTS.META.DUE' | translate }}: {{ currentProject.dueDate | date: 'MMM d, y' : undefined : locale() }}</span>
+          <span>{{ 'PROJECTS.DETAILS.BUDGET' | translate }}: {{ currentProject.budget }}</span>
         </div>
       </div>
 
       <div class="header-actions">
-        <button type="button" class="secondary-btn" (click)="openArchiveModal()">Archive</button>
-        <button type="button" class="primary-btn" (click)="setActiveTab('settings')">Edit</button>
+        <button type="button" class="secondary-btn" (click)="openArchiveModal()">
+          {{ 'COMMON.ACTIONS.ARCHIVE' | translate }}
+        </button>
+        <button type="button" class="primary-btn" (click)="setActiveTab('settings')">
+          {{ 'COMMON.ACTIONS.EDIT' | translate }}
+        </button>
       </div>
     </header>
 
@@ -36,7 +40,7 @@
         [ngClass]="{ active: activeTab() === tab.key }"
         (click)="setActiveTab(tab.key)"
       >
-        {{ tab.label }}
+        {{ tab.labelKey | translate }}
       </button>
     </nav>
 
@@ -44,32 +48,32 @@
       <article class="tab-pane" *ngIf="activeTab() === 'overview'">
         <section class="stats-grid">
           <article>
-            <p>Completion</p>
+            <p>{{ 'PROJECTS.DETAILS.STATS.COMPLETION' | translate }}</p>
             <h3>{{ currentProject.completionRate }}%</h3>
           </article>
           <article>
-            <p>Open tasks</p>
+            <p>{{ 'PROJECTS.DETAILS.STATS.OPEN_TASKS' | translate }}</p>
             <h3>{{ currentProject.openTasks }}</h3>
           </article>
           <article>
-            <p>Sprint</p>
+            <p>{{ 'PROJECTS.DETAILS.STATS.SPRINT' | translate }}</p>
             <h3>{{ currentProject.sprint }}</h3>
           </article>
           <article>
-            <p>Productivity</p>
-            <h3>{{ currentProject.productivity }} pts</h3>
+            <p>{{ 'PROJECTS.DETAILS.STATS.PRODUCTIVITY' | translate }}</p>
+            <h3>{{ 'PROJECTS.META.PRODUCTIVITY_POINTS' | translate: { value: currentProject.productivity } }}</h3>
           </article>
         </section>
 
         <section class="panel">
           <header>
-            <h3>Milestones</h3>
+            <h3>{{ 'PROJECTS.DETAILS.MILESTONES' | translate }}</h3>
           </header>
 
           <article class="milestone" *ngFor="let milestone of currentProject.milestones; trackBy: trackByMilestone">
             <div>
               <h4>{{ milestone.name }}</h4>
-              <p>{{ milestone.dueDate | date: 'MMM d, y' }}</p>
+              <p>{{ milestone.dueDate | date: 'MMM d, y' : undefined : locale() }}</p>
             </div>
 
             <div class="completion-pill">{{ milestone.completion }}%</div>
@@ -80,7 +84,7 @@
       <article class="tab-pane" *ngIf="activeTab() === 'team'">
         <section class="panel team-panel">
           <header>
-            <h3>Team Capacity</h3>
+            <h3>{{ 'PROJECTS.DETAILS.TEAM_CAPACITY' | translate }}</h3>
           </header>
 
           <article class="member-row" *ngFor="let member of currentProject.teamMembers; trackBy: trackByMember">
@@ -98,69 +102,69 @@
         <section class="panel settings-panel">
           <header class="settings-head">
             <div>
-              <h3>Project Settings</h3>
-              <p>Changes are auto-saved while you type.</p>
+              <h3>{{ 'PROJECTS.DETAILS.SETTINGS.TITLE' | translate }}</h3>
+              <p>{{ 'PROJECTS.DETAILS.SETTINGS.SUBTITLE' | translate }}</p>
             </div>
 
             <p class="autosave-chip" [ngClass]="autosaveState()">
-              {{ autosaveState() === 'saving' ? 'Saving...' : autosaveState() === 'saved' ? 'Saved' : 'Idle' }}
-              <span *ngIf="lastSaved()">at {{ lastSaved() }}</span>
+              {{ autosaveStateLabelKey(autosaveState()) | translate }}
+              <span *ngIf="lastSaved()">{{ 'PROJECTS.DETAILS.AUTOSAVE.AT' | translate: { time: lastSaved() } }}</span>
             </p>
           </header>
 
           <form class="settings-form" [formGroup]="settingsForm" (ngSubmit)="saveSettingsNow()" novalidate>
             <div class="field-grid">
               <label>
-                <span>Project name</span>
+                <span>{{ 'PROJECTS.FIELDS.PROJECT_NAME' | translate }}</span>
                 <input type="text" formControlName="name" />
                 <p class="form-error" *ngIf="hasControlError('name')" [@formErrorAnimation]>
-                  {{ controlErrorText('name') }}
+                  {{ controlErrorText('name') | translate }}
                 </p>
               </label>
 
               <label>
-                <span>Owner</span>
+                <span>{{ 'PROJECTS.FIELDS.OWNER' | translate }}</span>
                 <input type="text" formControlName="owner" />
                 <p class="form-error" *ngIf="hasControlError('owner')" [@formErrorAnimation]>
-                  {{ controlErrorText('owner') }}
+                  {{ controlErrorText('owner') | translate }}
                 </p>
               </label>
 
               <label>
-                <span>Due date</span>
+                <span>{{ 'PROJECTS.FIELDS.DUE_DATE' | translate }}</span>
                 <input type="date" formControlName="dueDate" />
                 <p class="form-error" *ngIf="hasControlError('dueDate')" [@formErrorAnimation]>
-                  {{ controlErrorText('dueDate') }}
+                  {{ controlErrorText('dueDate') | translate }}
                 </p>
               </label>
 
               <label>
-                <span>Status</span>
+                <span>{{ 'PROJECTS.FIELDS.STATUS' | translate }}</span>
                 <select formControlName="status">
-                  <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+                  <option *ngFor="let status of statusOptions" [value]="status">{{ statusLabelKey(status) | translate }}</option>
                 </select>
               </label>
             </div>
 
             <label>
-              <span>Summary</span>
+              <span>{{ 'PROJECTS.FIELDS.SUMMARY' | translate }}</span>
               <textarea rows="3" formControlName="summary"></textarea>
               <p class="form-error" *ngIf="hasControlError('summary')" [@formErrorAnimation]>
-                {{ controlErrorText('summary') }}
+                {{ controlErrorText('summary') | translate }}
               </p>
             </label>
 
             <label>
-              <span>Description</span>
+              <span>{{ 'PROJECTS.DETAILS.SETTINGS.DESCRIPTION' | translate }}</span>
               <textarea rows="5" formControlName="description"></textarea>
               <p class="form-error" *ngIf="hasControlError('description')" [@formErrorAnimation]>
-                {{ controlErrorText('description') }}
+                {{ controlErrorText('description') | translate }}
               </p>
             </label>
 
             <div class="actions-row">
-              <button type="button" class="secondary-btn" (click)="resetSettings()">Reset</button>
-              <button type="submit" class="primary-btn">Save now</button>
+              <button type="button" class="secondary-btn" (click)="resetSettings()">{{ 'COMMON.ACTIONS.RESET' | translate }}</button>
+              <button type="submit" class="primary-btn">{{ 'COMMON.ACTIONS.SAVE_NOW' | translate }}</button>
             </div>
           </form>
         </section>
@@ -171,16 +175,16 @@
 
 <app-project-modal
   *ngIf="archiveModalOpen()"
-  title="Archive this project?"
-  subtitle="Archiving keeps history but marks delivery as inactive."
+  [title]="'PROJECTS.DETAILS.ARCHIVE_MODAL.TITLE' | translate"
+  [subtitle]="'PROJECTS.DETAILS.ARCHIVE_MODAL.SUBTITLE' | translate"
   (closed)="closeArchiveModal()"
 >
   <p class="archive-copy">
-    This action will move the project into read-only mode for the team. You can restore it later from settings.
+    {{ 'PROJECTS.DETAILS.ARCHIVE_MODAL.DESCRIPTION' | translate }}
   </p>
 
   <div class="actions-row">
-    <button type="button" class="secondary-btn" (click)="closeArchiveModal()">Cancel</button>
-    <button type="button" class="danger-btn" (click)="archiveProject()">Archive project</button>
+    <button type="button" class="secondary-btn" (click)="closeArchiveModal()">{{ 'COMMON.ACTIONS.CANCEL' | translate }}</button>
+    <button type="button" class="danger-btn" (click)="archiveProject()">{{ 'PROJECTS.DETAILS.ARCHIVE_MODAL.CONFIRM' | translate }}</button>
   </div>
 </app-project-modal>

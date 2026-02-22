@@ -1,15 +1,18 @@
 import { NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
+
+import { LanguageSwitcherComponent } from '../../../../shared/components/language-switcher/language-switcher.component';
 
 interface FooterLinkGroup {
-  title: string;
-  links: { label: string; href: string }[];
+  titleKey: string;
+  links: { labelKey: string; href: string }[];
 }
 
 @Component({
   selector: 'app-public-footer',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, TranslatePipe, LanguageSwitcherComponent],
   templateUrl: './public-footer.component.html',
   styleUrl: './public-footer.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -17,35 +20,35 @@ interface FooterLinkGroup {
 export class PublicFooterComponent {
   protected readonly groups: FooterLinkGroup[] = [
     {
-      title: 'Product',
+      titleKey: 'FOOTER.GROUPS.PRODUCT',
       links: [
-        { label: 'Platform Overview', href: '#hero' },
-        { label: 'Core Features', href: '#features' },
-        { label: 'Workflow Showcase', href: '#showcase' }
+        { labelKey: 'FOOTER.LINKS.PLATFORM_OVERVIEW', href: '#hero' },
+        { labelKey: 'FOOTER.LINKS.CORE_FEATURES', href: '#features' },
+        { labelKey: 'FOOTER.LINKS.WORKFLOW_SHOWCASE', href: '#showcase' }
       ]
     },
     {
-      title: 'Company',
+      titleKey: 'FOOTER.GROUPS.COMPANY',
       links: [
-        { label: 'About', href: '#' },
-        { label: 'Careers', href: '#' },
-        { label: 'Contact Sales', href: '#cta' }
+        { labelKey: 'FOOTER.LINKS.ABOUT', href: '#' },
+        { labelKey: 'FOOTER.LINKS.CAREERS', href: '#' },
+        { labelKey: 'FOOTER.LINKS.CONTACT_SALES', href: '#cta' }
       ]
     },
     {
-      title: 'Resources',
+      titleKey: 'FOOTER.GROUPS.RESOURCES',
       links: [
-        { label: 'Documentation', href: '#' },
-        { label: 'Security', href: '#' },
-        { label: 'Status', href: '#' }
+        { labelKey: 'FOOTER.LINKS.DOCUMENTATION', href: '#' },
+        { labelKey: 'FOOTER.LINKS.SECURITY', href: '#' },
+        { labelKey: 'FOOTER.LINKS.STATUS', href: '#' }
       ]
     },
     {
-      title: 'Legal',
+      titleKey: 'FOOTER.GROUPS.LEGAL',
       links: [
-        { label: 'Terms', href: '#' },
-        { label: 'Privacy', href: '#' },
-        { label: 'Compliance', href: '#' }
+        { labelKey: 'FOOTER.LINKS.TERMS', href: '#' },
+        { labelKey: 'FOOTER.LINKS.PRIVACY', href: '#' },
+        { labelKey: 'FOOTER.LINKS.COMPLIANCE', href: '#' }
       ]
     }
   ];

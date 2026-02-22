@@ -1,6 +1,6 @@
 .toast-region {
   position: fixed;
-  right: 1rem;
+  inset-inline-end: 1rem;
   top: 5.4rem;
   z-index: 980;
   width: min(360px, calc(100vw - 2rem));

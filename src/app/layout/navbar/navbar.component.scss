@@ -10,7 +10,11 @@
 }
 
 .title-block {
-  margin-left: var(--space-1);
+  margin-inline-start: var(--space-1);
+}
+
+.title-block.hidden {
+  display: none;
 }
 
 .title-block h2 {
@@ -24,7 +28,7 @@
 }
 
 .icon-button {
-  margin-right: var(--space-1);
+  margin-inline-end: var(--space-1);
   color: var(--color-text-secondary);
   border-radius: var(--radius-md);
   transition:
@@ -48,6 +52,68 @@
   min-width: auto;
 }
 
+.language-switcher {
+  margin-inline-end: var(--space-2);
+}
+
+.theme-toggle {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  margin-inline-end: var(--space-2);
+  transition:
+    color var(--motion-fast) var(--ease-standard);
+}
+
+.theme-toggle:hover {
+  color: var(--color-text-primary);
+}
+
+.theme-toggle:focus-visible {
+  outline: none;
+  color: var(--color-accent);
+}
+
+.theme-toggle .mat-icon {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  transition:
+    opacity var(--motion-fast) var(--ease-standard),
+    transform var(--motion-fast) var(--ease-standard),
+    color var(--motion-fast) var(--ease-standard);
+}
+
+.sun-icon {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.moon-icon {
+  opacity: 0;
+  transform: scale(0.8) rotate(-30deg);
+}
+
+.theme-toggle.dark .sun-icon {
+  opacity: 0;
+  transform: scale(0.8) rotate(30deg);
+}
+
+.theme-toggle.dark .moon-icon {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
 @media (max-width: 768px) {
   .workspace-navbar {
     padding: 0 var(--space-2);
@@ -55,5 +121,13 @@
 
   .title-block h2 {
     font-size: 0.95rem;
+  }
+
+  .language-switcher {
+    margin-inline-end: var(--space-1);
+  }
+
+  .theme-toggle {
+    margin-inline-end: var(--space-1);
   }
 }

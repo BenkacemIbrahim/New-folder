@@ -1,6 +1,6 @@
 @use '@angular/material' as mat;
 
-$enterprise-theme: mat.define-theme((
+$enterprise-theme-light: mat.define-theme((
   color: (
     theme-type: light,
     primary: mat.$blue-palette,
@@ -18,10 +18,18 @@ $enterprise-theme: mat.define-theme((
   )
 ));
 
+$enterprise-theme-dark: mat.define-theme((
+  color: (
+    theme-type: dark,
+    primary: mat.$blue-palette,
+    tertiary: mat.$blue-palette
+  )
+));
+
 @include mat.core();
 
 :root {
-  @include mat.all-component-themes($enterprise-theme);
+  @include mat.all-component-themes($enterprise-theme-light);
 
   --mdc-filled-button-container-shape: var(--radius-md);
   --mdc-outlined-button-container-shape: var(--radius-md);
@@ -29,11 +37,18 @@ $enterprise-theme: mat.define-theme((
   --mdc-outlined-card-container-shape: var(--radius-lg);
 }
 
+[data-theme='dark'] {
+  @include mat.all-component-colors($enterprise-theme-dark);
+}
+
 .mat-mdc-card,
 .mat-mdc-menu-panel,
-.mat-mdc-select-panel {
+.mat-mdc-select-panel,
+.mat-mdc-dialog-surface {
   border: 1px solid var(--color-border-soft);
   box-shadow: var(--shadow-soft);
+  background: var(--color-surface-elevated);
+  color: var(--color-text-primary);
 }
 
 .mat-mdc-form-field {
@@ -42,4 +57,9 @@ $enterprise-theme: mat.define-theme((
 
 .mat-mdc-chip {
   border-radius: 999px;
+}
+
+.mat-mdc-menu-item,
+.mat-mdc-option {
+  color: var(--color-text-primary);
 }

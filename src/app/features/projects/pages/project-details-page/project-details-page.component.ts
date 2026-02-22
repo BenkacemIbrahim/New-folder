@@ -3,6 +3,7 @@ import { Component, DestroyRef, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { TranslatePipe } from '@ngx-translate/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { debounceTime, filter, finalize, map, of, switchMap } from 'rxjs';
 
@@ -15,6 +16,7 @@ import {
   ProjectStatus
 } from '../../models/project-feature.model';
 import { ProjectsApiService } from '../../services/projects-api.service';
+import { TranslationService } from '../../../../core/services/translation.service';
 
 type DetailsTab = 'overview' | 'team' | 'settings';
 type AutosaveState = 'idle' | 'saving' | 'saved';
@@ -30,6 +32,7 @@ type AutosaveState = 'idle' | 'saving' | 'saved';
     DatePipe,
     ReactiveFormsModule,
     MatIconModule,
+    TranslatePipe,
     ProjectStatusBadgeComponent,
     ProjectModalComponent
   ],
@@ -42,19 +45,21 @@ export class ProjectDetailsPageComponent {
   private readonly projectsApiService = inject(ProjectsApiService);
   private readonly formBuilder = inject(FormBuilder);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly translationService = inject(TranslationService);
 
   protected readonly loading = signal(true);
   protected readonly project = signal<ProjectDetail | null>(null);
+  protected readonly locale = this.translationService.currentLocale;
   protected readonly activeTab = signal<DetailsTab>('overview');
   protected readonly autosaveState = signal<AutosaveState>('idle');
   protected readonly lastSaved = signal('');
   protected readonly submitted = signal(false);
   protected readonly archiveModalOpen = signal(false);
 
-  protected readonly tabs: { key: DetailsTab; label: string }[] = [
-    { key: 'overview', label: 'Overview' },
-    { key: 'team', label: 'Team' },
-    { key: 'settings', label: 'Settings' }
+  protected readonly tabs: { key: DetailsTab; labelKey: string }[] = [
+    { key: 'overview', labelKey: 'PROJECTS.DETAILS.TABS.OVERVIEW' },
+    { key: 'team', labelKey: 'PROJECTS.DETAILS.TABS.TEAM' },
+    { key: 'settings', labelKey: 'PROJECTS.DETAILS.TABS.SETTINGS' }
   ];
 
   protected readonly statusOptions: ProjectStatus[] = ['On Track', 'At Risk', 'Blocked'];
@@ -104,20 +109,20 @@ export class ProjectDetailsPageComponent {
     const control = this.settingsForm.controls[controlName];
 
     if (control.hasError('required')) {
-      return 'This field is required.';
+      return 'PROJECTS.FORM_ERRORS.REQUIRED';
     }
 
     if (control.hasError('minlength')) {
       return controlName === 'description'
-        ? 'Description needs at least 20 characters.'
-        : 'Please provide a more descriptive value.';
+        ? 'PROJECTS.FORM_ERRORS.DESCRIPTION_MIN'
+        : 'PROJECTS.FORM_ERRORS.MIN_GENERIC';
     }
 
     if (control.hasError('maxlength')) {
-      return 'This value is too long.';
+      return 'PROJECTS.FORM_ERRORS.MAX_GENERIC';
     }
 
-    return 'Please review this field.';
+    return 'PROJECTS.FORM_ERRORS.GENERIC';
   }
 
   protected saveSettingsNow(): void {
@@ -163,6 +168,28 @@ export class ProjectDetailsPageComponent {
 
   protected trackByMilestone(_index: number, milestone: { name: string }): string {
     return milestone.name;
+  }
+
+  protected autosaveStateLabelKey(state: AutosaveState): string {
+    switch (state) {
+      case 'saving':
+        return 'PROJECTS.DETAILS.AUTOSAVE.SAVING';
+      case 'saved':
+        return 'PROJECTS.DETAILS.AUTOSAVE.SAVED';
+      case 'idle':
+        return 'PROJECTS.DETAILS.AUTOSAVE.IDLE';
+    }
+  }
+
+  protected statusLabelKey(status: ProjectStatus): string {
+    switch (status) {
+      case 'On Track':
+        return 'PROJECTS.STATUS.ON_TRACK';
+      case 'At Risk':
+        return 'PROJECTS.STATUS.AT_RISK';
+      case 'Blocked':
+        return 'PROJECTS.STATUS.BLOCKED';
+    }
   }
 
   private loadProject(): void {
@@ -250,7 +277,7 @@ export class ProjectDetailsPageComponent {
   }
 
   private formatSavedTime(savedAt: string): string {
-    return new Date(savedAt).toLocaleTimeString([], {
+    return new Date(savedAt).toLocaleTimeString(this.translationService.currentLocale(), {
       hour: '2-digit',
       minute: '2-digit'
     });

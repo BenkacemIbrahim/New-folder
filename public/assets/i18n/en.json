@@ -1,0 +1,572 @@
+{
+  "COMMON": {
+    "APP_NAME": "Enterprise Workspace",
+    "SKIP_TO_MAIN": "Skip to main content",
+    "LANGUAGES": {
+      "ENGLISH": "English",
+      "FRENCH": "French",
+      "SPANISH": "Spanish",
+      "GERMAN": "German",
+      "ARABIC": "Arabic",
+      "ITALIAN": "Italian"
+    },
+    "STATUS": {
+      "ONLINE": "Online",
+      "OFFLINE": "Offline"
+    },
+    "ACTIONS": {
+      "TOGGLE_SIDEBAR": "Toggle sidebar",
+      "SEARCH": "Search",
+      "NOTIFICATIONS": "Notifications",
+      "USER_MENU": "User menu",
+      "SIGN_OUT": "Sign out",
+      "CHANGE_LANGUAGE": "Change language",
+      "SWITCH_TO_DARK": "Switch to dark mode",
+      "SWITCH_TO_LIGHT": "Switch to light mode",
+      "CLOSE": "Close",
+      "CANCEL": "Cancel",
+      "RESET": "Reset",
+      "SAVE_NOW": "Save now",
+      "EDIT": "Edit",
+      "ARCHIVE": "Archive",
+      "BACK_TO_PROJECTS": "Back to projects",
+      "OPEN_MENU": "Open menu",
+      "CLOSE_MENU": "Close menu",
+      "DISMISS_NOTIFICATION": "Dismiss notification"
+    }
+  },
+  "NAVBAR": {
+    "PRIMARY_NAV": "Primary workspace navigation",
+    "WORKSPACE_SECTIONS": "Workspace sections",
+    "SEARCH_COMING_SOON": "Search coming soon",
+    "STATUS_LABEL": "Status: {{status}}",
+    "SECTION_NAV": "Section navigation",
+    "GET_STARTED": "Get Started",
+    "NAV_ITEMS": {
+      "DASHBOARD": "Dashboard",
+      "PROJECTS": "Projects",
+      "TASKS": "Tasks",
+      "ANALYTICS": "Analytics"
+    },
+    "PUBLIC_LINKS": {
+      "OVERVIEW": "Overview",
+      "PRODUCT": "Product",
+      "WORKFLOW": "Workflow",
+      "RESULTS": "Results",
+      "CUSTOMERS": "Customers"
+    }
+  },
+  "FOOTER": {
+    "GROUPS": {
+      "PRODUCT": "Product",
+      "COMPANY": "Company",
+      "RESOURCES": "Resources",
+      "LEGAL": "Legal"
+    },
+    "LINKS": {
+      "PLATFORM_OVERVIEW": "Platform Overview",
+      "CORE_FEATURES": "Core Features",
+      "WORKFLOW_SHOWCASE": "Workflow Showcase",
+      "ABOUT": "About",
+      "CAREERS": "Careers",
+      "CONTACT_SALES": "Contact Sales",
+      "DOCUMENTATION": "Documentation",
+      "SECURITY": "Security",
+      "STATUS": "Status",
+      "TERMS": "Terms",
+      "PRIVACY": "Privacy",
+      "COMPLIANCE": "Compliance"
+    },
+    "COPYRIGHT": "© Enterprise Workspace. All rights reserved."
+  },
+  "DASHBOARD": {
+    "ARIA": "Enterprise dashboard",
+    "EYEBROW": "Overview",
+    "TITLE": "Dashboard",
+    "LAST_REFRESH": "Last refresh: {{minutes}} min ago",
+    "KPIS": {
+      "ACTIVE_PROJECTS": {
+        "LABEL": "Active Projects",
+        "TREND": "+8.4% vs last month"
+      },
+      "DELIVERY_THROUGHPUT": {
+        "LABEL": "Delivery Throughput",
+        "TREND": "+112 closed tasks this week"
+      },
+      "TEAM_VELOCITY": {
+        "LABEL": "Team Velocity",
+        "TREND": "+3.1 sprint points"
+      },
+      "DELIVERY_RISK": {
+        "LABEL": "Delivery Risk Index",
+        "TREND": "-4% risk reduction"
+      }
+    },
+    "CHARTS": {
+      "TASK_DISTRIBUTION": {
+        "TITLE": "Task Distribution",
+        "SUBTITLE": "Current Delivery Mix",
+        "ARIA": "Pie chart showing task distribution",
+        "IN_PROGRESS": "In Progress",
+        "REVIEW": "Review",
+        "BLOCKED": "Blocked",
+        "DONE": "Done"
+      },
+      "PRODUCTIVITY": {
+        "TITLE": "Project Productivity",
+        "SUBTITLE": "Squad Throughput Score",
+        "ARIA": "Bar chart showing project productivity"
+      },
+      "PRODUCTIVITY_DATASET_LABEL": "Productivity Score",
+      "PRODUCTIVITY_BY_SQUAD": {
+        "PLATFORM": "Platform",
+        "CONTENT": "Content",
+        "DATA": "Data",
+        "GROWTH": "Growth",
+        "OPS": "Ops"
+      }
+    },
+    "TIMELINE": {
+      "TITLE": "Activity Timeline",
+      "SUBTITLE": "Operational Updates",
+      "ARIA": "Activity timeline",
+      "OWNER": "Owner: {{owner}}",
+      "EVENTS": {
+        "EVT_1": {
+          "TITLE": "Migration Wave 3 Completed",
+          "SUMMARY": "Platform squad moved 12 services to the new orchestration layer."
+        },
+        "EVT_2": {
+          "TITLE": "Security Review Scheduled",
+          "SUMMARY": "Identity federation workflow review created for Friday governance session."
+        },
+        "EVT_3": {
+          "TITLE": "Revenue Analytics Alert",
+          "SUMMARY": "Weekly dashboard detected >12% anomaly in completion-driven upsell funnel."
+        },
+        "EVT_4": {
+          "TITLE": "Q2 Learning Program Milestone",
+          "SUMMARY": "Leadership enablement track reached 80% rollout across enterprise cohorts."
+        },
+        "EVT_5": {
+          "TITLE": "Dependency Resolved",
+          "SUMMARY": "External SSO vendor issue closed and blocked integration work resumed."
+        },
+        "EVT_6": {
+          "TITLE": "Portfolio Steering Notes Published",
+          "SUMMARY": "Decision summary and risk controls shared with directors and PM leads."
+        }
+      }
+    }
+  },
+  "AUTH": {
+    "LOGIN": {
+      "EYEBROW": "Sign in",
+      "TITLE": "Welcome back",
+      "FIELDS": {
+        "EMAIL": "Work email",
+        "PASSWORD": "Password"
+      },
+      "KEEP_SIGNED_IN": "Keep me signed in for 30 days",
+      "SUBMIT": "Sign in to Workspace",
+      "SUBMITTING": "Signing in...",
+      "DEMO_BUTTON": "Demo credentials",
+      "NEED_ACCOUNT": "Need an account?",
+      "CREATE_ONE": "Create one",
+      "DEMO_MODAL": {
+        "TITLE": "Demo Access",
+        "DESCRIPTION": "Use the seeded credentials below to preview the platform experience.",
+        "PRIMARY_ACTION": "Use demo account",
+        "EMAIL": "Email",
+        "PASSWORD": "Password"
+      },
+      "ERRORS": {
+        "AUTH_FAILED": "Unable to sign in at the moment. Please try again.",
+        "EMAIL_REQUIRED": "Email is required.",
+        "EMAIL_INVALID": "Enter a valid business email address.",
+        "PASSWORD_REQUIRED": "Password is required.",
+        "PASSWORD_MIN": "Password must be at least 8 characters.",
+        "GENERIC": "Please review this field."
+      }
+    },
+    "REGISTER": {
+      "EYEBROW": "Register",
+      "TITLE": "Create your workspace",
+      "FIELDS": {
+        "FULL_NAME": "Full name",
+        "ORGANIZATION": "Organization",
+        "EMAIL": "Business email",
+        "PASSWORD": "Create password",
+        "CONFIRM_PASSWORD": "Confirm password"
+      },
+      "ACCEPT_TERMS": "I agree to the Terms of Service and Privacy Policy.",
+      "SUBMIT": "Create workspace",
+      "SUBMITTING": "Provisioning workspace...",
+      "ALREADY_HAVE_ACCESS": "Already have access?",
+      "SIGN_IN": "Sign in",
+      "SUCCESS_MODAL": {
+        "TITLE": "Workspace Ready",
+        "DESCRIPTION": "Your account was provisioned successfully. Continue to your dashboard to start managing projects and tasks.",
+        "PRIMARY_ACTION": "Enter workspace",
+        "NOTE": "JWT access and refresh tokens are now active, and protected routes are unlocked."
+      },
+      "ERRORS": {
+        "PROVISION_FAILED": "Account provisioning failed. Please retry in a few moments.",
+        "REQUIRED": "This field is required.",
+        "EMAIL_INVALID": "Use a valid business email format.",
+        "PASSWORD_MIN": "Password must be at least 10 characters.",
+        "MIN_GENERIC": "Please enter at least 2 characters.",
+        "PASSWORD_PATTERN": "Include at least one uppercase letter and one number.",
+        "PASSWORD_MISMATCH": "Passwords must match.",
+        "TERMS_REQUIRED": "You must accept the terms to continue.",
+        "GENERIC": "Please review this input."
+      }
+    },
+    "TOAST": {
+      "LOGIN_SUCCESS_TITLE": "Welcome back",
+      "LOGIN_SUCCESS_MESSAGE": "You are now signed in and ready to work.",
+      "REGISTER_SUCCESS_TITLE": "Account created",
+      "REGISTER_SUCCESS_MESSAGE": "Your workspace was provisioned successfully.",
+      "LOGOUT_TITLE": "Session closed",
+      "LOGOUT_MESSAGE": "You have been signed out of Enterprise Workspace."
+    }
+  },
+  "PROJECTS": {
+    "EYEBROW": "Portfolio",
+    "TITLE": "Projects",
+    "SEARCH_PLACEHOLDER": "Search project, owner, or key",
+    "DUE_DATE": "Due Date",
+    "PROGRESS": "{{value}}% complete",
+    "ACTIONS": {
+      "OPEN_FILTERS": "Filter",
+      "CLOSE_FILTERS": "Close filters",
+      "CREATE_PROJECT": "Create Project",
+      "CREATING": "Creating..."
+    },
+    "FILTERS": {
+      "ALL": "All"
+    },
+    "STATUS": {
+      "ON_TRACK": "On Track",
+      "AT_RISK": "At Risk",
+      "BLOCKED": "Blocked"
+    },
+    "META": {
+      "OWNER": "Owner",
+      "DUE": "Due",
+      "TEAM": "Team",
+      "TEAM_MEMBERS": "{{count}} members",
+      "PRODUCTIVITY": "Productivity",
+      "PRODUCTIVITY_POINTS": "{{value}} pts"
+    },
+    "EMPTY_STATE": {
+      "TITLE": "No projects match your filter",
+      "DESCRIPTION": "Try another status or widen your search to view more portfolio items."
+    },
+    "CREATE_MODAL": {
+      "TITLE": "Create New Project",
+      "SUBTITLE": "Capture core details now. Deeper configuration can follow inside project settings."
+    },
+    "MODAL": {
+      "EYEBROW": "Projects"
+    },
+    "FIELDS": {
+      "PROJECT_NAME": "Project name",
+      "OWNER": "Owner",
+      "STATUS": "Status",
+      "DUE_DATE": "Due date",
+      "SUMMARY": "Summary"
+    },
+    "PLACEHOLDERS": {
+      "PROJECT_NAME": "Platform Revamp",
+      "OWNER": "Priya Nair",
+      "SUMMARY": "Short executive overview"
+    },
+    "FORM_ERRORS": {
+      "CREATE_FAILED": "Project creation failed. Please retry in a moment.",
+      "REQUIRED": "This field is required.",
+      "SUMMARY_MIN": "Summary needs at least 12 characters.",
+      "SUMMARY_MAX": "Summary should stay under 180 characters.",
+      "DESCRIPTION_MIN": "Description needs at least 20 characters.",
+      "MIN_GENERIC": "Please provide a clearer value.",
+      "MAX_GENERIC": "This value is too long.",
+      "GENERIC": "Please review this field."
+    },
+    "DETAILS": {
+      "LOADING": "Loading project details...",
+      "BUDGET": "Budget",
+      "MILESTONES": "Milestones",
+      "TEAM_CAPACITY": "Team Capacity",
+      "TABS": {
+        "OVERVIEW": "Overview",
+        "TEAM": "Team",
+        "SETTINGS": "Settings"
+      },
+      "STATS": {
+        "COMPLETION": "Completion",
+        "OPEN_TASKS": "Open tasks",
+        "SPRINT": "Sprint",
+        "PRODUCTIVITY": "Productivity"
+      },
+      "SETTINGS": {
+        "TITLE": "Project Settings",
+        "SUBTITLE": "Changes are auto-saved while you type.",
+        "DESCRIPTION": "Description"
+      },
+      "AUTOSAVE": {
+        "IDLE": "Idle",
+        "SAVING": "Saving...",
+        "SAVED": "Saved",
+        "AT": "at {{time}}"
+      },
+      "ARCHIVE_MODAL": {
+        "TITLE": "Archive this project?",
+        "SUBTITLE": "Archiving keeps history but marks delivery as inactive.",
+        "DESCRIPTION": "This action will move the project into read-only mode for the team. You can restore it later from settings.",
+        "CONFIRM": "Archive project"
+      }
+    }
+  },
+  "TASKS": {
+    "EYEBROW": "Execution",
+    "TITLE": "Kanban",
+    "FLOW_COUNT": "{{count}} tasks in flow",
+    "STORY_POINTS": "{{points}} SP",
+    "COLUMNS": {
+      "TODO": {
+        "TITLE": "To Do",
+        "SUBTITLE": "Ready for execution"
+      },
+      "IN_PROGRESS": {
+        "TITLE": "In Progress",
+        "SUBTITLE": "Actively being delivered"
+      },
+      "DONE": {
+        "TITLE": "Done",
+        "SUBTITLE": "Shipped and validated"
+      }
+    },
+    "STATUS": {
+      "TODO": "To Do",
+      "IN_PROGRESS": "In Progress",
+      "DONE": "Done"
+    },
+    "PRIORITY": {
+      "CRITICAL": "Critical",
+      "HIGH": "High",
+      "MEDIUM": "Medium",
+      "LOW": "Low"
+    },
+    "TAGS": {
+      "SECURITY": "Security",
+      "PLATFORM": "Platform",
+      "QUALITY": "Quality",
+      "BILLING": "Billing",
+      "RELIABILITY": "Reliability",
+      "ANALYTICS": "Analytics",
+      "DATA": "Data",
+      "FRONTEND": "Frontend"
+    },
+    "ITEMS": {
+      "TASK_748": {
+        "TITLE": "Finalize enterprise access matrix",
+        "SUMMARY": "Align permission scopes for PMO, leadership, and regional operations teams."
+      },
+      "TASK_752": {
+        "TITLE": "Draft sprint quality checkpoint",
+        "SUMMARY": "Define release readiness checklist for integration and QA handoff."
+      },
+      "TASK_733": {
+        "TITLE": "Implement billing failover playbook",
+        "SUMMARY": "Ship fallback workflow for partial payment events and retry orchestration."
+      },
+      "TASK_736": {
+        "TITLE": "Refactor analytics event schema",
+        "SUMMARY": "Normalize learner completion events before warehouse ingestion."
+      },
+      "TASK_701": {
+        "TITLE": "Release navigation performance patch",
+        "SUMMARY": "Reduced route transition overhead and improved shell render consistency."
+      }
+    },
+    "DRAWER": {
+      "CLOSE": "Close details",
+      "SUMMARY": "Summary",
+      "STATUS": "Status",
+      "PRIORITY": "Priority",
+      "ASSIGNEE": "Assignee",
+      "STORY_POINTS": "Story Points",
+      "DUE_DATE": "Due Date",
+      "UPDATED": "Updated",
+      "DELIVERY_TAGS": "Delivery Tags"
+    }
+  },
+  "ANALYTICS": {
+    "EYEBROW": "Insights",
+    "TITLE": "Analytics",
+    "METRICS": {
+      "ADOPTION": {
+        "LABEL": "Adoption Rate",
+        "TREND": "+4% QoQ"
+      },
+      "COMPLETION": {
+        "LABEL": "Completion Rate",
+        "TREND": "+6% QoQ"
+      },
+      "NPS": {
+        "LABEL": "Learner NPS",
+        "TREND": "+3 pts"
+      }
+    },
+    "CHART": {
+      "TITLE": "Weekly Throughput",
+      "ARIA": "Bar chart showing weekly throughput",
+      "DATASET": "Completed items",
+      "DAYS": {
+        "MON": "Mon",
+        "TUE": "Tue",
+        "WED": "Wed",
+        "THU": "Thu",
+        "FRI": "Fri"
+      }
+    }
+  },
+  "MARKETING": {
+    "BRAND": {
+      "LOGO_ALT": "Enterprise Workspace logo",
+      "SOCIAL_ARIA": "Social links"
+    },
+    "SECTIONS": {
+      "FEATURES": {
+        "EYEBROW": "Features",
+        "TITLE": "Core tools for delivery teams."
+      },
+      "SHOWCASE": {
+        "EYEBROW": "Workflow",
+        "TITLE": "One workflow from planning to reporting."
+      },
+      "STATS": {
+        "EYEBROW": "Results",
+        "TITLE": "Measured impact at scale."
+      },
+      "TESTIMONIALS": {
+        "EYEBROW": "Customers",
+        "TITLE": "Trusted by product and operations teams."
+      }
+    },
+    "HERO": {
+      "TITLE": {
+        "LINE_1": "Run projects with",
+        "LINE_2": "operational clarity."
+      },
+      "SUPPORT": "Plan priorities, execute daily work, and report outcomes from one system.",
+      "PRIMARY_CTA": "Get Started",
+      "SECONDARY_CTA": "See Workflow",
+      "TRUST": {
+        "USERS": "14,000+ weekly active users",
+        "DELAYS": "34% fewer coordination delays",
+        "SECURITY": "SOC-ready access controls"
+      },
+      "MOCKUP": {
+        "ALT": "Enterprise Workspace product overview",
+        "REVIEW": "Weekly review",
+        "METRIC": "24 active projects / 6 at risk"
+      }
+    },
+    "FEATURES": {
+      "PLANNING": {
+        "TITLE": "Portfolio Planning",
+        "SUMMARY": "Build initiatives, priorities, and dependencies with shared context so strategy and execution stay synchronized."
+      },
+      "DELIVERY": {
+        "TITLE": "Team Execution Boards",
+        "SUMMARY": "Run sprint workflows with premium Kanban controls, operational guardrails, and real-time delivery visibility."
+      },
+      "ANALYTICS": {
+        "TITLE": "Operational Analytics",
+        "SUMMARY": "Track throughput, risk, and impact in one dashboard built for product leaders, PMOs, and executives."
+      },
+      "GOVERNANCE": {
+        "TITLE": "Enterprise Governance",
+        "SUMMARY": "Role-aware access, auditable activity history, and policy-safe delivery workflows for enterprise confidence."
+      },
+      "AUTOMATION": {
+        "TITLE": "Workflow Automation",
+        "SUMMARY": "Auto-route work, trigger lifecycle updates, and simplify handoffs so teams spend more time delivering value."
+      },
+      "SCALE": {
+        "TITLE": "Scalable Workspace",
+        "SUMMARY": "From one squad to global programs, keep a consistent operating model without sacrificing team autonomy."
+      }
+    },
+    "SHOWCASE": {
+      "STRATEGIC": {
+        "EYEBROW": "Strategic View",
+        "TITLE": "Align portfolio priorities.",
+        "DESCRIPTION": "Visualize strategic initiatives, owners, and blockers in one workspace built for alignment meetings and execution reviews.",
+        "BULLETS": {
+          "ONE": "Unified roadmap + sprint context",
+          "TWO": "Dependency mapping across squads",
+          "THREE": "Leadership-ready narrative dashboards"
+        },
+        "METRIC": "27% faster planning cycles"
+      },
+      "EXECUTION": {
+        "EYEBROW": "Execution",
+        "TITLE": "Keep teams moving with live status.",
+        "DESCRIPTION": "From backlog grooming to release readiness, teams collaborate in a frictionless environment designed for momentum.",
+        "BULLETS": {
+          "ONE": "Drag-and-drop Kanban lifecycle",
+          "TWO": "Priority signals and activity timeline",
+          "THREE": "Context drawer for rapid decisions"
+        },
+        "METRIC": "34% fewer coordination delays"
+      },
+      "REPORTING": {
+        "EYEBROW": "Reporting",
+        "TITLE": "Turn activity into clear outcomes.",
+        "DESCRIPTION": "Automated insight panels surface risk, velocity, and performance trends so operations and executives stay informed.",
+        "BULLETS": {
+          "ONE": "Animated KPI and trend reporting",
+          "TWO": "Program-level health indicators",
+          "THREE": "Stakeholder-ready exports and summaries"
+        },
+        "METRIC": "2.3x faster stakeholder reporting"
+      }
+    },
+    "STATS": {
+      "USERS": "Active weekly users",
+      "THROUGHPUT": "Higher team throughput",
+      "SATISFACTION": "Operational satisfaction score",
+      "TIME": "Saved per manager each week"
+    },
+    "TESTIMONIALS": {
+      "PREVIOUS_ARIA": "Previous testimonial",
+      "NEXT_ARIA": "Next testimonial",
+      "GO_TO_ARIA": "Go to testimonial {{index}}",
+      "ITEMS": {
+        "C1": {
+          "QUOTE": "Enterprise Workspace gave us one operating rhythm across product, data, and operations. Delivery reviews are now focused on decisions, not status chasing.",
+          "ROLE": "VP of Delivery",
+          "COMPANY": "Northpoint Learning Group"
+        },
+        "C2": {
+          "QUOTE": "The product feels premium and practical. Our PMO moved from fragmented spreadsheets to shared execution in less than two weeks.",
+          "ROLE": "Head of PMO",
+          "COMPANY": "Coursetrail Enterprise"
+        },
+        "C3": {
+          "QUOTE": "From roadmap planning to sprint analytics, our leadership team gets the full story in minutes. It has changed how we run quarterly strategy.",
+          "ROLE": "Chief Product Officer",
+          "COMPANY": "Atlas Skills Network"
+        }
+      }
+    },
+    "CTA": {
+      "EYEBROW": "Get Started",
+      "TITLE": "Run delivery in one workspace.",
+      "PRIMARY": "Get Started",
+      "SECONDARY": "Login"
+    }
+  }
+}

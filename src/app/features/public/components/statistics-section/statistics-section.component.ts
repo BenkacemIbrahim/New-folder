@@ -6,29 +6,33 @@ import {
   ElementRef,
   OnDestroy,
   ViewChild,
+  inject,
   signal
 } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { gsap } from 'gsap';
 
+import { TranslationService } from '../../../../core/services/translation.service';
 import { MOTION_DURATION, MOTION_EASE_GSAP } from '../../../../shared/animations/motion.config';
 import { MarketingStat } from '../../models/marketing-content.model';
 
 @Component({
   selector: 'app-statistics-section',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, TranslatePipe],
   templateUrl: './statistics-section.component.html',
   styleUrl: './statistics-section.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StatisticsSectionComponent implements AfterViewInit, OnDestroy {
   @ViewChild('statsRoot') private statsRoot?: ElementRef<HTMLElement>;
+  private readonly translationService = inject(TranslationService);
 
   protected readonly stats: MarketingStat[] = [
-    { id: 'users', value: 14000, suffix: '+', label: 'Active weekly users' },
-    { id: 'throughput', value: 38, suffix: '%', label: 'Higher team throughput' },
-    { id: 'satisfaction', value: 96, suffix: '%', label: 'Operational satisfaction score' },
-    { id: 'time', value: 6.4, suffix: 'h', decimals: 1, label: 'Saved per manager each week' }
+    { id: 'users', value: 14000, suffix: '+', labelKey: 'MARKETING.STATS.USERS' },
+    { id: 'throughput', value: 38, suffix: '%', labelKey: 'MARKETING.STATS.THROUGHPUT' },
+    { id: 'satisfaction', value: 96, suffix: '%', labelKey: 'MARKETING.STATS.SATISFACTION' },
+    { id: 'time', value: 6.4, suffix: 'h', decimals: 1, labelKey: 'MARKETING.STATS.TIME' }
   ];
 
   protected readonly currentValues = signal<Record<string, number>>({});
@@ -72,10 +76,10 @@ export class StatisticsSectionComponent implements AfterViewInit, OnDestroy {
 
   protected formattedValue(stat: MarketingStat): string {
     const value = this.currentValues()[stat.id] ?? 0;
-    return value.toLocaleString('en-US', {
+    return new Intl.NumberFormat(this.translationService.currentLocale(), {
       minimumFractionDigits: stat.decimals ?? 0,
       maximumFractionDigits: stat.decimals ?? 0
-    });
+    }).format(value);
   }
 
   protected trackByStat(_index: number, stat: MarketingStat): string {

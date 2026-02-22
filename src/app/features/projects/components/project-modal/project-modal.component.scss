@@ -5,16 +5,16 @@
   display: grid;
   place-content: center;
   padding: var(--space-4);
-  background: rgba(2, 6, 23, 0.56);
+  background: var(--color-backdrop);
   backdrop-filter: blur(8px);
 }
 
 .modal-panel {
   width: min(620px, 100%);
   border-radius: var(--radius-xl);
-  border: 1px solid rgba(148, 163, 184, 0.34);
+  border: 1px solid color-mix(in srgb, var(--color-border-soft) 76%, transparent);
   background: var(--color-surface-elevated);
-  box-shadow: 0 30px 56px rgba(15, 23, 42, 0.24);
+  box-shadow: 0 30px 56px rgba(var(--color-shadow-rgb), 0.32);
   padding: var(--space-5);
 }
 
@@ -70,5 +70,5 @@ h2 {
 .modal-content {
   max-height: min(70vh, 700px);
   overflow-y: auto;
-  padding-right: var(--space-1);
+  padding-inline-end: var(--space-1);
 }

@@ -3,6 +3,7 @@ import { Component, DestroyRef, computed, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { TranslatePipe } from '@ngx-translate/core';
 import { RouterLink } from '@angular/router';
 import { finalize } from 'rxjs';
 
@@ -16,6 +17,7 @@ import {
   ProjectSummary
 } from '../../models/project-feature.model';
 import { ProjectsApiService } from '../../services/projects-api.service';
+import { TranslationService } from '../../../../core/services/translation.service';
 
 type StatusFilter = 'All' | ProjectStatus;
 type DateSortDirection = 'desc' | 'asc';
@@ -31,6 +33,7 @@ type DateSortDirection = 'desc' | 'asc';
     DatePipe,
     ReactiveFormsModule,
     MatIconModule,
+    TranslatePipe,
     PageHeaderComponent,
     ProjectStatusBadgeComponent,
     ProjectModalComponent
@@ -43,8 +46,10 @@ export class ProjectsListPageComponent {
   private readonly projectsApiService = inject(ProjectsApiService);
   private readonly formBuilder = inject(FormBuilder);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly translationService = inject(TranslationService);
 
   protected readonly statusFilters: StatusFilter[] = ['All', 'On Track', 'At Risk', 'Blocked'];
+  protected readonly locale = this.translationService.currentLocale;
 
   protected readonly selectedFilter = signal<StatusFilter>('All');
   protected readonly searchTerm = signal('');
@@ -160,7 +165,7 @@ export class ProjectsListPageComponent {
           this.createModalOpen.set(false);
         },
         error: () => {
-          this.formError.set('Project creation failed. Please retry in a moment.');
+          this.formError.set('PROJECTS.FORM_ERRORS.CREATE_FAILED');
         }
       });
   }
@@ -176,20 +181,33 @@ export class ProjectsListPageComponent {
     const control = this.createProjectForm.controls[controlName];
 
     if (control.hasError('required')) {
-      return 'This field is required.';
+      return 'PROJECTS.FORM_ERRORS.REQUIRED';
     }
 
     if (control.hasError('minlength')) {
       return controlName === 'summary'
-        ? 'Summary needs at least 12 characters.'
-        : 'Please provide a clearer value.';
+        ? 'PROJECTS.FORM_ERRORS.SUMMARY_MIN'
+        : 'PROJECTS.FORM_ERRORS.MIN_GENERIC';
     }
 
     if (control.hasError('maxlength')) {
-      return 'Summary should stay under 180 characters.';
+      return 'PROJECTS.FORM_ERRORS.SUMMARY_MAX';
     }
 
-    return 'Please review this value.';
+    return 'PROJECTS.FORM_ERRORS.GENERIC';
+  }
+
+  protected statusFilterLabelKey(filter: StatusFilter): string {
+    switch (filter) {
+      case 'All':
+        return 'PROJECTS.FILTERS.ALL';
+      case 'On Track':
+        return 'PROJECTS.STATUS.ON_TRACK';
+      case 'At Risk':
+        return 'PROJECTS.STATUS.AT_RISK';
+      case 'Blocked':
+        return 'PROJECTS.STATUS.BLOCKED';
+    }
   }
 
   protected trackByProject(_index: number, project: ProjectSummary): string {

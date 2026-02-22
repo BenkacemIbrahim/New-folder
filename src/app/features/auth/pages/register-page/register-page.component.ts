@@ -1,6 +1,7 @@
 import { NgIf } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { TranslatePipe } from '@ngx-translate/core';
 import { Router, RouterLink } from '@angular/router';
 import { finalize } from 'rxjs';
 
@@ -20,7 +21,14 @@ type RegisterField = 'fullName' | 'organization' | 'email' | 'password' | 'confi
 @Component({
   selector: 'app-register-page',
   standalone: true,
-  imports: [NgIf, ReactiveFormsModule, RouterLink, AuthHeroPanelComponent, AuthModalComponent],
+  imports: [
+    NgIf,
+    ReactiveFormsModule,
+    RouterLink,
+    AuthHeroPanelComponent,
+    AuthModalComponent,
+    TranslatePipe
+  ],
   templateUrl: './register-page.component.html',
   styleUrl: './register-page.component.scss',
   animations: [authPageAnimation, staggerTextAnimation, fieldErrorAnimation]
@@ -79,7 +87,7 @@ export class RegisterPageComponent {
           this.showSuccessModal.set(true);
         },
         error: () => {
-          this.errorMessage.set('Account provisioning failed. Please retry in a few moments.');
+          this.errorMessage.set('AUTH.REGISTER.ERRORS.PROVISION_FAILED');
         }
       });
   }
@@ -106,26 +114,26 @@ export class RegisterPageComponent {
     const control = this.registerForm.controls[controlName] as FormControl<string>;
 
     if (control.hasError('required')) {
-      return 'This field is required.';
+      return 'AUTH.REGISTER.ERRORS.REQUIRED';
     }
 
     if (control.hasError('email')) {
-      return 'Use a valid business email format.';
+      return 'AUTH.REGISTER.ERRORS.EMAIL_INVALID';
     }
 
     if (control.hasError('minlength')) {
       if (controlName === 'password') {
-        return 'Password must be at least 10 characters.';
+        return 'AUTH.REGISTER.ERRORS.PASSWORD_MIN';
       }
 
-      return 'Please enter at least 2 characters.';
+      return 'AUTH.REGISTER.ERRORS.MIN_GENERIC';
     }
 
     if (control.hasError('pattern')) {
-      return 'Include at least one uppercase letter and one number.';
+      return 'AUTH.REGISTER.ERRORS.PASSWORD_PATTERN';
     }
 
-    return 'Please review this input.';
+    return 'AUTH.REGISTER.ERRORS.GENERIC';
   }
 
   protected setFocusedField(field: RegisterField | null): void {

@@ -6,7 +6,7 @@
 .workspace-sidenav {
   width: 280px;
   transition: width var(--motion-base) var(--ease-standard);
-  border-right: none;
+  border-inline-end: none;
 }
 
 .workspace-sidenav.collapsed {

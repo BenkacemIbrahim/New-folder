@@ -1,0 +1,78 @@
+<div
+  class="language-switcher"
+  [class.open]="isOpen()"
+  [class.compact]="compact"
+  [class.flag-only]="flagOnly"
+  [class.inverse]="appearance === 'inverse'"
+  [class.minimal]="appearance === 'minimal'"
+  [class.minimal-inverse]="appearance === 'minimal-inverse'"
+>
+  <button
+    #triggerButton
+    type="button"
+    class="trigger"
+    aria-haspopup="listbox"
+    [attr.aria-label]="'COMMON.ACTIONS.CHANGE_LANGUAGE' | translate"
+    [attr.aria-expanded]="isOpen()"
+    (click)="toggleMenu()"
+    (keydown)="onTriggerKeydown($event)"
+  >
+    <img
+      class="flag"
+      [src]="currentLanguageMeta().flagAssetPath"
+      [alt]="currentLanguageMeta().nativeLabel"
+      loading="lazy"
+      decoding="async"
+      width="20"
+      height="14"
+    />
+    <span class="label" *ngIf="!flagOnly && !compact">{{ currentLanguageMeta().nativeLabel }}</span>
+    <span class="code" *ngIf="!flagOnly && compact">{{ currentLanguageMeta().code }}</span>
+    <span class="chevron" aria-hidden="true">
+      <svg viewBox="0 0 16 16" focusable="false">
+        <path d="M4 6.5 8 10l4-3.5" />
+      </svg>
+    </span>
+  </button>
+
+  <div
+    class="menu"
+    role="listbox"
+    [class.open]="isOpen()"
+    [ngClass]="placement"
+    [attr.aria-label]="'COMMON.ACTIONS.CHANGE_LANGUAGE' | translate"
+  >
+    <button
+      #optionButton
+      type="button"
+      class="option"
+      role="option"
+      *ngFor="let language of languages; let index = index"
+      [class.active]="language.code === currentLanguage()"
+      [attr.aria-selected]="language.code === currentLanguage()"
+      (click)="selectLanguage(language.code)"
+      (keydown)="onOptionKeydown($event, index)"
+    >
+      <img
+        class="flag"
+        [src]="language.flagAssetPath"
+        [alt]="language.nativeLabel"
+        loading="lazy"
+        decoding="async"
+        width="20"
+        height="14"
+      />
+
+      <span class="option-copy">
+        <span class="native">{{ language.nativeLabel }}</span>
+        <span class="translated">{{ language.labelKey | translate }}</span>
+      </span>
+
+      <span class="check" aria-hidden="true">
+        <svg viewBox="0 0 16 16" focusable="false">
+          <path d="m3.5 8.3 2.2 2.3 6.8-6.7" />
+        </svg>
+      </span>
+    </button>
+  </div>
+</div>

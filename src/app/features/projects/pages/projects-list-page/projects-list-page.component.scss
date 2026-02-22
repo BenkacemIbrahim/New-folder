@@ -44,9 +44,9 @@
 
 .filter-chip {
   min-height: 36px;
-  border: 1px solid rgba(148, 163, 184, 0.4);
+  border: 1px solid color-mix(in srgb, var(--color-border-soft) 80%, transparent);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.88);
+  background: color-mix(in srgb, var(--color-surface) 88%, transparent);
   color: var(--color-text-secondary);
   padding: 0 var(--space-3);
   font-size: 0.82rem;
@@ -228,7 +228,7 @@
 .progress-track {
   height: 8px;
   border-radius: 999px;
-  background: rgba(148, 163, 184, 0.28);
+  background: color-mix(in srgb, var(--color-border-soft) 72%, transparent);
   overflow: hidden;
 }
 

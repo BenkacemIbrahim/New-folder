@@ -20,7 +20,7 @@ body {
 }
 
 html {
-  color-scheme: light;
+  color-scheme: light dark;
   scroll-behavior: smooth;
   background: var(--color-app-bg);
 }
@@ -30,6 +30,10 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   color: var(--color-text-primary);
+}
+
+html[dir='rtl'] body {
+  direction: rtl;
 }
 
 a,

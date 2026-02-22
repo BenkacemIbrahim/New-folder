@@ -2,13 +2,13 @@
   <div class="slider-shell">
     <div class="slider-track" [style.transform]="trackTransform()">
       <article class="testimonial-card" *ngFor="let item of testimonials; trackBy: trackByTestimonial">
-        <p class="quote">"{{ item.quote }}"</p>
+        <p class="quote">"{{ item.quoteKey | translate }}"</p>
 
         <footer>
           <span class="avatar">{{ item.avatarSeed }}</span>
           <div>
             <p class="name">{{ item.name }}</p>
-            <p class="role">{{ item.role }} &middot; {{ item.company }}</p>
+            <p class="role">{{ item.roleKey | translate }} &middot; {{ item.companyKey | translate }}</p>
           </div>
         </footer>
       </article>
@@ -16,7 +16,12 @@
   </div>
 
   <div class="slider-controls">
-    <button type="button" class="control-btn" aria-label="Previous testimonial" (click)="previous()">
+    <button
+      type="button"
+      class="control-btn"
+      [attr.aria-label]="'MARKETING.TESTIMONIALS.PREVIOUS_ARIA' | translate"
+      (click)="previous()"
+    >
       &lsaquo;
     </button>
     <button
@@ -24,10 +29,15 @@
       type="button"
       *ngFor="let item of testimonials; let idx = index"
       [ngClass]="{ active: currentIndex() === idx }"
-      [attr.aria-label]="'Go to testimonial ' + (idx + 1)"
+      [attr.aria-label]="'MARKETING.TESTIMONIALS.GO_TO_ARIA' | translate: { index: (idx + 1) }"
       (click)="setSlide(idx)"
     ></button>
-    <button type="button" class="control-btn" aria-label="Next testimonial" (click)="next()">
+    <button
+      type="button"
+      class="control-btn"
+      [attr.aria-label]="'MARKETING.TESTIMONIALS.NEXT_ARIA' | translate"
+      (click)="next()"
+    >
       &rsaquo;
     </button>
   </div>

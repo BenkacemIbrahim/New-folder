@@ -1,14 +1,14 @@
 <header class="public-navbar" [class.scrolled]="scrolled">
   <div class="nav-inner">
-    <button class="brand" type="button" (click)="navigateTo('hero')" aria-label="Enterprise Workspace home">
+    <button class="brand" type="button" (click)="navigateTo('hero')" [attr.aria-label]="'COMMON.APP_NAME' | translate">
       <img
         class="brand-mark"
         src="https://res.cloudinary.com/dhqavjbx6/image/upload/v1771695669/ChatGPT_Image_Feb_21_2026_05_40_39_PM_vbdoec.png"
-        alt="Enterprise Workspace logo"
+        [attr.alt]="'MARKETING.BRAND.LOGO_ALT' | translate"
       />
     </button>
 
-    <nav class="desktop-nav" aria-label="Section navigation">
+    <nav class="desktop-nav" [attr.aria-label]="'NAVBAR.SECTION_NAV' | translate">
       <button
         class="nav-link"
         type="button"
@@ -16,22 +16,44 @@
         [class.active]="activeSection === link.id"
         (click)="navigateTo(link.id)"
       >
-        {{ link.label }}
+        {{ link.labelKey | translate }}
       </button>
     </nav>
 
     <div class="desktop-actions">
-      <a class="login-link" routerLink="/auth/login">Login</a>
-      <a class="start-link" routerLink="/auth/register">Get Started</a>
+      <app-language-switcher appearance="minimal" [flagOnly]="true" />
+      <button
+        type="button"
+        class="theme-toggle"
+        [class.dark]="isDarkTheme()"
+        [attr.aria-label]="
+          (isDarkTheme() ? 'COMMON.ACTIONS.SWITCH_TO_LIGHT' : 'COMMON.ACTIONS.SWITCH_TO_DARK') | translate
+        "
+        (click)="toggleTheme()"
+      >
+        <mat-icon class="sun-icon">light_mode</mat-icon>
+        <mat-icon class="moon-icon">dark_mode</mat-icon>
+      </button>
+      <a class="login-link" routerLink="/auth/login">
+        <mat-icon aria-hidden="true">login</mat-icon>
+        <span>{{ 'AUTH.LOGIN.EYEBROW' | translate }}</span>
+      </a>
+      <a class="start-link" routerLink="/auth/register">
+        <mat-icon aria-hidden="true">rocket_launch</mat-icon>
+        <span>{{ 'NAVBAR.GET_STARTED' | translate }}</span>
+      </a>
     </div>
 
-    <a class="start-link mobile-start" routerLink="/auth/register">Get Started</a>
+    <a class="start-link mobile-start" routerLink="/auth/register">
+      <mat-icon aria-hidden="true">rocket_launch</mat-icon>
+      <span>{{ 'NAVBAR.GET_STARTED' | translate }}</span>
+    </a>
 
     <button
       class="mobile-trigger"
       type="button"
       [attr.aria-expanded]="mobileMenuOpen()"
-      [attr.aria-label]="mobileMenuOpen() ? 'Close menu' : 'Open menu'"
+      [attr.aria-label]="(mobileMenuOpen() ? 'COMMON.ACTIONS.CLOSE_MENU' : 'COMMON.ACTIONS.OPEN_MENU') | translate"
       (click)="toggleMenu()"
     >
       <span></span>
@@ -48,11 +70,27 @@
       [class.active]="activeSection === link.id"
       (click)="navigateTo(link.id)"
     >
-      {{ link.label }}
+      {{ link.labelKey | translate }}
     </button>
 
     <div class="mobile-actions">
-      <a class="login-link" routerLink="/auth/login">Login</a>
+      <app-language-switcher appearance="minimal" [flagOnly]="true" />
+      <button
+        type="button"
+        class="theme-toggle"
+        [class.dark]="isDarkTheme()"
+        [attr.aria-label]="
+          (isDarkTheme() ? 'COMMON.ACTIONS.SWITCH_TO_LIGHT' : 'COMMON.ACTIONS.SWITCH_TO_DARK') | translate
+        "
+        (click)="toggleTheme()"
+      >
+        <mat-icon class="sun-icon">light_mode</mat-icon>
+        <mat-icon class="moon-icon">dark_mode</mat-icon>
+      </button>
+      <a class="login-link" routerLink="/auth/login">
+        <mat-icon aria-hidden="true">login</mat-icon>
+        <span>{{ 'AUTH.LOGIN.EYEBROW' | translate }}</span>
+      </a>
     </div>
   </div>
 </header>

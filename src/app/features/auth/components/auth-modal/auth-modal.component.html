@@ -1,10 +1,10 @@
 <div class="auth-modal-backdrop" [@modalBackdropAnimation] (click)="closeModal()">
   <section class="auth-modal-panel" [@modalPanelAnimation] (click)="$event.stopPropagation()">
-    <button type="button" class="close-button" aria-label="Close" (click)="closeModal()">
+    <button type="button" class="close-button" [attr.aria-label]="'COMMON.ACTIONS.CLOSE' | translate" (click)="closeModal()">
       <mat-icon>close</mat-icon>
     </button>
 
-    <p class="modal-eyebrow">Enterprise Workspace</p>
+    <p class="modal-eyebrow">{{ 'COMMON.APP_NAME' | translate }}</p>
     <h2>{{ title }}</h2>
     <p class="modal-description">{{ description }}</p>
 

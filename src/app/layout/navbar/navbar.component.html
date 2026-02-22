@@ -1,25 +1,67 @@
 <mat-toolbar class="workspace-navbar">
-  <button mat-icon-button type="button" aria-label="Toggle sidebar" [attr.aria-controls]="'workspace-sidebar-nav'"
-    [attr.aria-expanded]="isSidebarOpen" (click)="toggleSidebar()">
+  <button
+    mat-icon-button
+    type="button"
+    [attr.aria-label]="'COMMON.ACTIONS.TOGGLE_SIDEBAR' | translate"
+    [attr.aria-controls]="'workspace-sidebar-nav'"
+    [attr.aria-expanded]="isSidebarOpen"
+    (click)="toggleSidebar()"
+  >
     <mat-icon>{{ isMobile ? 'menu' : isCollapsed ? 'menu_open' : 'menu' }}</mat-icon>
   </button>
 
-  <div class="title-block">
-    <h2>{{ title }}</h2>
+  <div class="title-block" [class.hidden]="!title">
+    <h2>{{ title | translate }}</h2>
   </div>
 
   <span class="spacer"></span>
 
-  <button mat-icon-button type="button" aria-label="Search" class="icon-button" [matMenuTriggerFor]="searchMenu">
+  <button
+    mat-icon-button
+    type="button"
+    class="icon-button"
+    [attr.aria-label]="'COMMON.ACTIONS.SEARCH' | translate"
+    [matMenuTriggerFor]="searchMenu"
+  >
     <mat-icon>search</mat-icon>
   </button>
 
-  <button mat-icon-button type="button" aria-label="Notifications" class="icon-button">
+  <button
+    mat-icon-button
+    type="button"
+    class="icon-button"
+    [attr.aria-label]="'COMMON.ACTIONS.NOTIFICATIONS' | translate"
+  >
     <mat-icon>notifications</mat-icon>
   </button>
 
-  <button mat-icon-button type="button" aria-label="User menu" [matMenuTriggerFor]="profileMenu"
-    class="icon-button profile-button">
+  <app-language-switcher
+    *ngIf="showLanguageSwitcher"
+    class="language-switcher"
+    appearance="minimal"
+    [flagOnly]="true"
+  />
+
+  <button
+    type="button"
+    class="theme-toggle"
+    [class.dark]="isDarkTheme()"
+    [attr.aria-label]="
+      (isDarkTheme() ? 'COMMON.ACTIONS.SWITCH_TO_LIGHT' : 'COMMON.ACTIONS.SWITCH_TO_DARK') | translate
+    "
+    (click)="toggleTheme()"
+  >
+    <mat-icon class="sun-icon">light_mode</mat-icon>
+    <mat-icon class="moon-icon">dark_mode</mat-icon>
+  </button>
+
+  <button
+    mat-icon-button
+    type="button"
+    class="icon-button profile-button"
+    [attr.aria-label]="'COMMON.ACTIONS.USER_MENU' | translate"
+    [matMenuTriggerFor]="profileMenu"
+  >
     <mat-icon>person_outline</mat-icon>
   </button>
 </mat-toolbar>
@@ -27,17 +69,17 @@
 <mat-menu #searchMenu="matMenu" xPosition="before">
   <button mat-menu-item disabled>
     <mat-icon>search</mat-icon>
-    <span>Search coming soon</span>
+    <span>{{ 'NAVBAR.SEARCH_COMING_SOON' | translate }}</span>
   </button>
 </mat-menu>
 
 <mat-menu #profileMenu="matMenu" xPosition="before">
   <button mat-menu-item disabled>
     <mat-icon>circle</mat-icon>
-    <span>Status: {{ statusLabel() }}</span>
+    <span>{{ 'NAVBAR.STATUS_LABEL' | translate: { status: (statusKey() | translate) } }}</span>
   </button>
   <button mat-menu-item type="button" (click)="logout()">
     <mat-icon>logout</mat-icon>
-    <span>Sign out</span>
+    <span>{{ 'COMMON.ACTIONS.SIGN_OUT' | translate }}</span>
   </button>
 </mat-menu>

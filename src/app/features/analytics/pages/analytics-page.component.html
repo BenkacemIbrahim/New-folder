@@ -1,25 +1,25 @@
 <app-page-header
-  eyebrow="Insights"
-  title="Analytics"
+  [eyebrow]="'ANALYTICS.EYEBROW' | translate"
+  [title]="'ANALYTICS.TITLE' | translate"
 />
 
 <section class="analytics-grid">
   <app-metric-card
     *ngFor="let metric of metrics"
-    [label]="metric.label"
+    [label]="metric.labelKey | translate"
     [value]="metric.value"
-    [trend]="metric.trend"
+    [trend]="metric.trendKey | translate"
     [icon]="metric.icon"
   />
 </section>
 
 <section class="chart-panel">
-  <h3>Weekly Throughput</h3>
+  <h3>{{ 'ANALYTICS.CHART.TITLE' | translate }}</h3>
   <div class="bars">
     <canvas
       #throughputChart
       role="img"
-      aria-label="Bar chart showing weekly throughput"
+      [attr.aria-label]="'ANALYTICS.CHART.ARIA' | translate"
     ></canvas>
   </div>
 </section>

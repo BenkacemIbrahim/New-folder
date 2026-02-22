@@ -3,15 +3,15 @@
 }
 
 .dashboard-page {
-  --panel-border: rgba(148, 163, 184, 0.34);
+  --panel-border: color-mix(in srgb, var(--color-border-soft) 78%, transparent);
   --headline-color: var(--color-text-primary);
   --body-color: var(--color-text-secondary);
   --muted-color: var(--color-text-muted);
-  --shadow-soft: 0 18px 44px rgba(15, 23, 42, 0.12);
-  --shadow-hover: 0 28px 56px rgba(15, 23, 42, 0.18);
+  --shadow-soft: var(--shadow-medium);
+  --shadow-hover: 0 24px 48px rgba(var(--color-shadow-rgb), 0.28);
   --trend-positive: var(--color-success);
   --trend-negative: var(--color-error);
-  --timeline-line: rgba(148, 163, 184, 0.35);
+  --timeline-line: color-mix(in srgb, var(--color-border-soft) 72%, transparent);
 
   padding: 0;
   border-radius: 0;
@@ -63,6 +63,7 @@ h1 {
   display: grid;
   gap: var(--space-2);
   justify-items: end;
+  align-content: start;
 }
 
 .refresh-copy {
@@ -174,7 +175,7 @@ h2 {
 .timeline-list {
   display: grid;
   gap: var(--space-3);
-  padding-right: 0;
+  padding-inline-end: 0;
 }
 
 .timeline-item {

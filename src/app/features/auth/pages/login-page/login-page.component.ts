@@ -1,6 +1,7 @@
 import { NgIf } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { TranslatePipe } from '@ngx-translate/core';
 import { Router, RouterLink } from '@angular/router';
 import { finalize } from 'rxjs';
 
@@ -19,7 +20,14 @@ type LoginField = 'email' | 'password';
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [NgIf, ReactiveFormsModule, RouterLink, AuthHeroPanelComponent, AuthModalComponent],
+  imports: [
+    NgIf,
+    ReactiveFormsModule,
+    RouterLink,
+    AuthHeroPanelComponent,
+    AuthModalComponent,
+    TranslatePipe
+  ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss',
   animations: [authPageAnimation, staggerTextAnimation, fieldErrorAnimation]
@@ -61,7 +69,7 @@ export class LoginPageComponent {
           void this.router.navigate(['/dashboard']);
         },
         error: () => {
-          this.errorMessage.set('Unable to sign in at the moment. Please try again.');
+          this.errorMessage.set('AUTH.LOGIN.ERRORS.AUTH_FAILED');
         }
       });
   }
@@ -75,18 +83,20 @@ export class LoginPageComponent {
     const control = this.loginForm.controls[controlName] as FormControl<string>;
 
     if (control.hasError('required')) {
-      return controlName === 'email' ? 'Email is required.' : 'Password is required.';
+      return controlName === 'email'
+        ? 'AUTH.LOGIN.ERRORS.EMAIL_REQUIRED'
+        : 'AUTH.LOGIN.ERRORS.PASSWORD_REQUIRED';
     }
 
     if (control.hasError('email')) {
-      return 'Enter a valid business email address.';
+      return 'AUTH.LOGIN.ERRORS.EMAIL_INVALID';
     }
 
     if (control.hasError('minlength')) {
-      return 'Password must be at least 8 characters.';
+      return 'AUTH.LOGIN.ERRORS.PASSWORD_MIN';
     }
 
-    return 'Please review this field.';
+    return 'AUTH.LOGIN.ERRORS.GENERIC';
   }
 
   protected setFocusedField(field: LoginField | null): void {

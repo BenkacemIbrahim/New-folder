@@ -3,8 +3,8 @@
 
   <div class="auth-pane">
     <article class="auth-card" [@staggerTextAnimation]>
-      <p class="eyebrow reveal-item">Register</p>
-      <h1 class="reveal-item">Create your workspace</h1>
+      <p class="eyebrow reveal-item">{{ 'AUTH.REGISTER.EYEBROW' | translate }}</p>
+      <h1 class="reveal-item">{{ 'AUTH.REGISTER.TITLE' | translate }}</h1>
 
       <form class="auth-form" [formGroup]="registerForm" (ngSubmit)="createAccount()" novalidate>
         <div class="field-group reveal-item">
@@ -22,10 +22,10 @@
               (focus)="setFocusedField('fullName')"
               (blur)="setFocusedField(null)"
             />
-            <span class="floating-label">Full name</span>
+            <span class="floating-label">{{ 'AUTH.REGISTER.FIELDS.FULL_NAME' | translate }}</span>
           </label>
           <p class="field-error" *ngIf="hasError('fullName')" [@fieldErrorAnimation]>
-            {{ errorText('fullName') }}
+            {{ errorText('fullName') | translate }}
           </p>
         </div>
 
@@ -44,10 +44,10 @@
               (focus)="setFocusedField('organization')"
               (blur)="setFocusedField(null)"
             />
-            <span class="floating-label">Organization</span>
+            <span class="floating-label">{{ 'AUTH.REGISTER.FIELDS.ORGANIZATION' | translate }}</span>
           </label>
           <p class="field-error" *ngIf="hasError('organization')" [@fieldErrorAnimation]>
-            {{ errorText('organization') }}
+            {{ errorText('organization') | translate }}
           </p>
         </div>
 
@@ -66,10 +66,10 @@
               (focus)="setFocusedField('email')"
               (blur)="setFocusedField(null)"
             />
-            <span class="floating-label">Business email</span>
+            <span class="floating-label">{{ 'AUTH.REGISTER.FIELDS.EMAIL' | translate }}</span>
           </label>
           <p class="field-error" *ngIf="hasError('email')" [@fieldErrorAnimation]>
-            {{ errorText('email') }}
+            {{ errorText('email') | translate }}
           </p>
         </div>
 
@@ -88,10 +88,10 @@
               (focus)="setFocusedField('password')"
               (blur)="setFocusedField(null)"
             />
-            <span class="floating-label">Create password</span>
+            <span class="floating-label">{{ 'AUTH.REGISTER.FIELDS.PASSWORD' | translate }}</span>
           </label>
           <p class="field-error" *ngIf="hasError('password')" [@fieldErrorAnimation]>
-            {{ errorText('password') }}
+            {{ errorText('password') | translate }}
           </p>
         </div>
 
@@ -110,36 +110,36 @@
               (focus)="setFocusedField('confirmPassword')"
               (blur)="setFocusedField(null)"
             />
-            <span class="floating-label">Confirm password</span>
+            <span class="floating-label">{{ 'AUTH.REGISTER.FIELDS.CONFIRM_PASSWORD' | translate }}</span>
           </label>
           <p
             class="field-error"
             *ngIf="hasError('confirmPassword') || hasPasswordMismatch()"
             [@fieldErrorAnimation]
           >
-            {{ hasPasswordMismatch() ? 'Passwords must match.' : errorText('confirmPassword') }}
+            {{ (hasPasswordMismatch() ? 'AUTH.REGISTER.ERRORS.PASSWORD_MISMATCH' : errorText('confirmPassword')) | translate }}
           </p>
         </div>
 
         <label class="terms-row reveal-item">
           <input type="checkbox" formControlName="acceptTerms" />
-          <span>I agree to the Terms of Service and Privacy Policy.</span>
+          <span>{{ 'AUTH.REGISTER.ACCEPT_TERMS' | translate }}</span>
         </label>
         <p class="field-error" *ngIf="hasTermsError()" [@fieldErrorAnimation]>
-          You must accept the terms to continue.
+          {{ 'AUTH.REGISTER.ERRORS.TERMS_REQUIRED' | translate }}
         </p>
 
-        <p class="form-error" *ngIf="errorMessage()" [@fieldErrorAnimation]>{{ errorMessage() }}</p>
+        <p class="form-error" *ngIf="errorMessage()" [@fieldErrorAnimation]>{{ errorMessage() | translate }}</p>
 
         <button type="submit" class="submit-btn reveal-item" [disabled]="isSubmitting()">
-          {{ isSubmitting() ? 'Provisioning workspace...' : 'Create workspace' }}
+          {{ (isSubmitting() ? 'AUTH.REGISTER.SUBMITTING' : 'AUTH.REGISTER.SUBMIT') | translate }}
         </button>
       </form>
 
       <div class="auth-footer reveal-item">
         <p>
-          Already have access?
-          <a routerLink="/auth/login">Sign in</a>
+          {{ 'AUTH.REGISTER.ALREADY_HAVE_ACCESS' | translate }}
+          <a routerLink="/auth/login">{{ 'AUTH.REGISTER.SIGN_IN' | translate }}</a>
         </p>
       </div>
     </article>
@@ -148,13 +148,13 @@
 
 <app-auth-modal
   *ngIf="showSuccessModal()"
-  title="Workspace Ready"
-  description="Your account was provisioned successfully. Continue to your dashboard to start managing projects and tasks."
-  primaryActionLabel="Enter workspace"
+  [title]="'AUTH.REGISTER.SUCCESS_MODAL.TITLE' | translate"
+  [description]="'AUTH.REGISTER.SUCCESS_MODAL.DESCRIPTION' | translate"
+  [primaryActionLabel]="'AUTH.REGISTER.SUCCESS_MODAL.PRIMARY_ACTION' | translate"
   (closed)="completeRegistration()"
   (primaryAction)="completeRegistration()"
 >
   <p class="success-message">
-    JWT access and refresh tokens are now active, and protected routes are unlocked.
+    {{ 'AUTH.REGISTER.SUCCESS_MODAL.NOTE' | translate }}
   </p>
 </app-auth-modal>

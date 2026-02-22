@@ -1,9 +1,9 @@
 <header class="tasks-title-row">
   <div class="title-copy">
-    <p class="eyebrow">Execution</p>
-    <h1>Kanban</h1>
+    <p class="eyebrow">{{ 'TASKS.EYEBROW' | translate }}</p>
+    <h1>{{ 'TASKS.TITLE' | translate }}</h1>
   </div>
-  <p class="flow-count">{{ totalTasks() }} tasks in flow</p>
+  <p class="flow-count">{{ 'TASKS.FLOW_COUNT' | translate: { count: totalTasks() } }}</p>
 </header>
 
 <section class="kanban-board" cdkDropListGroup>
@@ -14,8 +14,8 @@
   >
     <header class="column-header">
       <div>
-        <p class="column-title">{{ column.title }}</p>
-        <p class="column-subtitle">{{ column.subtitle }}</p>
+        <p class="column-title">{{ column.title | translate }}</p>
+        <p class="column-subtitle">{{ column.subtitle | translate }}</p>
       </div>
       <span class="count-pill">{{ columnCount(column.key) }}</span>
     </header>
@@ -42,14 +42,14 @@
 
         <div class="task-top">
           <p class="task-id">{{ task.id }}</p>
-          <span class="points">{{ task.storyPoints }} SP</span>
+          <span class="points">{{ 'TASKS.STORY_POINTS' | translate: { points: task.storyPoints } }}</span>
         </div>
 
-        <h3>{{ task.title }}</h3>
-        <p class="summary">{{ task.summary }}</p>
+        <h3>{{ task.title | translate }}</h3>
+        <p class="summary">{{ task.summary | translate }}</p>
 
         <div class="tag-row">
-          <span class="tag" *ngFor="let tag of task.tags">{{ tag }}</span>
+          <span class="tag" *ngFor="let tag of task.tags">{{ tag | translate }}</span>
         </div>
 
         <footer class="task-footer">
@@ -57,7 +57,7 @@
             <span class="avatar">{{ task.assigneeInitials }}</span>
             <span>{{ task.assignee }}</span>
           </div>
-          <time>{{ task.dueDate | date: 'MMM d' }}</time>
+          <time>{{ task.dueDate | date: 'MMM d' : undefined : locale() }}</time>
         </footer>
       </article>
     </section>
@@ -74,50 +74,55 @@
     <header class="drawer-header">
       <div>
         <p class="drawer-id">{{ task.id }}</p>
-        <h3>{{ task.title }}</h3>
+        <h3>{{ task.title | translate }}</h3>
       </div>
-      <button type="button" class="close-btn" aria-label="Close details" (click)="closeDrawer()">
+      <button
+        type="button"
+        class="close-btn"
+        [attr.aria-label]="'TASKS.DRAWER.CLOSE' | translate"
+        (click)="closeDrawer()"
+      >
         <mat-icon>close</mat-icon>
       </button>
     </header>
 
     <section class="drawer-content">
       <article class="detail-block">
-        <h4>Summary</h4>
-        <p>{{ task.summary }}</p>
+        <h4>{{ 'TASKS.DRAWER.SUMMARY' | translate }}</h4>
+        <p>{{ task.summary | translate }}</p>
       </article>
 
       <article class="detail-grid">
         <div>
-          <p class="label">Status</p>
-          <p class="value">{{ task.status }}</p>
+          <p class="label">{{ 'TASKS.DRAWER.STATUS' | translate }}</p>
+          <p class="value">{{ statusLabelKey(task.status) | translate }}</p>
         </div>
         <div>
-          <p class="label">Priority</p>
-          <p class="value">{{ task.priority }}</p>
+          <p class="label">{{ 'TASKS.DRAWER.PRIORITY' | translate }}</p>
+          <p class="value">{{ priorityLabelKey(task.priority) | translate }}</p>
         </div>
         <div>
-          <p class="label">Assignee</p>
+          <p class="label">{{ 'TASKS.DRAWER.ASSIGNEE' | translate }}</p>
           <p class="value">{{ task.assignee }}</p>
         </div>
         <div>
-          <p class="label">Story Points</p>
+          <p class="label">{{ 'TASKS.DRAWER.STORY_POINTS' | translate }}</p>
           <p class="value">{{ task.storyPoints }}</p>
         </div>
         <div>
-          <p class="label">Due Date</p>
-          <p class="value">{{ task.dueDate | date: 'MMM d, y' }}</p>
+          <p class="label">{{ 'TASKS.DRAWER.DUE_DATE' | translate }}</p>
+          <p class="value">{{ task.dueDate | date: 'MMM d, y' : undefined : locale() }}</p>
         </div>
         <div>
-          <p class="label">Updated</p>
-          <p class="value">{{ task.updatedAt | date: 'MMM d, y, h:mm a' }}</p>
+          <p class="label">{{ 'TASKS.DRAWER.UPDATED' | translate }}</p>
+          <p class="value">{{ task.updatedAt | date: 'MMM d, y, h:mm a' : undefined : locale() }}</p>
         </div>
       </article>
 
       <article class="detail-block">
-        <h4>Delivery Tags</h4>
+        <h4>{{ 'TASKS.DRAWER.DELIVERY_TAGS' | translate }}</h4>
         <div class="tag-row">
-          <span class="tag" *ngFor="let tag of task.tags">{{ tag }}</span>
+          <span class="tag" *ngFor="let tag of task.tags">{{ tag | translate }}</span>
         </div>
       </article>
     </section>

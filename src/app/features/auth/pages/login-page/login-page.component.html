@@ -3,8 +3,8 @@
 
   <div class="auth-pane">
     <article class="auth-card" [@staggerTextAnimation]>
-      <p class="eyebrow reveal-item">Sign in</p>
-      <h1 class="reveal-item">Welcome back</h1>
+      <p class="eyebrow reveal-item">{{ 'AUTH.LOGIN.EYEBROW' | translate }}</p>
+      <h1 class="reveal-item">{{ 'AUTH.LOGIN.TITLE' | translate }}</h1>
 
       <form class="auth-form" [formGroup]="loginForm" (ngSubmit)="signIn()" novalidate>
         <div class="field-group reveal-item">
@@ -22,10 +22,10 @@
               (focus)="setFocusedField('email')"
               (blur)="setFocusedField(null)"
             />
-            <span class="floating-label">Work email</span>
+            <span class="floating-label">{{ 'AUTH.LOGIN.FIELDS.EMAIL' | translate }}</span>
           </label>
           <p class="field-error" *ngIf="hasError('email')" [@fieldErrorAnimation]>
-            {{ errorText('email') }}
+            {{ errorText('email') | translate }}
           </p>
         </div>
 
@@ -44,30 +44,32 @@
               (focus)="setFocusedField('password')"
               (blur)="setFocusedField(null)"
             />
-            <span class="floating-label">Password</span>
+            <span class="floating-label">{{ 'AUTH.LOGIN.FIELDS.PASSWORD' | translate }}</span>
           </label>
           <p class="field-error" *ngIf="hasError('password')" [@fieldErrorAnimation]>
-            {{ errorText('password') }}
+            {{ errorText('password') | translate }}
           </p>
         </div>
 
         <label class="remember-row reveal-item">
           <input type="checkbox" formControlName="rememberMe" />
-          <span>Keep me signed in for 30 days</span>
+          <span>{{ 'AUTH.LOGIN.KEEP_SIGNED_IN' | translate }}</span>
         </label>
 
-        <p class="form-error" *ngIf="errorMessage()" [@fieldErrorAnimation]>{{ errorMessage() }}</p>
+        <p class="form-error" *ngIf="errorMessage()" [@fieldErrorAnimation]>{{ errorMessage() | translate }}</p>
 
         <button type="submit" class="submit-btn reveal-item" [disabled]="isSubmitting()">
-          {{ isSubmitting() ? 'Signing in...' : 'Sign in to Workspace' }}
+          {{ (isSubmitting() ? 'AUTH.LOGIN.SUBMITTING' : 'AUTH.LOGIN.SUBMIT') | translate }}
         </button>
       </form>
 
       <div class="auth-footer reveal-item">
-        <button type="button" class="ghost-btn" (click)="openDemoModal()">Demo credentials</button>
+        <button type="button" class="ghost-btn" (click)="openDemoModal()">
+          {{ 'AUTH.LOGIN.DEMO_BUTTON' | translate }}
+        </button>
         <p>
-          Need an account?
-          <a routerLink="/auth/register">Create one</a>
+          {{ 'AUTH.LOGIN.NEED_ACCOUNT' | translate }}
+          <a routerLink="/auth/register">{{ 'AUTH.LOGIN.CREATE_ONE' | translate }}</a>
         </p>
       </div>
     </article>
@@ -76,19 +78,19 @@
 
 <app-auth-modal
   *ngIf="showDemoModal()"
-  title="Demo Access"
-  description="Use the seeded credentials below to preview the platform experience."
-  primaryActionLabel="Use demo account"
+  [title]="'AUTH.LOGIN.DEMO_MODAL.TITLE' | translate"
+  [description]="'AUTH.LOGIN.DEMO_MODAL.DESCRIPTION' | translate"
+  [primaryActionLabel]="'AUTH.LOGIN.DEMO_MODAL.PRIMARY_ACTION' | translate"
   (closed)="closeDemoModal()"
   (primaryAction)="fillDemoCredentials()"
 >
   <ul class="demo-list">
     <li>
-      <span>Email</span>
+      <span>{{ 'AUTH.LOGIN.DEMO_MODAL.EMAIL' | translate }}</span>
       <strong>team&#64;enterprise.io</strong>
     </li>
     <li>
-      <span>Password</span>
+      <span>{{ 'AUTH.LOGIN.DEMO_MODAL.PASSWORD' | translate }}</span>
       <strong>workspace</strong>
     </li>
   </ul>

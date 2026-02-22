@@ -55,10 +55,10 @@
   position: relative;
   min-height: 520px;
   border-radius: var(--radius-xl);
-  border: 1px solid rgba(148, 163, 184, 0.26);
+  border: 1px solid color-mix(in srgb, var(--color-border-soft) 72%, transparent);
   background: var(--color-surface-elevated);
   backdrop-filter: blur(14px);
-  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.1);
+  box-shadow: 0 18px 44px rgba(var(--color-shadow-rgb), 0.18);
   overflow: hidden;
 }
 
@@ -68,7 +68,7 @@
   justify-content: space-between;
   gap: var(--space-2);
   padding: var(--space-4);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-border-soft) 70%, transparent);
 }
 
 .column-title {
@@ -117,9 +117,9 @@
 .task-card {
   position: relative;
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(148, 163, 184, 0.28);
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 8px 26px rgba(15, 23, 42, 0.08);
+  border: 1px solid color-mix(in srgb, var(--color-border-soft) 76%, transparent);
+  background: color-mix(in srgb, var(--color-surface) 95%, transparent);
+  box-shadow: 0 8px 26px rgba(var(--color-shadow-rgb), 0.16);
   padding: var(--space-3) var(--space-3) var(--space-4);
   cursor: pointer;
   transition:
@@ -131,15 +131,17 @@
 
 .task-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 18px 34px rgba(15, 23, 42, 0.16);
+  box-shadow: 0 18px 34px rgba(var(--color-shadow-rgb), 0.24);
   border-color: color-mix(in srgb, var(--color-accent) 32%, transparent);
 }
 
 .priority-indicator {
   position: absolute;
-  inset: 0 auto 0 0;
+  inset-block: 0;
+  inset-inline-start: 0;
   width: 4px;
-  border-radius: 999px 0 0 999px;
+  border-start-start-radius: 999px;
+  border-end-start-radius: 999px;
 }
 
 .priority-indicator.critical {
@@ -207,8 +209,8 @@
   font-weight: 600;
   color: var(--color-text-primary);
   padding: 0.14rem 0.5rem;
-  border: 1px solid rgba(148, 163, 184, 0.34);
-  background: rgba(241, 245, 249, 0.92);
+  border: 1px solid color-mix(in srgb, var(--color-border-soft) 80%, transparent);
+  background: color-mix(in srgb, var(--color-surface) 90%, var(--color-app-bg-subtle));
 }
 
 .task-footer {
@@ -249,7 +251,7 @@
   box-sizing: border-box;
   border-radius: var(--radius-lg);
   border: 1px solid color-mix(in srgb, var(--color-accent) 36%, transparent);
-  box-shadow: 0 26px 46px rgba(15, 23, 42, 0.22);
+  box-shadow: 0 26px 46px rgba(var(--color-shadow-rgb), 0.28);
 }
 
 .cdk-drag-placeholder {
@@ -272,7 +274,7 @@
   position: fixed;
   inset: 0;
   z-index: 35;
-  background: rgba(2, 6, 23, 0.42);
+  background: var(--color-backdrop);
   backdrop-filter: blur(6px);
   display: flex;
   justify-content: flex-end;
@@ -282,15 +284,19 @@
   width: min(460px, 100%);
   height: 100%;
   background: var(--color-surface-elevated);
-  border-left: 1px solid rgba(148, 163, 184, 0.3);
-  box-shadow: -18px 0 36px rgba(15, 23, 42, 0.2);
+  border-inline-start: 1px solid color-mix(in srgb, var(--color-border-soft) 72%, transparent);
+  box-shadow: -18px 0 36px rgba(var(--color-shadow-rgb), 0.28);
   display: grid;
   grid-template-rows: auto 1fr;
 }
 
+:host-context([dir='rtl']) .task-drawer {
+  box-shadow: 18px 0 36px rgba(var(--color-shadow-rgb), 0.28);
+}
+
 .drawer-header {
   padding: var(--space-4);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-border-soft) 70%, transparent);
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -314,7 +320,7 @@
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  border: 1px solid rgba(148, 163, 184, 0.38);
+  border: 1px solid color-mix(in srgb, var(--color-border-soft) 76%, transparent);
   background: var(--color-surface);
   color: var(--color-text-secondary);
   display: inline-flex;
@@ -343,8 +349,8 @@
 .detail-block,
 .detail-grid {
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(148, 163, 184, 0.24);
-  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid color-mix(in srgb, var(--color-border-soft) 66%, transparent);
+  background: var(--color-card-overlay);
   padding: var(--space-4);
 }
 

@@ -13,7 +13,12 @@
       <p>{{ toast.message }}</p>
     </div>
 
-    <button type="button" class="dismiss-btn" aria-label="Dismiss notification" (click)="dismiss(toast.id)">
+    <button
+      type="button"
+      class="dismiss-btn"
+      [attr.aria-label]="'COMMON.ACTIONS.DISMISS_NOTIFICATION' | translate"
+      (click)="dismiss(toast.id)"
+    >
       x
     </button>
   </article>

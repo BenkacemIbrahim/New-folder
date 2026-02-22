@@ -1,6 +1,7 @@
 import { NgClass, NgFor } from '@angular/common';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, inject } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 import { MOTION_DISTANCE, MOTION_DURATION, motion } from '../../animations/motion.config';
 import { ToastMessage } from '../../../core/models/toast.model';
@@ -9,7 +10,7 @@ import { ToastService } from '../../../core/services/toast.service';
 @Component({
   selector: 'app-toast-outlet',
   standalone: true,
-  imports: [NgFor, NgClass],
+  imports: [NgFor, NgClass, TranslatePipe],
   templateUrl: './toast-outlet.component.html',
   styleUrl: './toast-outlet.component.scss',
   animations: [

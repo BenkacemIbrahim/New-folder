@@ -81,7 +81,7 @@ h1 {
 
 .floating-label {
   position: absolute;
-  left: 0.9rem;
+  inset-inline-start: 0.9rem;
   top: 0.9rem;
   color: var(--color-text-muted);
   transform-origin: left top;
@@ -89,6 +89,10 @@ h1 {
     transform var(--motion-fast) var(--ease-standard),
     color var(--motion-fast) var(--ease-standard);
   pointer-events: none;
+}
+
+:host-context([dir='rtl']) .floating-label {
+  transform-origin: right top;
 }
 
 .field-shell.focused .floating-label,

@@ -40,7 +40,7 @@
 
 .hero-background-glow-top {
   top: -120px;
-  right: -80px;
+  inset-inline-end: -80px;
   width: 320px;
   height: 320px;
   background: rgba(255, 255, 255, 0.12);
@@ -48,7 +48,7 @@
 
 .hero-background-glow-bottom {
   bottom: -140px;
-  left: 40px;
+  inset-inline-start: 40px;
   width: 280px;
   height: 280px;
   background: rgba(15, 23, 42, 0.36);

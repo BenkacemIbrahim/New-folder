@@ -1,12 +1,13 @@
 import { NgClass, NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnDestroy, computed, signal } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 import { Testimonial } from '../../models/marketing-content.model';
 
 @Component({
   selector: 'app-testimonials-section',
   standalone: true,
-  imports: [NgFor, NgClass],
+  imports: [NgFor, NgClass, TranslatePipe],
   templateUrl: './testimonials-section.component.html',
   styleUrl: './testimonials-section.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -15,29 +16,26 @@ export class TestimonialsSectionComponent implements OnDestroy {
   protected readonly testimonials: Testimonial[] = [
     {
       id: 'c1',
-      quote:
-        'Enterprise Workspace gave us one operating rhythm across product, data, and operations. Delivery reviews are now focused on decisions, not status chasing.',
+      quoteKey: 'MARKETING.TESTIMONIALS.ITEMS.C1.QUOTE',
       name: 'Maya Brooks',
-      role: 'VP of Delivery',
-      company: 'Northpoint Learning Group',
+      roleKey: 'MARKETING.TESTIMONIALS.ITEMS.C1.ROLE',
+      companyKey: 'MARKETING.TESTIMONIALS.ITEMS.C1.COMPANY',
       avatarSeed: 'MB'
     },
     {
       id: 'c2',
-      quote:
-        'The product feels premium and practical. Our PMO moved from fragmented spreadsheets to shared execution in less than two weeks.',
+      quoteKey: 'MARKETING.TESTIMONIALS.ITEMS.C2.QUOTE',
       name: 'Daniel Ortiz',
-      role: 'Head of PMO',
-      company: 'Coursetrail Enterprise',
+      roleKey: 'MARKETING.TESTIMONIALS.ITEMS.C2.ROLE',
+      companyKey: 'MARKETING.TESTIMONIALS.ITEMS.C2.COMPANY',
       avatarSeed: 'DO'
     },
     {
       id: 'c3',
-      quote:
-        'From roadmap planning to sprint analytics, our leadership team gets the full story in minutes. It has changed how we run quarterly strategy.',
+      quoteKey: 'MARKETING.TESTIMONIALS.ITEMS.C3.QUOTE',
       name: 'Anika Sharma',
-      role: 'Chief Product Officer',
-      company: 'Atlas Skills Network',
+      roleKey: 'MARKETING.TESTIMONIALS.ITEMS.C3.ROLE',
+      companyKey: 'MARKETING.TESTIMONIALS.ITEMS.C3.COMPANY',
       avatarSeed: 'AS'
     }
   ];

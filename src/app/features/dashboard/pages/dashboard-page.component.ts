@@ -1,8 +1,9 @@
-import { NgClass, NgFor } from '@angular/common';
+import { DOCUMENT, NgClass, NgFor } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
   ElementRef,
   OnDestroy,
   QueryList,
@@ -11,7 +12,9 @@ import {
   inject,
   signal
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatIconModule } from '@angular/material/icon';
+import { TranslatePipe } from '@ngx-translate/core';
 import {
   ArcElement,
   BarController,
@@ -25,6 +28,8 @@ import {
 } from 'chart.js';
 import { gsap } from 'gsap';
 
+import { ThemeService } from '../../../core/services/theme.service';
+import { TranslationService } from '../../../core/services/translation.service';
 import {
   MOTION_DISTANCE,
   MOTION_DURATION,
@@ -47,24 +52,24 @@ type TimelineEventType = 'completion' | 'alert' | 'milestone' | 'meeting';
 
 interface KpiMetric {
   id: string;
-  label: string;
+  labelKey: string;
   icon: string;
   value: number;
   decimals?: number;
   suffix?: string;
-  trend: string;
+  trendKey: string;
   trendDirection: TrendDirection;
 }
 
 interface ChartPoint {
-  label: string;
+  labelKey: string;
   value: number;
 }
 
 interface TimelineEvent {
   id: string;
-  title: string;
-  summary: string;
+  titleKey: string;
+  summaryKey: string;
   owner: string;
   time: string;
   type: TimelineEventType;
@@ -85,13 +90,17 @@ interface DashboardThemeTokens {
 @Component({
   selector: 'app-dashboard-page',
   standalone: true,
-  imports: [NgFor, NgClass, MatIconModule],
+  imports: [NgFor, NgClass, MatIconModule, TranslatePipe],
   templateUrl: './dashboard-page.component.html',
   styleUrl: './dashboard-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardPageComponent implements AfterViewInit, OnDestroy {
   private readonly hostRef = inject(ElementRef<HTMLElement>);
+  private readonly document = inject(DOCUMENT);
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly translationService = inject(TranslationService);
+  private readonly themeService = inject(ThemeService);
 
   @ViewChild('taskChart') private taskChartRef?: ElementRef<HTMLCanvasElement>;
   @ViewChild('productivityChart') private productivityChartRef?: ElementRef<HTMLCanvasElement>;
@@ -101,107 +110,107 @@ export class DashboardPageComponent implements AfterViewInit, OnDestroy {
   @ViewChildren('kpiCard') private kpiCardRefs?: QueryList<ElementRef<HTMLElement>>;
   @ViewChildren('chartPanel') private chartPanelRefs?: QueryList<ElementRef<HTMLElement>>;
 
-  protected readonly lastRefresh = '2 min ago';
+  protected readonly refreshMinutes = 2;
 
   protected readonly kpis: KpiMetric[] = [
     {
       id: 'active-projects',
-      label: 'Active Projects',
+      labelKey: 'DASHBOARD.KPIS.ACTIVE_PROJECTS.LABEL',
       icon: 'workspaces',
       value: 28,
-      trend: '+8.4% vs last month',
+      trendKey: 'DASHBOARD.KPIS.ACTIVE_PROJECTS.TREND',
       trendDirection: 'up'
     },
     {
       id: 'delivery-throughput',
-      label: 'Delivery Throughput',
+      labelKey: 'DASHBOARD.KPIS.DELIVERY_THROUGHPUT.LABEL',
       icon: 'task_alt',
       value: 1432,
-      trend: '+112 closed tasks this week',
+      trendKey: 'DASHBOARD.KPIS.DELIVERY_THROUGHPUT.TREND',
       trendDirection: 'up'
     },
     {
       id: 'team-velocity',
-      label: 'Team Velocity',
+      labelKey: 'DASHBOARD.KPIS.TEAM_VELOCITY.LABEL',
       icon: 'insights',
       value: 46.7,
       decimals: 1,
       suffix: ' pts',
-      trend: '+3.1 sprint points',
+      trendKey: 'DASHBOARD.KPIS.TEAM_VELOCITY.TREND',
       trendDirection: 'up'
     },
     {
       id: 'risk-index',
-      label: 'Delivery Risk Index',
+      labelKey: 'DASHBOARD.KPIS.DELIVERY_RISK.LABEL',
       icon: 'warning_amber',
       value: 18,
       suffix: '%',
-      trend: '-4% risk reduction',
+      trendKey: 'DASHBOARD.KPIS.DELIVERY_RISK.TREND',
       trendDirection: 'down'
     }
   ];
 
   protected readonly taskDistribution: ChartPoint[] = [
-    { label: 'In Progress', value: 42 },
-    { label: 'Review', value: 18 },
-    { label: 'Blocked', value: 9 },
-    { label: 'Done', value: 31 }
+    { labelKey: 'DASHBOARD.CHARTS.TASK_DISTRIBUTION.IN_PROGRESS', value: 42 },
+    { labelKey: 'DASHBOARD.CHARTS.TASK_DISTRIBUTION.REVIEW', value: 18 },
+    { labelKey: 'DASHBOARD.CHARTS.TASK_DISTRIBUTION.BLOCKED', value: 9 },
+    { labelKey: 'DASHBOARD.CHARTS.TASK_DISTRIBUTION.DONE', value: 31 }
   ];
 
   protected readonly productivityBySquad: ChartPoint[] = [
-    { label: 'Platform', value: 84 },
-    { label: 'Content', value: 73 },
-    { label: 'Data', value: 91 },
-    { label: 'Growth', value: 66 },
-    { label: 'Ops', value: 79 }
+    { labelKey: 'DASHBOARD.CHARTS.PRODUCTIVITY_BY_SQUAD.PLATFORM', value: 84 },
+    { labelKey: 'DASHBOARD.CHARTS.PRODUCTIVITY_BY_SQUAD.CONTENT', value: 73 },
+    { labelKey: 'DASHBOARD.CHARTS.PRODUCTIVITY_BY_SQUAD.DATA', value: 91 },
+    { labelKey: 'DASHBOARD.CHARTS.PRODUCTIVITY_BY_SQUAD.GROWTH', value: 66 },
+    { labelKey: 'DASHBOARD.CHARTS.PRODUCTIVITY_BY_SQUAD.OPS', value: 79 }
   ];
 
   protected readonly timelineEvents: TimelineEvent[] = [
     {
       id: 'evt-1',
-      title: 'Migration Wave 3 Completed',
-      summary: 'Platform squad moved 12 services to the new orchestration layer.',
-      owner: 'Owner: Mia Chen',
+      titleKey: 'DASHBOARD.TIMELINE.EVENTS.EVT_1.TITLE',
+      summaryKey: 'DASHBOARD.TIMELINE.EVENTS.EVT_1.SUMMARY',
+      owner: 'Mia Chen',
       time: '09:24 AM',
       type: 'completion'
     },
     {
       id: 'evt-2',
-      title: 'Security Review Scheduled',
-      summary: 'Identity federation workflow review created for Friday governance session.',
-      owner: 'Owner: Marcus Lee',
+      titleKey: 'DASHBOARD.TIMELINE.EVENTS.EVT_2.TITLE',
+      summaryKey: 'DASHBOARD.TIMELINE.EVENTS.EVT_2.SUMMARY',
+      owner: 'Marcus Lee',
       time: '10:08 AM',
       type: 'meeting'
     },
     {
       id: 'evt-3',
-      title: 'Revenue Analytics Alert',
-      summary: 'Weekly dashboard detected >12% anomaly in completion-driven upsell funnel.',
-      owner: 'Owner: Ava Romero',
+      titleKey: 'DASHBOARD.TIMELINE.EVENTS.EVT_3.TITLE',
+      summaryKey: 'DASHBOARD.TIMELINE.EVENTS.EVT_3.SUMMARY',
+      owner: 'Ava Romero',
       time: '11:31 AM',
       type: 'alert'
     },
     {
       id: 'evt-4',
-      title: 'Q2 Learning Program Milestone',
-      summary: 'Leadership enablement track reached 80% rollout across enterprise cohorts.',
-      owner: 'Owner: Priya Nair',
+      titleKey: 'DASHBOARD.TIMELINE.EVENTS.EVT_4.TITLE',
+      summaryKey: 'DASHBOARD.TIMELINE.EVENTS.EVT_4.SUMMARY',
+      owner: 'Priya Nair',
       time: '01:02 PM',
       type: 'milestone'
     },
     {
       id: 'evt-5',
-      title: 'Dependency Resolved',
-      summary: 'External SSO vendor issue closed and blocked integration work resumed.',
-      owner: 'Owner: Noah Patel',
+      titleKey: 'DASHBOARD.TIMELINE.EVENTS.EVT_5.TITLE',
+      summaryKey: 'DASHBOARD.TIMELINE.EVENTS.EVT_5.SUMMARY',
+      owner: 'Noah Patel',
       time: '02:47 PM',
       type: 'completion'
     },
     {
       id: 'evt-6',
-      title: 'Portfolio Steering Notes Published',
-      summary: 'Decision summary and risk controls shared with directors and PM leads.',
-      owner: 'Owner: Elena Kim',
+      titleKey: 'DASHBOARD.TIMELINE.EVENTS.EVT_6.TITLE',
+      summaryKey: 'DASHBOARD.TIMELINE.EVENTS.EVT_6.SUMMARY',
+      owner: 'Elena Kim',
       time: '03:35 PM',
       type: 'meeting'
     }
@@ -213,6 +222,16 @@ export class DashboardPageComponent implements AfterViewInit, OnDestroy {
   private productivityChart: Chart<'bar'> | null = null;
   private timelineObserver: IntersectionObserver | null = null;
   private gsapContext: gsap.Context | null = null;
+
+  constructor() {
+    this.themeService.themeChanges$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => this.rebuildCharts());
+
+    this.translationService.languageChanges$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => this.rebuildCharts());
+  }
 
   ngAfterViewInit(): void {
     this.initializeCounterAnimations();
@@ -231,10 +250,10 @@ export class DashboardPageComponent implements AfterViewInit, OnDestroy {
   protected kpiValueLabel(metric: KpiMetric): string {
     const liveValue = this.counterValues()[metric.id] ?? 0;
 
-    const formattedValue = liveValue.toLocaleString('en-US', {
+    const formattedValue = new Intl.NumberFormat(this.translationService.currentLocale(), {
       minimumFractionDigits: metric.decimals ?? 0,
       maximumFractionDigits: metric.decimals ?? 0
-    });
+    }).format(liveValue);
 
     return `${formattedValue}${metric.suffix ?? ''}`;
   }
@@ -284,7 +303,7 @@ export class DashboardPageComponent implements AfterViewInit, OnDestroy {
     this.taskChart = new Chart(this.taskChartRef.nativeElement, {
       type: 'doughnut',
       data: {
-        labels: this.taskDistribution.map((point) => point.label),
+        labels: this.taskDistribution.map((point) => this.translationService.translate(point.labelKey)),
         datasets: [
           {
             data: this.taskDistribution.map((point) => point.value),
@@ -329,10 +348,10 @@ export class DashboardPageComponent implements AfterViewInit, OnDestroy {
     this.productivityChart = new Chart(this.productivityChartRef.nativeElement, {
       type: 'bar',
       data: {
-        labels: this.productivityBySquad.map((point) => point.label),
+        labels: this.productivityBySquad.map((point) => this.translationService.translate(point.labelKey)),
         datasets: [
           {
-            label: 'Productivity Score',
+            label: this.translationService.translate('DASHBOARD.CHARTS.PRODUCTIVITY_DATASET_LABEL'),
             data: this.productivityBySquad.map((point) => point.value),
             backgroundColor: themeTokens.barColor,
             hoverBackgroundColor: themeTokens.barHoverColor,
@@ -470,17 +489,34 @@ export class DashboardPageComponent implements AfterViewInit, OnDestroy {
     timelineElements.forEach((itemRef) => this.timelineObserver?.observe(itemRef.nativeElement));
   }
 
+  private rebuildCharts(): void {
+    this.taskChart?.destroy();
+    this.productivityChart?.destroy();
+    this.taskChart = null;
+    this.productivityChart = null;
+    this.initializeCharts();
+  }
+
   private getThemeTokens(): DashboardThemeTokens {
+    const styles = getComputedStyle(this.document.documentElement);
+    const readToken = (token: string, fallback: string): string =>
+      styles.getPropertyValue(token).trim() || fallback;
+
     return {
-      cardSurface: '#ffffff',
-      textMuted: '#475569',
-      grid: 'rgba(148, 163, 184, 0.26)',
-      tooltipBackground: 'rgba(15, 23, 42, 0.92)',
-      tooltipText: '#e2e8f0',
-      tooltipBorder: 'rgba(148, 163, 184, 0.4)',
-      pieColors: ['#335cff', '#0ea5e9', '#22c55e', '#f59e0b'],
-      barColor: 'rgba(51, 92, 255, 0.78)',
-      barHoverColor: 'rgba(29, 78, 216, 0.92)'
+      cardSurface: readToken('--chart-surface', '#ffffff'),
+      textMuted: readToken('--chart-text-muted', '#475569'),
+      grid: readToken('--chart-grid', 'rgba(148, 163, 184, 0.26)'),
+      tooltipBackground: readToken('--chart-tooltip-background', 'rgba(15, 23, 42, 0.92)'),
+      tooltipText: readToken('--chart-tooltip-text', '#e2e8f0'),
+      tooltipBorder: readToken('--chart-tooltip-border', 'rgba(148, 163, 184, 0.4)'),
+      pieColors: [
+        readToken('--chart-pie-1', '#335cff'),
+        readToken('--chart-pie-2', '#0ea5e9'),
+        readToken('--chart-pie-3', '#22c55e'),
+        readToken('--chart-pie-4', '#f59e0b')
+      ],
+      barColor: readToken('--chart-bar', 'rgba(51, 92, 255, 0.78)'),
+      barHoverColor: readToken('--chart-bar-hover', 'rgba(29, 78, 216, 0.92)')
     };
   }
 }

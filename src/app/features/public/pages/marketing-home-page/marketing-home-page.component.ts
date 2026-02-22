@@ -8,6 +8,7 @@ import {
   inject,
   signal
 } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { gsap } from 'gsap';
 
 import {
@@ -37,7 +38,8 @@ import { SectionShellComponent } from '../../ui/section-shell/section-shell.comp
     StatisticsSectionComponent,
     TestimonialsSectionComponent,
     CtaSectionComponent,
-    PublicFooterComponent
+    PublicFooterComponent,
+    TranslatePipe
   ],
   templateUrl: './marketing-home-page.component.html',
   styleUrl: './marketing-home-page.component.scss',

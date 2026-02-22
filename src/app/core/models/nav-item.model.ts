@@ -1,5 +1,5 @@
 export interface NavItem {
-  label: string;
+  labelKey: string;
   icon: string;
   route: string;
   badge?: string;

@@ -1,4 +1,5 @@
-:root {
+:root,
+[data-theme='light'] {
   --font-sans: 'Inter', 'Segoe UI', sans-serif;
 
   --color-app-bg: #f5f5f3;
@@ -25,6 +26,24 @@
   --color-success-soft: #ebf6ef;
   --color-warning-soft: #faf4e8;
   --color-error-soft: #fbefef;
+
+  --color-backdrop: rgba(2, 6, 23, 0.55);
+  --color-card-glass: color-mix(in srgb, var(--color-surface) 90%, transparent);
+  --color-card-overlay: color-mix(in srgb, var(--color-surface) 84%, transparent);
+  --color-shadow-rgb: 15, 23, 42;
+
+  --chart-surface: var(--color-surface-elevated);
+  --chart-text-muted: #475569;
+  --chart-grid: rgba(148, 163, 184, 0.26);
+  --chart-tooltip-background: rgba(15, 23, 42, 0.92);
+  --chart-tooltip-text: #e2e8f0;
+  --chart-tooltip-border: rgba(148, 163, 184, 0.4);
+  --chart-pie-1: #335cff;
+  --chart-pie-2: #0ea5e9;
+  --chart-pie-3: #22c55e;
+  --chart-pie-4: #f59e0b;
+  --chart-bar: rgba(51, 92, 255, 0.78);
+  --chart-bar-hover: rgba(29, 78, 216, 0.92);
 
   --space-0: 0;
   --space-1: 0.5rem;
@@ -66,4 +85,50 @@
   --motion-distance-reveal: 12px;
   --motion-distance-hover: 2px;
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme='dark'] {
+  --color-app-bg: #05070c;
+  --color-app-bg-subtle: #0a0f18;
+  --color-surface: #101622;
+  --color-surface-elevated: #161e2d;
+  --color-border-soft: #263447;
+  --color-border-strong: #3a4b62;
+
+  --color-accent: #4f8dff;
+  --color-accent-soft: #1a2d4c;
+  --color-accent-strong: #3a75dc;
+
+  --color-text-primary: #edf3ff;
+  --color-text-secondary: #c3d0e6;
+  --color-text-muted: #8fa2bf;
+  --color-text-inverse: #f5f8ff;
+
+  --color-success: #3fc08d;
+  --color-warning: #f5ae52;
+  --color-error: #f06f7b;
+  --color-success-soft: #123125;
+  --color-warning-soft: #3b2a13;
+  --color-error-soft: #3e1820;
+
+  --color-backdrop: rgba(1, 4, 12, 0.76);
+  --color-card-glass: color-mix(in srgb, var(--color-surface) 92%, transparent);
+  --color-card-overlay: color-mix(in srgb, var(--color-surface) 86%, transparent);
+  --color-shadow-rgb: 1, 4, 12;
+
+  --chart-surface: #131c2b;
+  --chart-text-muted: #9db0ca;
+  --chart-grid: rgba(143, 162, 191, 0.24);
+  --chart-tooltip-background: rgba(6, 11, 22, 0.94);
+  --chart-tooltip-text: #f3f7ff;
+  --chart-tooltip-border: rgba(109, 146, 196, 0.34);
+  --chart-pie-1: #5ea1ff;
+  --chart-pie-2: #26c6ff;
+  --chart-pie-3: #38d39f;
+  --chart-pie-4: #ffb84d;
+  --chart-bar: rgba(94, 161, 255, 0.84);
+  --chart-bar-hover: rgba(136, 188, 255, 0.95);
+
+  --shadow-soft: 0 8px 18px rgba(1, 4, 12, 0.3), 0 18px 32px rgba(1, 4, 12, 0.22);
+  --shadow-medium: 0 20px 42px rgba(1, 4, 12, 0.4);
 }

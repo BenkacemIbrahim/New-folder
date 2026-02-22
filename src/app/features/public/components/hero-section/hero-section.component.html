@@ -18,35 +18,38 @@
 
   <div class="hero-grid">
     <article class="hero-copy">
-      <p class="eyebrow hero-prelude">Enterprise Workspace</p>
+      <p class="eyebrow hero-prelude">{{ 'COMMON.APP_NAME' | translate }}</p>
 
       <h1>
-        <span class="hero-word">Run projects with</span>
-        <span class="hero-word">operational clarity.</span>
+        <span class="hero-word">{{ 'MARKETING.HERO.TITLE.LINE_1' | translate }}</span>
+        <span class="hero-word">{{ 'MARKETING.HERO.TITLE.LINE_2' | translate }}</span>
       </h1>
 
       <p class="hero-support">
-        Plan priorities, execute daily work, and report outcomes from one system.
+        {{ 'MARKETING.HERO.SUPPORT' | translate }}
       </p>
 
       <div class="hero-cta">
-        <a class="hero-start-link" routerLink="/auth/register">Get Started</a>
+        <a class="hero-start-link" routerLink="/auth/register">{{ 'MARKETING.HERO.PRIMARY_CTA' | translate }}</a>
         <app-landing-button variant="secondary" size="lg" (pressed)="goTo('showcase')">
-          See Workflow
+          {{ 'MARKETING.HERO.SECONDARY_CTA' | translate }}
         </app-landing-button>
       </div>
 
       <div class="hero-trust">
-        <p *ngFor="let item of trustItems">{{ item }}</p>
+        <p *ngFor="let item of trustItems">{{ item | translate }}</p>
       </div>
     </article>
 
     <article class="hero-visual">
       <div class="mockup-frame hero-mockup">
-        <img src="/graphics/workspace-hero-mockup.svg" alt="Enterprise Workspace product overview" />
+        <img
+          src="/graphics/workspace-hero-mockup.svg"
+          [attr.alt]="'MARKETING.HERO.MOCKUP.ALT' | translate"
+        />
         <div class="mockup-meta">
-          <p>Weekly review</p>
-          <span>24 active projects / 6 at risk</span>
+          <p>{{ 'MARKETING.HERO.MOCKUP.REVIEW' | translate }}</p>
+          <span>{{ 'MARKETING.HERO.MOCKUP.METRIC' | translate }}</span>
         </div>
       </div>
     </article>

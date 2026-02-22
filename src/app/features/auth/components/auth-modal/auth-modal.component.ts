@@ -1,12 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { TranslatePipe } from '@ngx-translate/core';
 
 import { modalBackdropAnimation, modalPanelAnimation } from '../../animations/auth-animations';
 
 @Component({
   selector: 'app-auth-modal',
   standalone: true,
-  imports: [MatIconModule],
+  imports: [MatIconModule, TranslatePipe],
   templateUrl: './auth-modal.component.html',
   styleUrl: './auth-modal.component.scss',
   animations: [modalBackdropAnimation, modalPanelAnimation]
