@@ -1,5 +1,9 @@
 # Enterprise Workspace
 
+<p align="center">
+  <img src="public/graphics/workspace-hero-mockup.svg" alt="Enterprise Workspace logo" width="220" />
+</p>
+
 Enterprise Workspace is a production-ready Angular application that combines authentication, analytics, project portfolio views, and Kanban task execution in one enterprise UI.
 
 ## Why This Project
